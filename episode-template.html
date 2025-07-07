@@ -182,6 +182,7 @@
     </footer>
 
     <script src="./assets/js/notion-api.js"></script>
+    <script src="./assets/js/static-episodes.js"></script>
     <script>
         // エピソードタイトルのマッピング（Notionから取得できない場合のフォールバック）
         const episodeTitles = {
@@ -221,35 +222,63 @@
             };
         }
 
-        // エピソードデータを読み込み（Notionから取得）
+        // エピソードデータを読み込み（GitHub Pages用：静的データ優先）
         async function loadEpisode(episodeNumber, country = 'usa') {
             try {
-                console.log(`🔄 ${country === 'spain' ? 'スペイン編' : 'アメリカ編'}エピソード ${episodeNumber} を読み込み中...`);
+                console.log(`🔄 ${country}編エピソード ${episodeNumber} を読み込み中...`);
                 
                 // ローディング表示
                 document.getElementById('episode-content').innerHTML = `
                     <div style="text-align: center; padding: 3rem;">
                         <h2>📖 記事を読み込み中...</h2>
-                        <p>Notionから最新の内容を取得しています。</p>
+                        <p>エピソードを準備しています...</p>
                     </div>
                 `;
 
-                // 国に応じて適切なAPIを呼び出し
                 let episode;
-                if (country === 'spain') {
-                    episode = await notionAPI.getSpainEpisodeContent(episodeNumber);
-                } else if (country === 'cebu') {
-                    episode = await notionAPI.getCebuEpisodeContent(episodeNumber);
-                } else if (country === 'malaysia') {
-                    episode = await notionAPI.getMalaysiaEpisodeContent(episodeNumber);
-                } else if (country === 'europe') {
-                    episode = await notionAPI.getEuropeEpisodeContent(episodeNumber);
-                } else if (country === 'europe2025') {
-                    episode = await notionAPI.getEurope2025EpisodeContent(episodeNumber);
+                
+                // GitHub Pages用：まず静的データを確認
+                if (country === 'europe2025') {
+                    const staticEpisode = getStaticEpisodeContent('europe2025', episodeNumber);
+                    if (staticEpisode.content && !staticEpisode.content.includes('エピソード準備中')) {
+                        episode = {
+                            episode: episodeNumber,
+                            title: staticEpisode.title,
+                            date: staticEpisode.date,
+                            location: staticEpisode.location,
+                            content: staticEpisode.content
+                        };
+                    } else {
+                        // 静的データがない場合はNotionから取得を試行
+                        episode = await notionAPI.getEurope2025EpisodeContent(episodeNumber);
+                    }
                 } else if (country === 'europe2025-2') {
-                    episode = await notionAPI.getEurope2025Part2EpisodeContent(episodeNumber);
+                    const staticEpisode = getStaticEpisodeContent('europe2025_2', episodeNumber);
+                    if (staticEpisode.content && !staticEpisode.content.includes('エピソード準備中')) {
+                        episode = {
+                            episode: episodeNumber,
+                            title: staticEpisode.title,
+                            date: staticEpisode.date,
+                            location: staticEpisode.location,
+                            content: staticEpisode.content
+                        };
+                    } else {
+                        // 静的データがない場合はNotionから取得を試行
+                        episode = await notionAPI.getEurope2025Part2EpisodeContent(episodeNumber);
+                    }
                 } else {
-                    episode = await notionAPI.getEpisodeContent(episodeNumber);
+                    // その他の国は従来通りNotionから取得
+                    if (country === 'spain') {
+                        episode = await notionAPI.getSpainEpisodeContent(episodeNumber);
+                    } else if (country === 'cebu') {
+                        episode = await notionAPI.getCebuEpisodeContent(episodeNumber);
+                    } else if (country === 'malaysia') {
+                        episode = await notionAPI.getMalaysiaEpisodeContent(episodeNumber);
+                    } else if (country === 'europe') {
+                        episode = await notionAPI.getEuropeEpisodeContent(episodeNumber);
+                    } else {
+                        episode = await notionAPI.getEpisodeContent(episodeNumber);
+                    }
                 }
                 
                 if (episode) {

@@ -1462,7 +1462,10 @@ class NotionBlogAPI {
             
             // まずローカルプロキシサーバーを試行
             try {
-                const proxyResponse = await fetch(`https://chrz842959.xsrv.jp/api/europe2025-episodes/${episodeNumber}`);
+                const proxyResponse = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.notion.com/v1/pages/YOUR_PAGE_ID`)}`);
+                
+                // プロキシサーバーがない場合の代替処理
+                // const proxyResponse = await fetch(`https://chrz842959.xsrv.jp/api/europe2025-episodes/${episodeNumber}`);
                 
                 if (proxyResponse.ok) {
                     const episodeData = await proxyResponse.json();
