@@ -1,0 +1,274 @@
+/* スペシャルプロジェクト - 左右レイアウト */
+
+.special-project-container {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.special-project-info {
+    flex: 1;
+    max-width: 500px;
+}
+
+.special-project-info h3 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--hermes-dark);
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.project-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(10px);
+}
+
+.project-item:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(212, 175, 55, 0.3);
+    transform: translateX(8px);
+    box-shadow: var(--shadow-subtle);
+}
+
+.project-check {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.project-name {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--hermes-dark);
+    letter-spacing: 0.02em;
+}
+
+.special-project-slideshow {
+    flex: 1;
+    max-width: 600px;
+}
+
+.special-project-slideshow .slideshow-container {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-elevated);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.special-project-slideshow .slide {
+    display: none;
+    position: relative;
+    aspect-ratio: 16/10;
+}
+
+.special-project-slideshow .slide.active {
+    display: block;
+}
+
+.special-project-slideshow .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.special-project-slideshow .slide:hover img {
+    transform: scale(1.02);
+}
+
+.special-project-slideshow .placeholder-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: var(--hermes-gray);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+/* ナビゲーション */
+.special-project-slideshow .slide-prev,
+.special-project-slideshow .slide-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.special-project-slideshow .slide-prev {
+    left: 1rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.special-project-slideshow .slide-next {
+    right: 1rem;
+    border-radius: 8px 0 0 8px;
+}
+
+.special-project-slideshow .slide-prev:hover,
+.special-project-slideshow .slide-next:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ドット表示 */
+.special-project-slideshow .slide-dots {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.8rem;
+    z-index: 10;
+}
+
+.special-project-slideshow .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.special-project-slideshow .dot.active,
+.special-project-slideshow .dot:hover {
+    background: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .special-project-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem;
+    }
+    
+    .special-project-info,
+    .special-project-slideshow {
+        max-width: 100%;
+    }
+    
+    .special-project-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-item {
+        padding: 0.8rem 1rem;
+        gap: 0.8rem;
+    }
+    
+    .project-name {
+        font-size: 1rem;
+    }
+    
+    .special-project-slideshow .slide-prev,
+    .special-project-slideshow .slide-next {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+    
+    .special-project-slideshow .placeholder-slide {
+        font-size: 1.5rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .project-check {
+        font-size: 1.5rem;
+    }
+    
+    .special-project-slideshow .slide-dots {
+        gap: 0.5rem;
+        bottom: 1rem;
+    }
+    
+    .special-project-slideshow .dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* アニメーション */
+.project-item {
+    animation: fadeInLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.project-item:nth-child(1) { animation-delay: 0.1s; opacity: 0; }
+.project-item:nth-child(2) { animation-delay: 0.2s; opacity: 0; }
+.project-item:nth-child(3) { animation-delay: 0.3s; opacity: 0; }
+.project-item:nth-child(4) { animation-delay: 0.4s; opacity: 0; }
+.project-item:nth-child(5) { animation-delay: 0.5s; opacity: 0; }
+.project-item:nth-child(6) { animation-delay: 0.6s; opacity: 0; }
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.special-project-slideshow {
+    animation: fadeInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

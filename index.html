@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まっすー | FOMUS代表 - 写真家・アーティスト・AI講師・プロデューサー</title>
+    <meta name="description" content="まっすー（FOMUS代表）のポートフォリオサイト。写真家・アーティスト・AI講師として、日本の伝統文化と現代テクノロジーを融合させた創作活動を展開。アイルランド・ドバイ・日本を拠点に国際的に活動中。">
+    <meta name="keywords" content="まっすー, FOMUS, 写真家, アーティスト, AI講師, プロデューサー, 枡, 日本文化, アイルランド, ドバイ">
+    <meta name="author" content="まっすー">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://masuo.github.io/">
+    <meta property="og:title" content="まっすー | FOMUS代表 - 写真家・アーティスト・AI講師・プロデューサー">
+    <meta property="og:description" content="日本の伝統文化と現代テクノロジーを融合させた創作活動を展開。写真・AI・枡ブランディングを通じて価値創造をサポート。">
+    <meta property="og:image" content="./assets/images/profile.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://masuo.github.io/">
+    <meta property="twitter:title" content="まっすー | FOMUS代表">
+    <meta property="twitter:description" content="日本の伝統文化と現代テクノロジーを融合させた創作活動を展開。">
+    <meta property="twitter:image" content="./assets/images/profile.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/fomus-luxury.css">
+    <link rel="stylesheet" href="./assets/css/special-projects.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "まっすー",
+        "alternateName": "MaSU",
+        "description": "写真家・アーティスト・AI講師・プロデューサー、FOMUS代表",
+        "url": "https://masuo.github.io/",
+        "image": "./assets/images/profile.jpg",
+        "sameAs": [
+            "https://www.instagram.com/masumasumasuo7/",
+            "https://fomus.jp"
+        ],
+        "jobTitle": [
+            "写真家",
+            "アーティスト", 
+            "AI講師",
+            "プロデューサー"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "FOMUS"
+        }
+    }
+    </script>
+</head>
+<body class="loading">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">まっすー</div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">まっすー</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" data-translate="nav-home">Home</a></li>
+                <li><a href="#fomus" data-translate="nav-fomus">FOMUS</a></li>
+                <li><a href="#works" data-translate="nav-works">Works</a></li>
+                <li><a href="#services" data-translate="nav-services">Services</a></li>
+                <li><a href="#blog" data-translate="nav-blog">活動記</a></li>
+                <li><a href="#contact" data-translate="nav-contact">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <div class="language-selector">
+                    <button class="lang-btn active" data-lang="ja" title="日本語">🇯🇵</button>
+                    <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
+                    <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
+                    <button class="lang-btn" data-lang="ko" title="한국어">🇰🇷</button>
+                    <button class="lang-btn" data-lang="ar" title="العربية">🇸🇦</button>
+                </div>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="メニュー">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-layout">
+                    <div class="hero-image">
+                        <div class="profile-photo">
+                            <img src="./assets/images/profile.jpg" alt="まっすー プロフィール写真" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="placeholder-profile">📸</div>
+                        </div>
+                    </div>
+                    <div class="hero-content">
+                        <h1 class="hero-title" data-translate="hero-name">まっすー</h1>
+                        <p class="hero-subtitle" data-translate="hero-subtitle">FOMUS代表 | 写真家・アーティスト・AI講師・プロデューサー</p>
+                        <div class="hero-intro">
+                            <p class="hero-catchphrase" data-translate="hero-intro-1">世界を旅して、価値を共創する。</p>
+                            <p class="hero-description" data-translate="hero-intro-2">日本の伝統文化と現代テクノロジーを融合させ、アイルランド・ドバイ・日本を拠点に国際的な活動を展開しています。写真・AI・枡ブランディングを通じて、個人・法人問わず、あなたの価値を最大限に引き出します。</p>
+                        </div>
+                        <div class="hero-cta">
+                            <a href="#contact" class="cta-button primary" data-translate="contact-us">お問い合わせ</a>
+                            <a href="#services" class="cta-button secondary" data-translate="services-detail">サービス詳細</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOMUS Section -->
+        <section id="fomus" class="section section-fomus">
+            <div class="container">
+                <!-- メインセクション -->
+                <div class="fomus-main-section">
+                    <div class="fomus-logo-section">
+                        <div class="fomus-logo-container-new">
+                            <img src="./assets/images/FOMUSlogo.jpg" alt="FOMUS ロゴ" class="fomus-logo-new" loading="lazy" onerror="this.style.display='none';">
+                        </div>
+                    </div>
+                    <div class="fomus-content-section">
+                        <h2 class="fomus-title" data-translate="fomus-brand-experience">伝統×革新のブランド体験</h2>
+                        <div class="fomus-brand-line"></div>
+                        <p class="fomus-description" data-translate="fomus-description">
+                            FOMUSは、日本の美しい伝統工芸である「枡」を現代的にアップデートし、世界に向けて発信するプロジェクトです。
+                        </p>
+                        <p class="fomus-description-extended">
+                            アイルランド・ドバイ・日本を拠点に、グローバルな視点で日本文化の新しい価値を創造しています。伝統と革新を融合させたユニークなブランドとして、世界中に日本の美意識を伝えています。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- コレクション展示 -->
+                <div class="fomus-collections">
+                    <div class="collections-grid">
+                        <div class="collection-item">
+                            <div class="collection-image-container">
+                                <img src="./assets/images/FOMUS PARURE.png" alt="FOMUS PARURE" class="collection-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="collection-placeholder">💍</div>
+                            </div>
+                            <div class="collection-details">
+                                <h3 class="collection-name">FOMUS PARURE</h3>
+                                <p class="collection-category">Jewelry Collection</p>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-item">
+                            <div class="collection-image-container">
+                                <img src="./assets/images/KUKU.png" alt="KUKU" class="collection-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="collection-placeholder">🏮</div>
+                            </div>
+                            <div class="collection-details">
+                                <h3 class="collection-name">KUKU</h3>
+                                <p class="collection-category">Traditional Craft</p>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-item">
+                            <div class="collection-image-container">
+                                <img src="./assets/images/Masu Photo.png" alt="枡フォト" class="collection-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="collection-placeholder">📸</div>
+                            </div>
+                            <div class="collection-details">
+                                <h3 class="collection-name">枡フォト</h3>
+                                <p class="collection-category">Photography Service</p>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-item">
+                            <div class="collection-image-container">
+                                <img src="./assets/images/アートギャラリー.png" alt="アートギャラリー" class="collection-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="collection-placeholder">🎨</div>
+                            </div>
+                            <div class="collection-details">
+                                <h3 class="collection-name">アートギャラリー</h3>
+                                <p class="collection-category">Art Collection</p>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-item">
+                            <div class="collection-image-container">
+                                <img src="./assets/images/カードゲーム　SILVA.png" alt="カードゲームSILVA" class="collection-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="collection-placeholder">🃏</div>
+                            </div>
+                            <div class="collection-details">
+                                <h3 class="collection-name">カードゲーム SILVA</h3>
+                                <p class="collection-category">Game Design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- アクションボタン -->
+                <div class="fomus-actions-refined">
+                    <a href="https://fomus.jp" target="_blank" class="fomus-btn-primary" rel="noopener noreferrer">
+                        <span class="btn-text">FOMUS公式サイトはこちら</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Works Section -->
+        <section id="works" class="section section-works">
+            <div class="container">
+                <h2 class="section-title">Works</h2>
+                <div class="works-intro">
+                    <p class="works-description" data-translate="works-description">
+                        世界各地での創作活動を通じて生み出された作品の数々。<br>
+                        各カテゴリーをクリックして、私のクリエイティブな旅路をご覧ください。
+                    </p>
+                    <div class="works-cta">
+                        <span class="click-indicator">👆 <span data-translate="click-explore">クリックして探索</span></span>
+                    </div>
+                </div>
+                
+                <!-- カテゴリータブ -->
+                <div class="works-category-tabs">
+                    <button class="category-tab-btn active" data-category="photography">
+                        <span class="tab-icon">📸</span>
+                        <span class="tab-text" data-translate="photography-tab">写真撮影</span>
+                    </button>
+                    <button class="category-tab-btn" data-category="music">
+                        <span class="tab-icon">🎵</span>
+                        <span class="tab-text" data-translate="music-tab">音楽</span>
+                    </button>
+                    <button class="category-tab-btn" data-category="special">
+                        <span class="tab-icon">✨</span>
+                        <span class="tab-text" data-translate="special-tab">スペシャル</span>
+                    </button>
+                </div>
+                
+                <!-- 写真撮影タブのコンテンツ -->
+                <div class="works-tab-content active" id="photography-content">
+                    <div class="photography-slideshow">
+                        <div class="slideshow-container large">
+                            <!-- Slides will be dynamically generated -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 音楽タブのコンテンツ -->
+                <div class="works-tab-content" id="music-content">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+
+                <!-- スペシャルタブのコンテンツ -->
+                <div class="works-tab-content" id="special-content">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section section-services">
+            <div class="container">
+                <h2 class="section-title" data-translate="nav-services">Services</h2>
+                
+                <!-- サービスタブ -->
+                <div class="service-tabs">
+                    <button class="tab-button active" data-tab="individual">
+                        <span class="tab-icon">👤</span>
+                        <span class="tab-text" data-translate="personal-services">個人向けサービス</span>
+                    </button>
+                    <button class="tab-button" data-tab="corporate">
+                        <span class="tab-icon">🏢</span>
+                        <span class="tab-text" data-translate="business-services">法人向けサービス</span>
+                    </button>
+                </div>
+                
+                <!-- 個人向けサービス -->
+                <div class="tab-content active" id="individual-services">
+                    <div class="services-grid">
+                        <div class="service-card-modern">
+                            <div class="service-header">
+                                <div class="service-icon-modern">📸</div>
+                                <div class="service-badge individual">Personal</div>
+                            </div>
+                            <h3 data-translate="photography-request">撮影依頼</h3>
+                            <p class="service-description" data-translate="photography-desc">ポートレート・商品撮影・イベント撮影など、あなたの価値を最大限に引き出す撮影サービス</p>
+                            <ul class="service-list">
+                                <li data-translate="portrait-photography">ポートレート撮影</li>
+                                <li data-translate="product-photography">商品・ブランド撮影</li>
+                                <li data-translate="event-photography">イベント・記念撮影</li>
+                            </ul>
+                            <a href="#contact" class="service-cta" data-translate="contact-us">お問い合わせ</a>
+                        </div>
+                        
+                        <div class="service-card-modern">
+                            <div class="service-header">
+                                <div class="service-icon-modern">🤖</div>
+                                <div class="service-badge individual">Personal</div>
+                            </div>
+                            <h3 data-translate="ai-consulting">AIコンサル・講座</h3>
+                            <p class="service-description" data-translate="ai-consulting-desc">初心者歓迎！店舗経営者・クリエイター向けのAI活用支援</p>
+                            <ul class="service-list">
+                                <li data-translate="ai-basic-course">AI活用基礎講座</li>
+                                <li data-translate="ai-personal-support">個人向けAI導入支援</li>
+                                <li data-translate="ai-creative-method">クリエイティブAI活用法</li>
+                            </ul>
+                            <a href="#contact" class="service-cta" data-translate="contact-us">お問い合わせ</a>
+                        </div>
+                        
+                        <div class="service-card-modern">
+                            <div class="service-header">
+                                <div class="service-icon-modern">💻</div>
+                                <div class="service-badge individual">Personal</div>
+                            </div>
+                            <h3 data-translate="homepage-support">ホームページ制作サポート</h3>
+                            <p class="service-description" data-translate="homepage-support-desc">個人・小規模事業者向けのプロフェッショナルなホームページ制作サポート</p>
+                            <ul class="service-list">
+                                <li>サイト企画・デザイン</li>
+                                <li>レスポンシブサイト構築</li>
+                                <li>SEO対策・運用支援</li>
+                            </ul>
+                            <a href="#contact" class="service-cta" data-translate="contact-us">お問い合わせ</a>
+                        </div>
+                        
+                        <div class="service-card-modern">
+                            <div class="service-header">
+                                <div class="service-icon-modern">🎨</div>
+                                <div class="service-badge individual">Personal</div>
+                            </div>
+                            <h3 data-translate="creative-support">創作支援</h3>
+                            <p class="service-description" data-translate="creative-support-desc">音楽・映像・イラスト制作をAIを活用してサポート</p>
+                            <ul class="service-list">
+                                <li>AI音楽制作支援</li>
+                                <li>映像編集・制作</li>
+                                <li>AIイラスト活用指導</li>
+                            </ul>
+                            <a href="#contact" class="service-cta" data-translate="contact-us">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 法人向けサービス -->
+                <div class="tab-content" id="corporate-services">
+                    <div class="services-grid">
+                        <div class="service-card-modern">
+                            <div class="service-header">
+                                <div class="service-icon-modern">🎤</div>
+                                <div class="service-badge corporate">Business</div>
+                            </div>
+                            <h3 data-translate="corporate-lecture">法人向け講演・セミナー</h3>
+                            <p class="service-description" data-translate="corporate-lecture-desc">AI活用・グローバル展開・クリエイティブ思考についての講演</p>
+                            <ul class="service-list">
+                                <li>AI活用セミナー（2-4時間）</li>
+                                <li>グローバル展開講演</li>
+                                <li>クリエイティブ思考研修</li>
+                            </ul>
+                            <a href="#contact" class="service-cta" data-translate="contact-us">お問い合わせ</a>
+                        </div>
+                        
+                        <div class="service-card-modern">
+                            <div class="service-header">
+                                <div class="service-icon-modern">🏢</div>
+                                <div class="service-badge corporate">Business</div>
+                            </div>
+                            <h3 data-translate="ai-training">社内AI研修</h3>
+                            <p class="service-description" data-translate="ai-training-desc">従業員向けAI活用研修・導入コンサルティング</p>
+                            <ul class="service-list">
+                                <li>AI基礎研修（1日コース）</li>
+                                <li>部署別AI活用研修</li>
+                                <li>AI導入戦略策定</li>
+                            </ul>
+                            <a href="#contact" class="service-cta" data-translate="contact-us">お問い合わせ</a>
+                        </div>
+                        
+                        <div class="service-card-modern">
+                            <div class="service-header">
+                                <div class="service-icon-modern">🎁</div>
+                                <div class="service-badge corporate">Business</div>
+                            </div>
+                            <h3 data-translate="masu-branding">枡ギフト製作＆ブランディング</h3>
+                            <p class="service-description" data-translate="masu-branding-desc">日本の伝統的な枡を活用した企業ギフト・ブランディング</p>
+                            <ul class="service-list">
+                                <li>オリジナル枡デザイン</li>
+                                <li>企業ストーリー構築</li>
+                                <li>ギフト企画・制作</li>
+                            </ul>
+                            <a href="#contact" class="service-cta" data-translate="contact-us">お問い合わせ</a>
+                        </div>
+                        
+                        <div class="service-card-modern">
+                            <div class="service-header">
+                                <div class="service-icon-modern">🌍</div>
+                                <div class="service-badge corporate">Business</div>
+                            </div>
+                            <h3>SNS×グローバル戦略</h3>
+                            <p class="service-description">海外展開を見据えたSNS戦略・コンテンツ制作支援</p>
+                            <ul class="service-list">
+                                <li>グローバルSNS戦略策定</li>
+                                <li>多言語コンテンツ制作</li>
+                                <li>海外パートナーシップ支援</li>
+                            </ul>
+                            <a href="#contact" class="service-cta" data-translate="contact-us">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section section-blog">
+            <div class="container">
+                <h2 class="section-title" data-translate="blog-title">活動記</h2>
+                <div class="blog-intro">
+                    <p data-translate="blog-description">世界各地での撮影活動、コラボレーション、日々の気づきを記録しています</p>
+                </div>
+                
+                <!-- 最新記事プレビュー -->
+                <div class="blog-preview-grid" id="blog-preview">
+                    <!-- 記事プレビューを動的に読み込み -->
+                    <div class="loading-message" style="text-align: center; padding: 3rem;">
+                        <p>記事を読み込み中...</p>
+                    </div>
+                </div>
+                
+                <!-- もっと見るボタン -->
+                <div class="blog-cta">
+                    <a href="blog.html" class="blog-more-btn" data-translate="blog-more">
+                        すべての記事を見る
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section section-contact">
+            <div class="container">
+                <h2 class="section-title" data-translate="contact-title">Contact</h2>
+                <div class="contact-intro">
+                    <p data-translate="contact-intro">ご相談・ご依頼・取材・協業のご連絡はこちらからお気軽にどうぞ</p>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="clientType" data-translate="contact-type">お問い合わせ区分 *</label>
+                            <select id="clientType" name="clientType" required>
+                                <option value="" data-translate="select-option">選択してください</option>
+                                <option value="individual" data-translate="individual">個人</option>
+                                <option value="corporate" data-translate="corporate">法人</option>
+                                <option value="media" data-translate="media">メディア・取材</option>
+                                <option value="collaboration" data-translate="collaboration">協業・パートナーシップ</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" data-translate="contact-name">お名前 *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company" data-translate="contact-company">会社名・所属</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" data-translate="contact-email">メールアドレス *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" data-translate="contact-phone">電話番号</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" data-translate="desired-service">ご希望のサービス</label>
+                            <select id="service" name="service">
+                                <option value="" data-translate="select-option">選択してください</option>
+                                <optgroup label="個人向け" data-translate="personal-services">
+                                    <option value="photography" data-translate="photography-request">撮影依頼</option>
+                                    <option value="ai-consulting" data-translate="ai-consulting">AIコンサル・講座</option>
+                                    <option value="kindle-support" data-translate="kindle-support">Kindle出版サポート</option>
+                                    <option value="creative-support" data-translate="creative-support">創作支援</option>
+                                </optgroup>
+                                <optgroup label="法人向け" data-translate="business-services">
+                                    <option value="corporate-lecture" data-translate="corporate-lecture">法人向け講演・セミナー</option>
+                                    <option value="ai-training" data-translate="ai-training">社内AI研修</option>
+                                    <option value="masu-branding" data-translate="masu-branding">枡ギフト製作＆ブランディング</option>
+                                    <option value="global-strategy" data-translate="global-strategy">SNS×グローバル戦略</option>
+                                </optgroup>
+                                <optgroup label="その他" data-translate="other-services">
+                                    <option value="media" data-translate="media-interview">メディア取材</option>
+                                    <option value="collaboration" data-translate="partnership">協業・パートナーシップ</option>
+                                    <option value="other" data-translate="other">その他</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" data-translate="contact-message">詳細・ご質問 *</label>
+                            <textarea id="message" name="message" rows="6" required data-translate="message-placeholder" placeholder="プロジェクトの詳細、ご質問、ご要望などをお聞かせください"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="privacy" required>
+                                <span class="checkmark"></span>
+                                <span data-translate="privacy-agreement">プライバシーポリシーに同意します *</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="form-submit-btn" data-translate="submit-button">送信する</button>
+                    </form>
+                    
+                    <div class="contact-alternatives">
+                        <h3 data-translate="other-contact-methods">その他のお問い合わせ方法</h3>
+                        <div class="contact-methods">
+                            <a href="https://www.instagram.com/masumasumasuo7/" target="_blank" class="contact-method instagram-method" rel="noopener noreferrer">
+                                <div class="instagram-icon">
+                                    <svg viewBox="0 0 24 24" class="instagram-svg">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                    </svg>
+                                </div>
+                                <div class="instagram-content">
+                                    <span class="instagram-label">Instagram</span>
+                                    <span class="instagram-handle">@masumasumasuo7</span>
+                                </div>
+                                <div class="instagram-arrow">→</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>まっすー</h3>
+                    <p>FOMUS代表・写真家・アーティスト・AI講師・プロデューサー</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/masumasumasuo7/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" class="social-icon">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://fomus.jp" target="_blank" rel="noopener noreferrer" aria-label="FOMUS Website">🌐</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">撮影依頼</a></li>
+                        <li><a href="#services">AIコンサル・講座</a></li>
+                        <li><a href="#services">法人向け講演</a></li>
+                        <li><a href="#services">枡ブランディング</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#fomus">FOMUS</a></li>
+                        <li><a href="#works">Works</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="https://fomus.jp" target="_blank" rel="noopener noreferrer">FOMUS公式サイト</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 まっすー (FOMUS) All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./assets/js/translations.js"></script>
+    <script src="./assets/js/notion-api.js"></script>
+    <script src="./assets/js/collaboration-slideshow.js"></script>
+    <script src="./assets/js/works-tabs.js"></script>
+    <script src="./assets/js/services-tab.js"></script>
+    <script src="./assets/js/gallery-filter.js"></script>
+    <script src="./assets/js/main.js"></script>
+    
+    <!-- Blog Preview Script -->
+    <script>
+        // ブログプレビューを読み込み
+        document.addEventListener('DOMContentLoaded', async function() {
+            const blogPreview = document.getElementById('blog-preview');
+            if (blogPreview) {
+                try {
+                    // 最新記事を取得（最大3件）
+                    const articles = await notionAPI.getAllArticles();
+                    const latestArticles = articles.slice(0, 3);
+                    
+                    if (latestArticles.length > 0) {
+                        // 通常の記事とアメリカ・スペイン活動記を統合
+                        const usSpainData = await notionAPI.getUSSpainArticles();
+                        const specialArticle = {
+                            id: 'us-spain-special',
+                            title: 'アメリカ・スペイン活動記 🇺🇸🇪🇸',
+                            date: '2024-01-01',
+                            location: '🌍 アメリカ・スペイン',
+                            tags: ['アメリカ', 'スペイン', '特別企画'],
+                            url: 'us-spain-blog.html',
+                            excerpt: 'ロサンゼルス、ラスベガス、ニューヨークからスペインまでの冒険の記録。25話にわたるアメリカ編と、準備中のスペイン編をお楽しみください。',
+                            featuredImage: 'https://via.placeholder.com/350x200/ff6b35/ffffff?text=USA+SPAIN+TOUR'
+                        };
+                        
+                        // セブ島活動記を追加
+                        const cebuArticle = {
+                            id: 'cebu-special',
+                            title: 'セブ島活動記 🇵🇭',
+                            date: '2024-02-02',
+                            location: '🇵🇭 フィリピン・セブ島',
+                            tags: ['セブ島', '語学留学', '枡フォト', '海外活動'],
+                            url: 'cebu-blog.html',
+                            excerpt: 'FOMUSまっすーのセブ島での活動記録。語学学習、枡フォトプロジェクト、現地交流など90話にわたる3ヶ月間の成長記録。',
+                            featuredImage: 'https://via.placeholder.com/350x200/00bcd4/ffffff?text=CEBU+ACTIVITY'
+                        };
+                        
+                        // マレーシア活動記を追加
+                        const malaysiaArticle = {
+                            id: 'malaysia-special',
+                            title: 'マレーシア活動記 🇲🇾',
+                            date: '2024-03-03',
+                            location: '🇲🇾 マレーシア・クアラルンプール',
+                            tags: ['マレーシア', '海外展開', '枡フォト', 'ビジネス'],
+                            url: 'malaysia-blog.html',
+                            excerpt: 'クアラルンプールでの写真撮影活動と海外展開の記録。多文化共生社会での9泊10日弾丸遠征の成果と発見。',
+                            featuredImage: 'https://via.placeholder.com/350x200/e74c3c/ffffff?text=MALAYSIA+ACTIVITY'
+                        };
+                        
+                        // 特別記事を最初に配置（最大3つまで表示）
+                        const allArticles = [specialArticle, cebuArticle, malaysiaArticle];
+                        
+                        const previewHTML = allArticles.map(article => `
+                            <a href="${article.url}" class="blog-preview-card">
+                                <div class="blog-preview-image">
+                                    <img src="${article.featuredImage || 'https://via.placeholder.com/350x200/0099cc/ffffff?text=Activity+Record'}" 
+                                         alt="${article.title}" 
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="blog-preview-placeholder" style="display: none;">📸</div>
+                                </div>
+                                <div class="blog-preview-content">
+                                    <div class="blog-preview-meta">
+                                        <span class="blog-preview-date">📅 ${article.date}</span>
+                                        <span class="blog-preview-location">📍 ${article.location}</span>
+                                    </div>
+                                    <h3 class="blog-preview-title">${article.title}</h3>
+                                    <p class="blog-preview-excerpt">${article.excerpt}</p>
+                                    <div class="blog-preview-tags">
+                                        ${article.tags.slice(0, 3).map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
+                                    </div>
+                                </div>
+                            </a>
+                        `).join('');
+                        
+                        blogPreview.innerHTML = previewHTML;
+                        console.log(`✅ ${latestArticles.length}件の記事プレビューを表示しました`);
+                    } else {
+                        // 記事がない場合でも活動記は表示
+                        const usSpainData = await notionAPI.getUSSpainArticles();
+                        const specialArticle = {
+                            id: 'us-spain-special',
+                            title: 'アメリカ・スペイン活動記 🇺🇸🇪🇸',
+                            date: '2024-01-01',
+                            location: '🌍 アメリカ・スペイン',
+                            tags: ['アメリカ', 'スペイン', '特別企画'],
+                            url: 'us-spain-blog.html',
+                            excerpt: 'ロサンゼルス、ラスベガス、ニューヨークからスペインまでの冒険の記録。25話にわたるアメリカ編と、準備中のスペイン編をお楽しみください。',
+                            featuredImage: 'https://via.placeholder.com/350x200/ff6b35/ffffff?text=USA+SPAIN+TOUR'
+                        };
+                        
+                        const cebuArticle = {
+                            id: 'cebu-special',
+                            title: 'セブ島活動記 🇵🇭',
+                            date: '2024-02-02',
+                            location: '🇵🇭 フィリピン・セブ島',
+                            tags: ['セブ島', '語学留学', '枡フォト', '海外活動'],
+                            url: 'cebu-blog.html',
+                            excerpt: 'FOMUSまっすーのセブ島での活動記録。語学学習、枡フォトプロジェクト、現地交流など90話にわたる3ヶ月間の成長記録。',
+                            featuredImage: 'https://via.placeholder.com/350x200/00bcd4/ffffff?text=CEBU+ACTIVITY'
+                        };
+                        
+                        // マレーシア活動記を追加
+                        const malaysiaArticle = {
+                            id: 'malaysia-special',
+                            title: 'マレーシア活動記 🇲🇾',
+                            date: '2024-03-03',
+                            location: '🇲🇾 マレーシア・クアラルンプール',
+                            tags: ['マレーシア', '海外展開', '枡フォト', 'ビジネス'],
+                            url: 'malaysia-blog.html',
+                            excerpt: 'クアラルンプールでの写真撮影活動と海外展開の記録。多文化共生社会での9泊10日弾丸遠征の成果と発見。',
+                            featuredImage: 'https://via.placeholder.com/350x200/e74c3c/ffffff?text=MALAYSIA+ACTIVITY'
+                        };
+                        
+                        // ヨーロッパ活動記2024を追加
+                        const europeArticle = {
+                            id: 'europe-special',
+                            title: 'ヨーロッパ活動記2024 🇮🇪🇲🇹🇬🇷',
+                            date: '2024-07-29',
+                            location: '🇮🇪 アイルランド・🇪🇪 エストニア・🇲🇹 マルタ・🇬🇷 ギリシャ・🇨🇾 キプロス',
+                            tags: ['ヨーロッパ', 'アイルランド', 'エストニア', '海外展開'],
+                            url: 'europe-blog.html',
+                            excerpt: 'アイルランド、エストニア、マルタ、ギリシャ、キプロスでの137日間の活動記録。ヨーロッパでの写真撮影、文化交流、デジタル社会の体験。',
+                            featuredImage: 'https://via.placeholder.com/350x200/228b22/ffffff?text=EUROPE+2024'
+                        };
+                        
+                        // ヨーロッパ活動記2025を追加
+                        const europe2025Article = {
+                            id: 'europe2025-special',
+                            title: 'ヨーロッパ活動記2025 🇮🇪🇵🇹🇩🇰🇸🇪🇵🇱🇳🇴🇦🇪🇫🇷',
+                            date: '2025-01-01',
+                            location: '🇮🇪 アイルランド・🇵🇹 ポルトガル・🇩🇰 デンマーク・🇸🇪 スウェーデン・🇵🇱 ポーランド・🇳🇴 ノルウェー・🇦🇪 ドバイ・🇫🇷 フランス・🇱🇻🇱🇹 バルト三国',
+                            tags: ['ヨーロッパ', 'アイルランド', 'ドバイ', 'フランス', 'バルト三国'],
+                            url: 'europe2025-blog.html',
+                            excerpt: 'アイルランド継続滞在から始まり、バルト三国、ドバイ、フランス、イギリスまで、253日間にわたる2025年の大規模な挑戦と成長の記録。14カ国・地域での活動。',
+                            featuredImage: 'https://via.placeholder.com/350x200/c0392b/ffffff?text=EUROPE+2025'
+                        };
+                        
+                        // 特別記事を表示（最新3つに制限）
+                        const allArticles = [europe2025Article, europeArticle, malaysiaArticle];
+                        
+                        const previewHTML = allArticles.map(article => `
+                            <a href="${article.url}" class="blog-preview-card">
+                                <div class="blog-preview-image">
+                                    <img src="${article.featuredImage || 'https://via.placeholder.com/350x200/0099cc/ffffff?text=Activity+Record'}" 
+                                         alt="${article.title}" 
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="blog-preview-placeholder" style="display: none;">📸</div>
+                                </div>
+                                <div class="blog-preview-content">
+                                    <div class="blog-preview-meta">
+                                        <span class="blog-preview-date">📅 ${article.date}</span>
+                                        <span class="blog-preview-location">📍 ${article.location}</span>
+                                    </div>
+                                    <h3 class="blog-preview-title">${article.title}</h3>
+                                    <p class="blog-preview-excerpt">${article.excerpt}</p>
+                                    <div class="blog-preview-tags">
+                                        ${article.tags.slice(0, 3).map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
+                                    </div>
+                                </div>
+                            </a>
+                        `).join('');
+                        
+                        blogPreview.innerHTML = previewHTML;
+                    }
+                } catch (error) {
+                    console.error('ブログプレビューの読み込みに失敗しました:', error);
+                    blogPreview.innerHTML = `
+                        <div style="text-align: center; padding: 3rem; grid-column: 1 / -1;">
+                            <h3>記事を読み込み中...</h3>
+                            <p>しばらくお待ちください</p>
+                        </div>
+                    `;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

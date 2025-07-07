@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">エピソード | アメリカ・スペイン活動記</title>
+    <meta name="description" content="まっすーのアメリカ・スペイン旅行記">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <style>
+        .episode-header {
+            background: linear-gradient(135deg, #0099cc 0%, #0077aa 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .episode-number {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .episode-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .episode-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .episode-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            line-height: 1.8;
+        }
+        
+        .episode-content h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-left: 4px solid #0099cc;
+            padding-left: 1rem;
+        }
+        
+        .episode-content h3 {
+            color: #555;
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.75rem 0;
+        }
+        
+        .episode-content p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .episode-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+        
+        /* Notion記事内の画像を大きく表示 */
+        .episode-content img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 2rem auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .nav-btn {
+            background: #0099cc;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #0077aa;
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.disabled {
+            background: #ccc;
+            pointer-events: none;
+        }
+        
+        .back-to-list {
+            background: #666;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .quote-block {
+            background: #f8f9fa;
+            border-left: 4px solid #0099cc;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight {
+            background: linear-gradient(180deg, transparent 50%, #ffe066 50%);
+            padding: 0 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">まっすー</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#fomus">FOMUS</a></li>
+                <li><a href="index.html#works">Works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#blog">活動記</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="episode-header">
+            <div class="container">
+                <div class="episode-number" id="episode-number">第1話</div>
+                <h1 class="episode-title" id="episode-title">エピソードタイトル</h1>
+                <div class="episode-meta" id="episode-meta">📅 2024年1月1日 | 📍 ロサンゼルス</div>
+            </div>
+        </section>
+
+        <section class="episode-content">
+            <div class="container">
+                <div id="episode-content">
+                    <!-- エピソードの内容がここに動的に読み込まれます -->
+                </div>
+                
+                <div class="navigation">
+                    <a href="#" class="nav-btn" id="prev-btn">← 前のエピソード</a>
+                    <a href="us-spain-blog.html" class="back-to-list">📋 一覧に戻る</a>
+                    <a href="#" class="nav-btn" id="next-btn">次のエピソード →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 まっすー (FOMUS) All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/notion-api.js"></script>
+    <script>
+        // エピソードタイトルのマッピング（Notionから取得できない場合のフォールバック）
+        const episodeTitles = {
+            1: "ロサンゼルスへ！",
+            2: "合流！ドジャース戦！",
+            3: "ロサンゼルスを走る！",
+            4: "人生最高記録を更新！",
+            5: "観光Day",
+            6: "一般の生活に触れる",
+            7: "枡フォトプロジェクト開始",
+            8: "パブツアーに参加！",
+            9: "仕事と観光",
+            10: "ビバリーヒルズへ！",
+            11: "やらかした！",
+            12: "ラスベガスへ！",
+            13: "カウチサーフィン最高だ",
+            14: "最高峰のエンタメ",
+            15: "ニューヨークへ",
+            16: "出会いがたくさん！",
+            17: "ランニング文化の強さ",
+            18: "ブロードウェイミュージカルへ！",
+            19: "コミュ力を最大限に",
+            20: "ムーラン・ルージュ観劇",
+            21: "デスクワークに集中する",
+            22: "フル稼働の1日",
+            23: "カウチサーフィンの醍醐味",
+            24: "環境を大切に",
+            25: "アメリカ編ラスト！"
+        };
+
+        // URLパラメータから episode と country を取得
+        function getParametersFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                episode: parseInt(urlParams.get('episode')) || 1,
+                country: urlParams.get('country') || 'usa'
+            };
+        }
+
+        // エピソードデータを読み込み（Notionから取得）
+        async function loadEpisode(episodeNumber, country = 'usa') {
+            try {
+                console.log(`🔄 ${country === 'spain' ? 'スペイン編' : 'アメリカ編'}エピソード ${episodeNumber} を読み込み中...`);
+                
+                // ローディング表示
+                document.getElementById('episode-content').innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <h2>📖 記事を読み込み中...</h2>
+                        <p>Notionから最新の内容を取得しています。</p>
+                    </div>
+                `;
+
+                // 国に応じて適切なAPIを呼び出し
+                let episode;
+                if (country === 'spain') {
+                    episode = await notionAPI.getSpainEpisodeContent(episodeNumber);
+                } else if (country === 'cebu') {
+                    episode = await notionAPI.getCebuEpisodeContent(episodeNumber);
+                } else if (country === 'malaysia') {
+                    episode = await notionAPI.getMalaysiaEpisodeContent(episodeNumber);
+                } else if (country === 'europe') {
+                    episode = await notionAPI.getEuropeEpisodeContent(episodeNumber);
+                } else if (country === 'europe2025') {
+                    episode = await notionAPI.getEurope2025EpisodeContent(episodeNumber);
+                } else if (country === 'europe2025-2') {
+                    episode = await notionAPI.getEurope2025Part2EpisodeContent(episodeNumber);
+                } else {
+                    episode = await notionAPI.getEpisodeContent(episodeNumber);
+                }
+                
+                if (episode) {
+                    // エピソード情報を設定
+                    const title = episode.title || episodeTitles[episodeNumber] || `第${episodeNumber}話`;
+                    const cleanTitle = title.replace(/^\d+:?\s*/, ''); // 番号プレフィックスを除去
+                    
+                    document.getElementById('page-title').textContent = `第${episodeNumber}話: ${cleanTitle} | アメリカ・スペイン活動記`;
+                    document.getElementById('episode-number').textContent = `第${episodeNumber}話`;
+                    document.getElementById('episode-title').textContent = cleanTitle;
+                    document.getElementById('episode-meta').textContent = `📅 ${episode.date} | 📍 ${episode.location}`;
+                    
+                    // Notionからの内容を表示（プロキシサーバーで変換済みのHTML）
+                    if (episode.content && episode.content.trim()) {
+                        document.getElementById('episode-content').innerHTML = episode.content;
+                    } else {
+                        // 内容がない場合のフォールバック
+                        document.getElementById('episode-content').innerHTML = `
+                            <div style="text-align: center; padding: 3rem;">
+                                <h2>記事内容が見つかりませんでした</h2>
+                                <p>このエピソードの内容はまだ準備中です。</p>
+                                <p><a href="https://www.notion.so/${episode.id}" target="_blank">Notionで直接読む →</a></p>
+                            </div>
+                        `;
+                    }
+                } else {
+                    throw new Error('エピソードデータの取得に失敗しました');
+                }
+
+                // ナビゲーションボタンを設定
+                setupNavigation(episodeNumber, country);
+                
+                console.log(`✅ エピソード ${episodeNumber} を読み込み完了`);
+                
+            } catch (error) {
+                console.error(`❌ エピソード ${episodeNumber} の読み込みに失敗:`, error);
+                
+                // エラー時の表示
+                const fallbackTitle = episodeTitles[episodeNumber] || `第${episodeNumber}話`;
+                
+                document.getElementById('episode-number').textContent = `第${episodeNumber}話`;
+                document.getElementById('episode-title').textContent = fallbackTitle;
+                document.getElementById('episode-meta').textContent = '📅 2024年 | 📍 アメリカ';
+                document.getElementById('episode-content').innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <h2>⚠️ 記事の読み込みに失敗しました</h2>
+                        <p>Notion APIへの接続に問題があります。</p>
+                        <p style="color: #666; font-size: 0.9rem;">エラー: ${error.message}</p>
+                        <div style="margin-top: 2rem;">
+                            <button onclick="location.reload()" style="background: #0099cc; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; cursor: pointer;">
+                                🔄 再読み込み
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                // ナビゲーションボタンを設定
+                setupNavigation(episodeNumber, country);
+            }
+        }
+
+        // ナビゲーションボタンの設定（国別対応）
+        function setupNavigation(currentEpisode, country = 'usa') {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            // 国別の最大エピソード数を設定
+            let maxEpisodes;
+            let backToListUrl;
+            let countryParam = '';
+            
+            switch(country) {
+                case 'spain':
+                    maxEpisodes = 13;
+                    backToListUrl = 'us-spain-blog.html';
+                    countryParam = '&country=spain';
+                    break;
+                case 'cebu':
+                    maxEpisodes = 90;
+                    backToListUrl = 'cebu-blog.html';
+                    countryParam = '&country=cebu';
+                    break;
+                case 'malaysia':
+                    maxEpisodes = 13;
+                    backToListUrl = 'malaysia-blog.html';
+                    countryParam = '&country=malaysia';
+                    break;
+                case 'europe':
+                    maxEpisodes = 137;
+                    backToListUrl = 'europe-blog.html';
+                    countryParam = '&country=europe';
+                    break;
+                case 'europe2025':
+                    maxEpisodes = 253;
+                    backToListUrl = 'europe2025-blog.html';
+                    countryParam = '&country=europe2025';
+                    break;
+                case 'europe2025-2':
+                    maxEpisodes = 253;
+                    backToListUrl = 'europe2025-2-blog.html';
+                    countryParam = '&country=europe2025-2';
+                    break;
+                default: // usa
+                    maxEpisodes = 25;
+                    backToListUrl = 'us-spain-blog.html';
+                    countryParam = '';
+                    break;
+            }
+            
+            // 一覧に戻るボタンを更新
+            const backToListBtn = document.querySelector('.back-to-list');
+            if (backToListBtn) {
+                backToListBtn.href = backToListUrl;
+                
+                // 国別のテキスト設定
+                switch(country) {
+                    case 'spain':
+                        backToListBtn.innerHTML = '📋 スペイン編一覧に戻る';
+                        break;
+                    case 'cebu':
+                        backToListBtn.innerHTML = '📋 セブ島活動記一覧に戻る';
+                        break;
+                    case 'malaysia':
+                        backToListBtn.innerHTML = '📋 マレーシア活動記一覧に戻る';
+                        break;
+                    case 'europe':
+                        backToListBtn.innerHTML = '📋 ヨーロッパ活動記2024一覧に戻る';
+                        break;
+                    case 'europe2025':
+                        backToListBtn.innerHTML = '📋 ヨーロッパ活動記2025一覧に戻る';
+                        break;
+                    case 'europe2025-2':
+                        backToListBtn.innerHTML = '📋 ヨーロッパ活動記2025②一覧に戻る';
+                        break;
+                    default: // usa
+                        backToListBtn.innerHTML = '📋 アメリカ編一覧に戻る';
+                        break;
+                }
+            }
+
+            // 前のエピソード
+            if (currentEpisode > 1) {
+                prevBtn.href = `episode-template.html?episode=${currentEpisode - 1}${countryParam}`;
+                prevBtn.classList.remove('disabled');
+                prevBtn.textContent = '← 前のエピソード';
+            } else {
+                prevBtn.classList.add('disabled');
+                prevBtn.textContent = '← 前のエピソード';
+                prevBtn.href = '#';
+            }
+
+            // 次のエピソード
+            if (currentEpisode < maxEpisodes) {
+                nextBtn.href = `episode-template.html?episode=${currentEpisode + 1}${countryParam}`;
+                nextBtn.classList.remove('disabled');
+                nextBtn.textContent = '次のエピソード →';
+            } else {
+                nextBtn.classList.add('disabled');
+                nextBtn.textContent = '次のエピソード →';
+                nextBtn.href = '#';
+            }
+            
+            console.log(`🔗 ナビゲーション設定: ${country}編 第${currentEpisode}話 (最大${maxEpisodes}話)`);
+        }
+
+        // ページ読み込み時の初期化
+        document.addEventListener('DOMContentLoaded', async function() {
+            const params = getParametersFromURL();
+            await loadEpisode(params.episode, params.country);
+        });
+    </script>
+</body>
+</html>

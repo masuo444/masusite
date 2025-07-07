@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヨーロッパ活動記2025 🇮🇪🇵🇹🇩🇰🇸🇪🇵🇱🇳🇴🇦🇪🇫🇷 | まっすー</title>
+    <meta name="description" content="まっすーのヨーロッパ活動記2025。アイルランド継続滞在から始まり、ポルトガル、デンマーク、スウェーデン、ポーランド、ノルウェー、ドバイ、フランス、バルト三国まで、253日間の活動記録。">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, #228b22 0%, #006400 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><polygon fill="rgba(255,255,255,0.1)" points="0,300 1000,300 1000,100 0,200"/></svg>');
+            z-index: 1;
+        }
+        
+        .blog-hero > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .blog-hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .blog-hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .blog-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .europe-intro {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 20px;
+            border: 2px solid #228b22;
+        }
+        
+        .europe-intro h2 {
+            color: #228b22;
+            margin-bottom: 1.5rem;
+            font-size: 2.4rem;
+        }
+        
+        .europe-intro p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .activity-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .highlight-card:hover {
+            border-color: #228b22;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(34, 139, 34, 0.15);
+        }
+        
+        .highlight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .country-section {
+            margin: 4rem 0;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .country-header {
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .country-header h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .country-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .ireland-header {
+            background: linear-gradient(135deg, #228b22 0%, #006400 100%);
+        }
+        
+        .portugal-header {
+            background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+        }
+        
+        .denmark-header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+        
+        .episode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 3rem 2rem;
+            background: #f8f9fa;
+        }
+        
+        .episode-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: stretch;
+        }
+        
+        .episode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .episode-number {
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #228b22;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .episode-content {
+            flex: 1;
+            padding: 1.5rem;
+        }
+        
+        .episode-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+        
+        .episode-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .episode-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .back-to-main {
+            display: inline-block;
+            margin: 3rem auto;
+            padding: 1rem 2rem;
+            background: #228b22;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .back-to-main:hover {
+            background: #006400;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 139, 34, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .blog-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .activity-highlights {
+                grid-template-columns: 1fr;
+            }
+            
+            .episode-grid {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">まっすー</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#fomus">FOMUS</a></li>
+                <li><a href="index.html#works">Works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#blog">活動記</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <div class="container">
+                <h1>ヨーロッパ活動記2025 🇮🇪🇵🇹🇩🇰🇸🇪🇵🇱🇳🇴🇦🇪🇫🇷</h1>
+                <p>アイルランド継続滞在から始まり、バルト三国、ドバイ、フランス、イギリスまで、253日間にわたる2025年の大規模な挑戦と成長の記録</p>
+                
+                <div class="blog-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">253</span>
+                        <span class="stat-label">エピソード</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">14</span>
+                        <span class="stat-label">国・地域</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2025</span>
+                        <span class="stat-label">年</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-articles">
+            <div class="container">
+                <div class="europe-intro">
+                    <h2>🌍 ヨーロッパでの壮大な挑戦</h2>
+                    <p>2025年のヨーロッパ活動記へようこそ。アイルランドでの継続滞在から始まり、ポルトガル、デンマーク、スウェーデン、ポーランド、ノルウェー、ドバイ、フランス、バルト三国、イギリスまで、253エピソードにわたる2025年の大規模な活動記録をお届けします。</p>
+                    
+                    <div class="activity-highlights">
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇮🇪</div>
+                            <div class="highlight-title">アイルランド継続編</div>
+                            <div class="highlight-desc">新年からの活動継続と深化</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇵🇹</div>
+                            <div class="highlight-title">ポルトガル再訪</div>
+                            <div class="highlight-desc">ワイン文化と現地コミュニティ</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇩🇰</div>
+                            <div class="highlight-title">デンマーク展開</div>
+                            <div class="highlight-desc">北欧デザインと文化体験</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇸🇪</div>
+                            <div class="highlight-title">スウェーデン</div>
+                            <div class="highlight-desc">ストックホルム展開</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇵🇱</div>
+                            <div class="highlight-title">ポーランド</div>
+                            <div class="highlight-desc">ワルシャワ・クラクフ</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇳🇴</div>
+                            <div class="highlight-title">ノルウェー</div>
+                            <div class="highlight-desc">オスロ・ベルゲン</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇦🇪</div>
+                            <div class="highlight-title">ドバイ</div>
+                            <div class="highlight-desc">中東進出</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇫🇷</div>
+                            <div class="highlight-title">フランス</div>
+                            <div class="highlight-desc">パリ展開</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇱🇻</div>
+                            <div class="highlight-title">バルト三国</div>
+                            <div class="highlight-desc">ラトビア・リトアニア</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- アイルランド継続編 -->
+                <div class="country-section">
+                    <div class="country-header ireland-header">
+                        <h3>🇮🇪 アイルランド継続編 (138-144話)</h3>
+                        <p>2025年新年から始まるアイルランドでの活動継続。国際交流イベントの運営と現地コミュニティとの深い関係構築。</p>
+                    </div>
+                    <div class="episode-grid" id="ireland-episodes">
+                        <!-- アイルランドエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- ポルトガル編 -->
+                <div class="country-section">
+                    <div class="country-header portugal-header">
+                        <h3>🇵🇹 ポルトガル編 (145-155話)</h3>
+                        <p>ポルト、マデイラ諸島、リスボンでの活動。ポートワイン、マデイラワインの探求と現地交流。</p>
+                    </div>
+                    <div class="episode-grid" id="portugal-episodes">
+                        <!-- ポルトガルエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- アイルランド最終編 -->
+                <div class="country-section">
+                    <div class="country-header ireland-header">
+                        <h3>🇮🇪 アイルランド最終編 (156-161話)</h3>
+                        <p>アイルランド滞在の最終段階。コーク、ミドルトンでの蒸留所巡りと別れの準備。</p>
+                    </div>
+                    <div class="episode-grid" id="ireland-final-episodes">
+                        <!-- アイルランド最終編エピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- デンマーク編 -->
+                <div class="country-section">
+                    <div class="country-header denmark-header">
+                        <h3>🇩🇰 デンマーク編 (162-164話)</h3>
+                        <p>北欧のデザイン大国デンマークでの活動。コペンハーゲンでのデザイン学習と文化体験。</p>
+                    </div>
+                    <div class="episode-grid" id="denmark-episodes">
+                        <!-- デンマークエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- デンマーク継続編 -->
+                <div class="country-section">
+                    <div class="country-header" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white;">
+                        <h3>🇩🇰 デンマーク継続編 (165-167話)</h3>
+                        <p>コペンハーゲンでのオペラ鑑賞、ロイヤルコペンハーゲン視察、デザイン文化の深い理解。</p>
+                    </div>
+                    <div class="episode-grid" id="denmark-continued-episodes">
+                        <!-- デンマーク継続エピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- スウェーデン編 -->
+                <div class="country-section">
+                    <div class="country-header" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white;">
+                        <h3>🇸🇪 スウェーデン編 (168-170話)</h3>
+                        <p>ストックホルムでのデザイン・アート学習、散策による街の理解、ニュヒェーピング訪問。</p>
+                    </div>
+                    <div class="episode-grid" id="sweden-episodes">
+                        <!-- スウェーデンエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- ポーランド編 -->
+                <div class="country-section">
+                    <div class="country-header" style="background: linear-gradient(135deg, #e67e22 0%, #d35400 100%); color: white;">
+                        <h3>🇵🇱 ポーランド編 (171-176話)</h3>
+                        <p>ワルシャワ王宮訪問、クラクフ遠征、グルメと博物館巡り、アート文化の体験。</p>
+                    </div>
+                    <div class="episode-grid" id="poland-episodes">
+                        <!-- ポーランドエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- ノルウェー編 -->
+                <div class="country-section">
+                    <div class="country-header" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); color: white;">
+                        <h3>🇳🇴 ノルウェー編 (177-184話)</h3>
+                        <p>オスロパス活用、ベルゲン鉄道の旅、フィヨルド観光、北欧遠征の完結。</p>
+                    </div>
+                    <div class="episode-grid" id="norway-episodes">
+                        <!-- ノルウェーエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- アイルランド再帰編 -->
+                <div class="country-section">
+                    <div class="country-header" style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%); color: white;">
+                        <h3>🇮🇪 アイルランド再帰編 (185-192話)</h3>
+                        <p>大使館イベント、ウォーキングツアー、観光案内経験、アイルランドでの活動深化。</p>
+                    </div>
+                    <div class="episode-grid" id="ireland-return-episodes">
+                        <!-- アイルランド再帰エピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- ドバイ編 -->
+                <div class="country-section">
+                    <div class="country-header" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); color: white;">
+                        <h3>🇦🇪 ドバイ編 (193-202話)</h3>
+                        <p>ドバイ旧市街探索、国際交流ミートアップ、5つ星ホテル体験、中東進出への挑戦。</p>
+                    </div>
+                    <div class="episode-grid" id="dubai-episodes">
+                        <!-- ドバイエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- フランス編 -->
+                <div class="country-section">
+                    <div class="country-header" style="background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%); color: white;">
+                        <h3>🇫🇷 フランス編 (203-212話)</h3>
+                        <p>パリでの活動開始、観光フェア参加、セントパトリックデー、営業活動の展開。</p>
+                    </div>
+                    <div class="episode-grid" id="france-episodes">
+                        <!-- フランスエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- 日本・上海編 -->
+                <div class="country-section">
+                    <div class="country-header" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white;">
+                        <h3>🇯🇵🇨🇳 日本・上海編 (213-217話)</h3>
+                        <p>海外経験を活かした日本での活動、上海経由の旅、アイルランド再訪、インタビュー対応。</p>
+                    </div>
+                    <div class="episode-grid" id="japan-shanghai-episodes">
+                        <!-- 日本・上海エピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- バルト三国編 -->
+                <div class="country-section">
+                    <div class="country-header" style="background: linear-gradient(135deg, #16a085 0%, #138d75 100%); color: white;">
+                        <h3>🇱🇻🇱🇹🇪🇪 バルト三国編 (218-235話)</h3>
+                        <p>ラトビア・リトアニアでの枡フォト活動、写真集制作、現地文化体験、AI学習。</p>
+                    </div>
+                    <div class="episode-grid" id="baltic-episodes">
+                        <!-- バルト三国エピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- パリ・ドバイ・ロンドン最終編 -->
+                <div class="country-section">
+                    <div class="country-header" style="background: linear-gradient(135deg, #8e44ad 0%, #7d3c98 100%); color: white;">
+                        <h3>🇫🇷🇦🇪🇬🇧 パリ・ドバイ・ロンドン最終編 (236-253話)</h3>
+                        <p>クラマスター参加、ドバイ政府公認スタートアップ認定、ロンドン視察、新たな挑戦への布石。</p>
+                    </div>
+                    <div class="episode-grid" id="final-episodes">
+                        <!-- 最終エピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 4rem 0;">
+                    <a href="index.html#blog" class="back-to-main">📚 活動記一覧に戻る</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 まっすー (FOMUS) All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/notion-api.js"></script>
+    <script>
+        // ページ読み込み時の初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            generateEurope2025Episodes();
+        });
+
+        // ヨーロッパ活動記2025（138-253話）のエピソード生成
+        function generateEurope2025Episodes() {
+            // アイルランド継続編 (138-144話)
+            const irelandContainer = document.getElementById('ireland-episodes');
+            const irelandEpisodes = [
+                { num: 138, title: '新年スタート！' },
+                { num: 139, title: '国際交流イベントを開く意味' },
+                { num: 140, title: '家の話をしよう' },
+                { num: 141, title: '5つ星ホテルで枡を使ってもらうためには？' },
+                { num: 142, title: '人としての感情をもつ' },
+                { num: 143, title: '同年代メンバーと飲む' },
+                { num: 144, title: 'アイルランド在住からノマドへ' }
+            ];
+            
+            // ポルトガル編 (145-155話)
+            const portugalContainer = document.getElementById('portugal-episodes');
+            const portugalEpisodes = [
+                { num: 145, title: 'ポルトへ（観光とツアー）' },
+                { num: 146, title: 'ポートワインを巡る1日' },
+                { num: 147, title: '日本と海外を同時並行で進める（ポルト最終日・マデイラ諸島へ）' },
+                { num: 148, title: 'マデイラ遠征' },
+                { num: 149, title: '仕事も観光も' },
+                { num: 150, title: 'マデイラ絶景ツアー' },
+                { num: 151, title: 'ワイナリーを巡る事で分かること' },
+                { num: 152, title: '自分のレベルを上げておく' },
+                { num: 153, title: 'リスボン到着＆繋がる' },
+                { num: 154, title: '雨の街を歩きながら考えたこと' },
+                { num: 155, title: 'ポルトガルでの遠征が終了' }
+            ];
+            
+            // アイルランド最終編 (156-161話)
+            const irelandFinalContainer = document.getElementById('ireland-final-episodes');
+            const irelandFinalEpisodes = [
+                { num: 156, title: '繋がりの構築（ダブリン）' },
+                { num: 157, title: '在アイルランド日本国大使館のイベントへ' },
+                { num: 158, title: 'スケジュールを確定させる' },
+                { num: 159, title: 'ウォーキングイベントはメリットだらけ' },
+                { num: 160, title: 'コーク＆ミドルトン蒸留所へ' },
+                { num: 161, title: 'コーク散策と次なる旅へ' }
+            ];
+            
+            // デンマーク編 (162-164話)
+            const denmarkContainer = document.getElementById('denmark-episodes');
+            const denmarkEpisodes = [
+                { num: 162, title: '北欧遠征スタート！' },
+                { num: 163, title: 'デザインの本場で学ぶ' },
+                { num: 164, title: 'コペンハーゲンはオシャレ' }
+            ];
+            
+            // デンマーク継続編 (165-167話)
+            const denmarkContinuedContainer = document.getElementById('denmark-continued-episodes');
+            const denmarkContinuedEpisodes = [
+                { num: 165, title: 'デンマークでオペラ鑑賞', type: 'part2' },
+                { num: 166, title: 'ロイヤルコペンハーゲンは面白い', type: 'part2' },
+                { num: 167, title: 'コペンハーゲン遠征のアレコレ', type: 'part2' }
+            ];
+            
+            // スウェーデン編 (168-170話)
+            const swedenContainer = document.getElementById('sweden-episodes');
+            const swedenEpisodes = [
+                { num: 168, title: 'ストックホルムのデザイン・アートを学ぶ', type: 'part2' },
+                { num: 169, title: '散策する事でわかる事', type: 'part2' },
+                { num: 170, title: 'ニュヒェーピング（Nyköping）へ', type: 'part2' }
+            ];
+            
+            // ポーランド編 (171-176話)
+            const polandContainer = document.getElementById('poland-episodes');
+            const polandEpisodes = [
+                { num: 171, title: 'ポーランドへ来ました', type: 'part2' },
+                { num: 172, title: 'ワルシャワ王宮へ', type: 'part2' },
+                { num: 173, title: 'クラクフ遠征', type: 'part2' },
+                { num: 174, title: 'グルメと博物館と美容', type: 'part2' },
+                { num: 175, title: 'アートに触れまくる', type: 'part2' },
+                { num: 176, title: '空港は一つじゃない', type: 'part2' }
+            ];
+            
+            // ノルウェー編 (177-184話)
+            const norwayContainer = document.getElementById('norway-episodes');
+            const norwayEpisodes = [
+                { num: 177, title: 'オスロパスをフル活用', type: 'part2' },
+                { num: 178, title: 'フルで周る', type: 'part2' },
+                { num: 179, title: 'ユーモアが大事', type: 'part2' },
+                { num: 180, title: 'オスロ最終日！', type: 'part2' },
+                { num: 181, title: 'ベルゲン鉄道の旅', type: 'part2' },
+                { num: 182, title: '散策とアイデア出し', type: 'part2' },
+                { num: 183, title: 'ベルゲン観光地巡り', type: 'part2' },
+                { num: 184, title: '【特別編】北欧遠征終了！', type: 'part2' }
+            ];
+            
+            // アイルランド再帰編 (185-192話)
+            const irelandReturnContainer = document.getElementById('ireland-return-episodes');
+            const irelandReturnEpisodes = [
+                { num: 185, title: 'アイルランドに戻りました', type: 'part2' },
+                { num: 186, title: 'アイルランド日本国大使館イベント', type: 'part2' },
+                { num: 187, title: 'ウォーキングイベント＆ウイスキーツアー', type: 'part2' },
+                { num: 188, title: 'アイルランド観光案内をしてみた結果わかったこと', type: 'part2' },
+                { num: 189, title: '仕事を進める', type: 'part2' },
+                { num: 190, title: 'イベントの撮影に呼ばれた', type: 'part2' },
+                { num: 191, title: '小さい世界で歴が長くなった', type: 'part2' },
+                { num: 192, title: '大移動の日', type: 'part2' }
+            ];
+            
+            // ドバイ編 (193-202話)
+            const dubaiContainer = document.getElementById('dubai-episodes');
+            const dubaiEpisodes = [
+                { num: 193, title: 'ドバイ編スタート！', type: 'part2' },
+                { num: 194, title: 'ドバイ旧市街＆国際交流ミートアップへ', type: 'part2' },
+                { num: 195, title: '活動を継続するために', type: 'part2' },
+                { num: 196, title: '初対面の人の家に泊まる', type: 'part2' },
+                { num: 197, title: 'ドバイ不動産＆パームジュメイラ視察', type: 'part2' },
+                { num: 198, title: 'シャージャ視察', type: 'part2' },
+                { num: 199, title: '5つ星ホテルへ', type: 'part2' },
+                { num: 200, title: 'ドバイ×観光×キャラクターIP', type: 'part2' },
+                { num: 201, title: '多数のプロジェクトを抱えると、、、', type: 'part2' },
+                { num: 202, title: 'フライト三昧✈️', type: 'part2' }
+            ];
+            
+            // フランス編 (203-212話)
+            const franceContainer = document.getElementById('france-episodes');
+            const franceEpisodes = [
+                { num: 203, title: 'パリでの活動開始', type: 'part2' },
+                { num: 204, title: 'その場にいることの大切さ', type: 'part2' },
+                { num: 205, title: 'パリの観光地を周る', type: 'part2' },
+                { num: 206, title: 'パリ観光フェアへ', type: 'part2' },
+                { num: 207, title: 'どこでもドブ板営業をひたすらやる', type: 'part2' },
+                { num: 208, title: '色々と考える', type: 'part2' },
+                { num: 209, title: 'どうやったら宣伝を気持ちよく差し込めるか？', type: 'part2' },
+                { num: 210, title: 'セントパトリックデー☘️', type: 'part2' },
+                { num: 211, title: '準備を進める', type: 'part2' },
+                { num: 212, title: '交流は大切', type: 'part2' }
+            ];
+            
+            // 日本・上海編 (213-217話)
+            const japanShanghaiContainer = document.getElementById('japan-shanghai-episodes');
+            const japanShanghaiEpisodes = [
+                { num: 213, title: '日本へ🇯🇵 海外で培った視点で「伝統と遊び」、未来を共創する1ヶ月', type: 'part2' },
+                { num: 214, title: '旅の有効活用（上海）', type: 'part2' },
+                { num: 215, title: '再びアイルランドへ', type: 'part2' },
+                { num: 216, title: 'インタビュー', type: 'part2' },
+                { num: 217, title: 'ウォーキングイベント', type: 'part2' }
+            ];
+            
+            // バルト三国編 (218-235話)
+            const balticContainer = document.getElementById('baltic-episodes');
+            const balticEpisodes = [
+                { num: 218, title: 'ラトビア編スタート', type: 'part2' },
+                { num: 219, title: '枡フォト写真集を作る', type: 'part2' },
+                { num: 220, title: '怒涛の写真編集＆AI勉強', type: 'part2' },
+                { num: 221, title: '撮影＆マーケットへ', type: 'part2' },
+                { num: 222, title: 'シグルダへ', type: 'part2' },
+                { num: 223, title: '枡フォトでも使うアクセサリー', type: 'part2' },
+                { num: 224, title: 'ラトビアで遂に日本人に出会う', type: 'part2' },
+                { num: 225, title: 'ルンダーレ宮殿へ', type: 'part2' },
+                { num: 226, title: 'アートに包まれた"ウジュピス共和国"と、FOMUSが繋ぐご縁', type: 'part2' },
+                { num: 227, title: 'リトアニア初の枡フォトと、次なるフェーズへ', type: 'part2' },
+                { num: 228, title: '現地で動くから見えてくる景色', type: 'part2' },
+                { num: 229, title: 'Street Music DayとEuropean Museum Night', type: 'part2' },
+                { num: 230, title: 'ピンクスープの勉強', type: 'part2' },
+                { num: 231, title: '遂にリトアニア料理！', type: 'part2' },
+                { num: 232, title: 'カウナスで感じた手応え', type: 'part2' },
+                { num: 233, title: '枡フォトと、悪魔博物館と、ドバイへの挑戦', type: 'part2' },
+                { num: 234, title: '英語プレゼンが当日!? カウナス最終日に訪れた"緊急すぎる挑戦"', type: 'part2' },
+                { num: 235, title: 'FOMUSを拡げるために', type: 'part2' }
+            ];
+            
+            // パリ・ドバイ・ロンドン最終編 (236-253話)
+            const finalContainer = document.getElementById('final-episodes');
+            const finalEpisodes = [
+                { num: 236, title: 'パリで酒イベント＆撮影＆人脈構築──挑戦の裏で思い出す「ホテルマン時代」', type: 'part2' },
+                { num: 237, title: '朝はドバイ最終選考、午後はパリ日本酒イベント本番──FOMUSの「次の扉」が開いた日', type: 'part2' },
+                { num: 238, title: 'クラマスター当日', type: 'part2' },
+                { num: 239, title: '出会いにフル投資', type: 'part2' },
+                { num: 240, title: 'クラマスター後の現実', type: 'part2' },
+                { num: 241, title: '山積みの仕事と向き合う日', type: 'part2' },
+                { num: 242, title: 'アイルランドでの挑戦：次なる一手を打つ', type: 'part2' },
+                { num: 243, title: 'ロンドン、新たな冒険の始まり', type: 'part2' },
+                { num: 244, title: 'ロンドン視察', type: 'part2' },
+                { num: 245, title: 'インスピレーション探し', type: 'part2' },
+                { num: 246, title: 'ドバイ政府公認スタートアップ、新たな扉を開く', type: 'part2' },
+                { num: 247, title: 'FOMUSのDNA', type: 'part2' },
+                { num: 248, title: 'ロンドン最終日、未来への布石を打つ', type: 'part2' },
+                { num: 249, title: 'アイルランドに戻る', type: 'part2' },
+                { num: 250, title: 'リフレッシュデー', type: 'part2' },
+                { num: 251, title: 'ダブリンでのウォーキングイベント、11ヶ月目の開催！', type: 'part2' },
+                { num: 252, title: 'ハプニング', type: 'part2' },
+                { num: 253, title: 'giveの精神', type: 'part2' }
+            ];
+            
+            // 各セクションのHTML生成
+            function generateEpisodeHTML(episodes, countryColor = '#228b22') {
+                return episodes.map(episode => {
+                    const country = episode.type === 'part2' ? 'europe2025-2' : 'europe2025';
+                    return `
+                        <div class="episode-card" onclick="openEurope2025EpisodePage(${episode.num}, '${country}')">
+                            <div class="episode-number" style="background: ${countryColor}">${episode.num}</div>
+                            <div class="episode-content">
+                                <h4 class="episode-title">${episode.title}</h4>
+                                <div class="episode-meta">
+                                    <span>📅 2025年</span>
+                                    <span>📖 読了時間: 5-7分</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            // 既存のセクション (138-164話)
+            irelandContainer.innerHTML = generateEpisodeHTML(irelandEpisodes, '#228b22');
+            portugalContainer.innerHTML = generateEpisodeHTML(portugalEpisodes, '#c0392b');
+            irelandFinalContainer.innerHTML = generateEpisodeHTML(irelandFinalEpisodes, '#16a085');
+            denmarkContainer.innerHTML = generateEpisodeHTML(denmarkEpisodes, '#e74c3c');
+            
+            // 新規セクション (165-253話)
+            denmarkContinuedContainer.innerHTML = generateEpisodeHTML(denmarkContinuedEpisodes, '#e74c3c');
+            swedenContainer.innerHTML = generateEpisodeHTML(swedenEpisodes, '#3498db');
+            polandContainer.innerHTML = generateEpisodeHTML(polandEpisodes, '#e67e22');
+            norwayContainer.innerHTML = generateEpisodeHTML(norwayEpisodes, '#9b59b6');
+            irelandReturnContainer.innerHTML = generateEpisodeHTML(irelandReturnEpisodes, '#27ae60');
+            dubaiContainer.innerHTML = generateEpisodeHTML(dubaiEpisodes, '#f39c12');
+            franceContainer.innerHTML = generateEpisodeHTML(franceEpisodes, '#34495e');
+            japanShanghaiContainer.innerHTML = generateEpisodeHTML(japanShanghaiEpisodes, '#e74c3c');
+            balticContainer.innerHTML = generateEpisodeHTML(balticEpisodes, '#16a085');
+            finalContainer.innerHTML = generateEpisodeHTML(finalEpisodes, '#8e44ad');
+        }
+
+        // ヨーロッパ2025エピソードページを開く
+        function openEurope2025EpisodePage(episodeNumber, country) {
+            window.location.href = `episode-template.html?episode=${episodeNumber}&country=${country}`;
+        }
+    </script>
+</body>
+</html>

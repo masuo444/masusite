@@ -1,0 +1,851 @@
+// Multi-language Translation System
+const translations = {
+    ja: {
+        // Navigation
+        'nav-home': 'Home',
+        'nav-fomus': 'FOMUS',
+        'nav-services': 'Services',
+        'nav-works': 'Works',
+        'nav-voice': 'Voice',
+        'nav-collaboration': 'コラボ実績',
+        'nav-blog': '活動記',
+        'nav-contact': 'Contact',
+        
+        // Hero section
+        'hero-name': 'まっすー',
+        'hero-subtitle': '写真家 / アーティスト / AIプロデューサー<br>FOMUS 代表｜旅するクリエイティブディレクター',
+        'hero-intro-1': '世界を旅して "文化 × テクノロジー" をデザインする。',
+        'hero-intro-2': '日本の伝統文化と現代テクノロジーを融合させ、アイルランド・ドバイ・日本を拠点に国際的な活動を展開しています。写真・AI・枡ブランディングを通じて、個人・法人問わず、あなたの価値を最大限に引き出します。',
+        'services-overview': 'サービス一覧',
+        'services-detail': 'サービス詳細',
+        'contact-us': 'お問い合わせ',
+        'blog-button': 'ブログ',
+        'works-button': 'Works',
+        
+        // FOMUS section
+        'fomus-intro': '日本の伝統文化と現代テクノロジーを融合させたブランド「FOMUS」の公式サイトです',
+        'fomus-brand-experience': '伝統×革新のブランド体験',
+        'fomus-description': 'FOMUSは、日本の美しい伝統工芸である「枡」を現代的にアップデートし、世界に向けて発信するプロジェクトです。アイルランド・ドバイ・日本を拠点に、グローバルな視点で日本文化の新しい価値を創造しています。',
+        'fomus-official-site': 'FOMUS公式サイト',
+        'fomus-site-description': '商品ラインナップ、ブランドストーリー、購入方法など詳細はこちら',
+        'visit-fomus-site': 'FOMUS公式サイトを見る',
+        
+        // Works section
+        'works-title': 'Works',
+        'works-description': '世界各地での創作活動を通じて生み出された作品の数々。\n各カテゴリーをクリックして、私のクリエイティブな旅路をご覧ください。',
+        'click-explore': 'クリックして探索',
+        'photography-tab': '写真撮影',
+        'music-tab': '音楽',
+        'special-tab': 'スペシャル',
+        'all-filter': 'すべて',
+        'japan-filter': '日本',
+        'ireland-filter': 'アイルランド',
+        'dubai-filter': 'ドバイ',
+        'asia-filter': 'アジア',
+        'collaboration-filter': 'コラボ',
+        'photography-gallery': '撮影ギャラリー',
+        'collaboration-works': 'コラボレーション作品',
+        'music-collaboration': '音楽コラボレーション',
+        'art-collaboration': 'アートコラボレーション',
+        'tech-collaboration': 'テクノロジーコラボレーション',
+        'ai-music-desc': 'AI技術と現地アーティストとの共同楽曲制作',
+        'world-fusion': 'ワールドフュージョン',
+        'world-fusion-desc': 'ドバイ・日本・アイルランドの音楽要素を融合',
+        'digital-art': 'デジタル×伝統アート',
+        'digital-art-desc': '枡の伝統工芸とデジタルアートの融合作品',
+        'cultural-exchange': '文化交流プロジェクト',
+        'cultural-exchange-desc': '各国アーティストとの文化交流展示',
+        'ai-photography': 'AI×写真プロジェクト',
+        'ai-photography-desc': 'AI画像解析を活用した写真作品シリーズ',
+        'web-platform': 'Web×文化プラットフォーム',
+        'web-platform-desc': '文化交流を促進するWebプラットフォーム開発',
+        'ai-composition': 'AI作曲プロジェクト',
+        'ai-composition-desc': 'AI技術を活用したオリジナル楽曲制作',
+        'collaboration-music': 'コラボレーション楽曲',
+        'collaboration-music-desc': '海外アーティストとの共同制作楽曲',
+        'environmental-music': '環境音楽',
+        'environmental-music-desc': '世界各地で録音した環境音をベースにした作品',
+        'graphic-design': 'グラフィックデザイン',
+        'web-design': 'Webデザイン',
+        'brand-logo-design': 'ブランドロゴデザイン',
+        'brand-logo-desc': '企業・個人ブランドのロゴ制作',
+        'poster-flyer': 'ポスター・フライヤー',
+        'poster-flyer-desc': 'イベント・プロモーション用デザイン',
+        'website-design': 'ウェブサイトデザイン',
+        'website-design-desc': 'レスポンシブ対応のサイト制作',
+        'ui-ux-design': 'UI/UXデザイン',
+        'ui-ux-design-desc': 'ユーザー体験を重視したデザイン',
+        
+        // Services section
+        'photography-desc': 'ポートレート・商品撮影・イベント撮影など、あなたの価値を最大限に引き出す撮影サービス',
+        'portrait-photography': 'ポートレート撮影',
+        'product-photography': '商品・ブランド撮影',
+        'event-photography': 'イベント・記念撮影',
+        'ai-consulting-desc': '初心者歓迎！店舗経営者・クリエイター向けのAI活用支援',
+        'ai-basic-course': 'AI活用基礎講座',
+        'ai-personal-support': '個人向けAI導入支援',
+        'ai-creative-method': 'クリエイティブAI活用法',
+        'kindle-publishing-support': 'Kindle出版サポート',
+        'kindle-support-desc': 'あなたの経験・知識を本にして世界に発信するサポート',
+        'creative-support-desc': '音楽・映像・イラスト制作をAIを活用してサポート',
+        'corporate-lecture-desc': 'AI活用・グローバル展開・クリエイティブ思考についての講演',
+        'ai-training-desc': '従業員向けAI活用研修・導入コンサルティング',
+        'masu-branding-desc': '日本の伝統的な枡を活用した企業ギフト・ブランディング',
+        'global-strategy-desc': '海外展開を見据えたSNS戦略・コンテンツ制作支援',
+        
+        // Voice section
+        'voice-title': 'Voice - お客様の声',
+        'testimonial-photography': '撮影依頼',
+        'testimonial-ai-course': 'AI講座',
+        'testimonial-corporate': '企業研修',
+        'testimonial-partner': '海外パートナー',
+        'testimonial-branding': '枡ブランディング',
+        'testimonial-lecture': '講演・セミナー',
+        
+        // Blog section
+        'blog-title': 'まっすー活動記',
+        'blog-subtitle': 'まっすーの海外での活動記録を配信中',
+        'world-activity-record': '世界を巡る活動記録',
+        'activity-description': 'アイルランド、ドバイ、台湾、韓国...世界各地での撮影活動、現地アーティストとのコラボレーション、文化交流の様子を詳しくお届けします。',
+        'local-photography-report': '現地撮影レポート',
+        'realtime-experience': 'リアルタイムでの撮影体験記',
+        'international-collab': '国際コラボ記録',
+        'local-artist-collab': '現地アーティストとの協業プロジェクト',
+        'cultural-exchange': '文化交流体験',
+        'cultural-insights': '各国の文化から学んだインサイト',
+        'subscription-service': '購読サービス',
+        'subscription-desc': '月額制で活動記録の詳細版をお届け',
+        'subscription-price': '月額 ¥980',
+        'trial-subscription': 'お試し購読（初月無料）',
+        'sample-article': 'サンプル記事を見る',
+        
+        // Shop section
+        'shop-title': 'Shop / Products',
+        'shop-intro': '日本の伝統工芸「枡」をモダンにアップデートしたFOMUSオリジナル商品をお届けします',
+        'shop-masu-collection': '🏮 FOMUS 枡コレクション',
+        'product-masu-set': 'FOMUS オリジナル枡セット',
+        'product-masu-desc': '日本の職人が手作りする伝統的な枡をモダンにパッケージ',
+        'product-masu-original': 'FOMUS オリジナル枡',
+        'product-masu-original-desc': '日本の職人が手作りする伝統的な枡をモダンにアップデート',
+        'product-masu-custom': 'オーダーメイド枡',
+        'product-masu-custom-desc': 'お客様のご要望に合わせて完全オーダーメイドで制作',
+        'order-inquiry': '注文・お問い合わせ',
+        'buy-base': 'BASEで購入',
+        'product-corporate-gift': '企業向けギフトセット',
+        'product-corporate-desc': 'オリジナルブランディング対応の企業向けギフトセット',
+        'custom-order': 'カスタム注文',
+        'external-shops': '外部ショップリンク',
+        'base-desc': '枡・ギフト商品',
+        'stores-desc': '予約・サービス',
+        'booth-desc': 'デジタル商品',
+        
+        // About section
+        'about-title': 'About',
+        'about-subtitle': 'まっすーの物語と、共に創る未来',
+        'my-journey': '私の旅路',
+        'journey-description': '日本の伝統文化「枡」の家系に生まれ、アイルランドで写真と出会い、ドバイでテクノロジーの可能性を知る。3つの文化が交差する地点で、私は「文化×テクノロジー」の架け橋となることを決意しました。',
+        'my-mission': 'ミッション',
+        'mission-description': '世界中の「見えない価値」を可視化し、文化の違いを強みに変える。AIとアートの力で、あなたの物語を世界に届けます。',
+        'why-me': 'なぜ私なのか',
+        'why-1': '🌏 15カ国以上での撮影・プロジェクト経験',
+        'why-2': '🤖 AI活用の最前線での実践知識',
+        'why-3': '🎨 伝統と革新を融合させるクリエイティブ力',
+        'why-4': '🤝 言語と文化の壁を越えるコミュニケーション力',
+        'lets-create': '一緒に創りましょう',
+        'create-together': 'あなたの「まだ見ぬ価値」を世界へ。\n私の経験とネットワークを活かして、共に新しい物語を紡ぎませんか。',
+        'start-journey': '旅を始める',
+        'read-stories': '活動記を読む',
+        
+        // Blog section
+        'blog-title': '活動記',
+        'blog-description': '世界各地での撮影活動、コラボレーション、日々の気づきを記録しています',
+        'blog-more': 'すべての記事を見る',
+
+        // Contact section
+        'contact-title': 'Contact',
+        'contact-intro': 'まずは 30 秒で送信。<br>撮影・AI導入・講演など "まっすー" へのご相談はこちら',
+        'contact-type': 'お問い合わせ区分 *',
+        'select-option': '選択してください',
+        'individual': '個人',
+        'corporate': '法人',
+        'media': 'メディア・取材',
+        'collaboration': '協業・パートナーシップ',
+        'contact-name': 'お名前 *',
+        'contact-company': '会社名・所属',
+        'contact-email': 'メールアドレス *',
+        'contact-phone': '電話番号',
+        'desired-service': 'ご希望のサービス',
+        'personal-services': '個人向け',
+        'photography-request': '撮影依頼',
+        'ai-consulting': 'AIコンサル・講座',
+        'kindle-support': 'Kindle出版サポート',
+        'creative-support': '創作支援',
+        'business-services': '法人向け',
+        'corporate-lecture': '法人向け講演・セミナー',
+        'ai-training': '社内AI研修',
+        'masu-branding': '枡ギフト製作＆ブランディング',
+        'global-strategy': 'SNS×グローバル戦略',
+        'other-services': 'その他',
+        'media-interview': 'メディア取材',
+        'partnership': '協業・パートナーシップ',
+        'other': 'その他',
+        'contact-message': '詳細・ご質問 *',
+        'message-placeholder': 'プロジェクトの詳細、ご質問、ご要望などをお聞かせください',
+        'privacy-agreement': 'プライバシーポリシーに同意します *',
+        'submit-button': '送信する',
+        'other-contact-methods': 'その他のお問い合わせ方法',
+        'online-consultation': 'オンライン相談予約（Calendly）',
+        'line-official': 'LINE公式アカウント'
+    },
+    
+    en: {
+        // Navigation
+        'nav-home': 'Home',
+        'nav-fomus': 'FOMUS',
+        'nav-services': 'Services',
+        'nav-works': 'Works',
+        'nav-voice': 'Voice',
+        'nav-collaboration': 'Collaborations',
+        'nav-blog': 'Activity Blog',
+        'nav-contact': 'Contact',
+        
+        // Hero section
+        'hero-name': 'MaSU',
+        'hero-subtitle': 'Photographer / Artist / AI Producer<br>FOMUS Representative | Traveling Creative Director',
+        'hero-intro-1': 'Travel the world to design "Culture × Technology".',
+        'hero-intro-2': 'Combining Japanese traditional culture with modern technology, we develop international activities based in Ireland, Dubai, and Japan. Through photography, AI, and masu branding, we maximize your value regardless of individual or corporate.',
+        'services-overview': 'Services Overview',
+        'services-detail': 'Service Details',
+        'contact-us': 'Contact Us',
+        'blog-button': 'Blog',
+        'works-button': 'Works',
+        
+        // FOMUS section
+        'fomus-intro': 'Official site of FOMUS brand that fuses Japanese traditional culture with modern technology',
+        'fomus-brand-experience': 'Traditional × Innovation Brand Experience',
+        'fomus-description': 'FOMUS is a project that modernly updates the beautiful Japanese traditional craft "masu" and presents it to the world. Based in Ireland, Dubai, and Japan, we create new value for Japanese culture from a global perspective.',
+        'fomus-official-site': 'FOMUS Official Site',
+        'fomus-site-description': 'Product lineup, brand story, purchasing methods and more details here',
+        'visit-fomus-site': 'Visit FOMUS Official Site',
+        
+        // Services section
+        'photography-desc': 'Photography services including portraits, product photography, and event photography that maximize your value',
+        'portrait-photography': 'Portrait Photography',
+        'product-photography': 'Product & Brand Photography',
+        'event-photography': 'Event & Memorial Photography',
+        
+        // Works section
+        'works-title': 'Works',
+        'works-description': 'A collection of works created through creative activities around the world.\nClick on each category to explore my creative journey.',
+        'click-explore': 'Click to Explore',
+        'photography-tab': 'Photography',
+        'collaboration-tab': 'Collaboration',
+        'all-filter': 'All',
+        'japan-filter': 'Japan',
+        'ireland-filter': 'Ireland',
+        'dubai-filter': 'Dubai',
+        'asia-filter': 'Asia',
+        'collaboration-filter': 'Collaboration',
+        'photography-gallery': 'Photography Gallery',
+        'collaboration-works': 'Collaboration Works',
+        'music-collaboration': 'Music Collaboration',
+        'art-collaboration': 'Art Collaboration',
+        'tech-collaboration': 'Technology Collaboration',
+        'ai-music-desc': 'Collaborative music production with AI technology and local artists',
+        'world-fusion': 'World Fusion',
+        'world-fusion-desc': 'Fusion of musical elements from Dubai, Japan, and Ireland',
+        'digital-art': 'Digital × Traditional Art',
+        'digital-art-desc': 'Fusion works of traditional masu crafts and digital art',
+        'cultural-exchange': 'Cultural Exchange Project',
+        'cultural-exchange-desc': 'Cultural exchange exhibitions with artists from various countries',
+        'ai-photography': 'AI × Photography Project',
+        'ai-photography-desc': 'Photography series utilizing AI image analysis',
+        'web-platform': 'Web × Cultural Platform',
+        'web-platform-desc': 'Web platform development to promote cultural exchange',
+        'ai-composition': 'AI Composition Project',
+        'ai-composition-desc': 'Original music production using AI technology',
+        'collaboration-music': 'Collaboration Music',
+        'collaboration-music-desc': 'Collaborative music production with international artists',
+        'environmental-music': 'Environmental Music',
+        'environmental-music-desc': 'Works based on environmental sounds recorded around the world',
+        'graphic-design': 'Graphic Design',
+        'web-design': 'Web Design',
+        'brand-logo-design': 'Brand Logo Design',
+        'brand-logo-desc': 'Logo creation for corporate and personal brands',
+        'poster-flyer': 'Poster & Flyer',
+        'poster-flyer-desc': 'Event and promotional design',
+        'website-design': 'Website Design',
+        'website-design-desc': 'Responsive website creation',
+        'ui-ux-design': 'UI/UX Design',
+        'ui-ux-design-desc': 'User experience-focused design',
+        'ai-consulting-desc': 'Beginner-friendly! AI utilization support for store owners and creators',
+        'ai-basic-course': 'AI Basics Course',
+        'ai-personal-support': 'Personal AI Implementation Support',
+        'ai-creative-method': 'Creative AI Methods',
+        'kindle-publishing-support': 'Kindle Publishing Support',
+        'kindle-support-desc': 'Support to turn your experience and knowledge into books for global distribution',
+        'creative-support-desc': 'AI-powered support for music, video, and illustration production',
+        'corporate-lecture-desc': 'Lectures on AI utilization, global expansion, and creative thinking',
+        'ai-training-desc': 'Employee AI training and implementation consulting',
+        'masu-branding-desc': 'Corporate gifts and branding using traditional Japanese masu',
+        'global-strategy-desc': 'SNS strategy and content creation support for global expansion',
+        
+        // Voice section
+        'voice-title': 'Voice - Client Testimonials',
+        'testimonial-photography': 'Photography Request',
+        'testimonial-ai-course': 'AI Course',
+        'testimonial-corporate': 'Corporate Training',
+        'testimonial-partner': 'International Partner',
+        'testimonial-branding': 'Masu Branding',
+        'testimonial-lecture': 'Lecture・Seminar',
+        
+        // Blog section
+        'blog-title': 'MaSU Activity Records',
+        'blog-subtitle': 'Broadcasting MaSU\'s overseas activity records',
+        'world-activity-record': 'World Travel Activity Records',
+        'activity-description': 'Ireland, Dubai, Taiwan, Korea... Detailed coverage of photography activities, collaborations with local artists, and cultural exchanges around the world.',
+        'local-photography-report': 'Local Photography Reports',
+        'realtime-experience': 'Real-time photography experience records',
+        'international-collab': 'International Collaboration Records',
+        'local-artist-collab': 'Collaboration projects with local artists',
+        'cultural-exchange': 'Cultural Exchange Experiences',
+        'cultural-insights': 'Insights learned from each country\'s culture',
+        'subscription-service': 'Subscription Service',
+        'subscription-desc': 'Monthly detailed activity records delivered',
+        'subscription-price': 'Monthly ¥980',
+        'trial-subscription': 'Trial Subscription (First Month Free)',
+        'sample-article': 'View Sample Articles',
+        
+        // Shop section
+        'shop-title': 'Shop / Products',
+        'shop-intro': 'We deliver FOMUS original products that modernly update the traditional Japanese craft \"masu\"',
+        'shop-masu-collection': '🏮 FOMUS Masu Collection',
+        'product-masu-set': 'FOMUS Original Masu Set',
+        'product-masu-desc': 'Traditional masu handcrafted by Japanese artisans in modern packaging',
+        'product-masu-original': 'FOMUS Original Masu',
+        'product-masu-original-desc': 'Traditional masu handcrafted by Japanese artisans, modernly updated',
+        'product-masu-custom': 'Custom-made Masu',
+        'product-masu-custom-desc': 'Completely custom-made production according to customer requirements',
+        'order-inquiry': 'Order・Inquiry',
+        'buy-base': 'Buy on BASE',
+        'product-corporate-gift': 'Corporate Gift Set',
+        'product-corporate-desc': 'Corporate gift set with original branding support',
+        'custom-order': 'Custom Order',
+        'external-shops': 'External Shop Links',
+        'base-desc': 'Masu・Gift Products',
+        'stores-desc': 'Reservations・Services',
+        'booth-desc': 'Digital Products',
+        
+        // About section
+        'about-title': 'About',
+        'about-subtitle': 'MaSU\'s story and the future we create together',
+        'my-journey': 'My Journey',
+        'journey-description': 'Born into a family of traditional Japanese "masu" culture, discovered photography in Ireland, and learned about technology\'s potential in Dubai. At the intersection of three cultures, I decided to become a bridge between "Culture × Technology".',
+        'my-mission': 'Mission',
+        'mission-description': 'Visualize the "invisible value" around the world and turn cultural differences into strengths. Deliver your story to the world through the power of AI and art.',
+        'why-me': 'Why Me',
+        'why-1': '🌏 Photography & project experience in over 15 countries',
+        'why-2': '🤖 Practical knowledge at the forefront of AI utilization',
+        'why-3': '🎨 Creative power that fuses tradition and innovation',
+        'why-4': '🤝 Communication skills that transcend language and cultural barriers',
+        'lets-create': 'Let\'s Create Together',
+        'create-together': 'Your "undiscovered value" to the world.\nLet\'s weave new stories together using my experience and network.',
+        'start-journey': 'Start the Journey',
+        'read-stories': 'Read Activity Records',
+
+        // Contact section
+        'contact-title': 'Contact',
+        'contact-intro': 'Send in just 30 seconds.<br>Consultation for photography, AI implementation, lectures, and more with "MaSU"',
+        'contact-type': 'Inquiry Type *',
+        'select-option': 'Please select',
+        'individual': 'Individual',
+        'corporate': 'Corporate',
+        'media': 'Media・Interview',
+        'collaboration': 'Collaboration・Partnership',
+        'contact-name': 'Name *',
+        'contact-company': 'Company・Organization',
+        'contact-email': 'Email Address *',
+        'contact-phone': 'Phone Number',
+        'desired-service': 'Desired Service',
+        'personal-services': 'Personal Services',
+        'photography-request': 'Photography Request',
+        'ai-consulting': 'AI Consulting・Course',
+        'kindle-support': 'Kindle Publishing Support',
+        'creative-support': 'Creative Support',
+        'business-services': 'Business Services',
+        'corporate-lecture': 'Corporate Lecture・Seminar',
+        'ai-training': 'Corporate AI Training',
+        'masu-branding': 'Masu Gift Production & Branding',
+        'global-strategy': 'SNS × Global Strategy',
+        'other-services': 'Other',
+        'media-interview': 'Media Interview',
+        'partnership': 'Collaboration・Partnership',
+        'other': 'Other',
+        'contact-message': 'Details・Questions *',
+        'message-placeholder': 'Please tell us about project details, questions, requests, etc.',
+        'privacy-agreement': 'I agree to the Privacy Policy *',
+        'submit-button': 'Submit',
+        'other-contact-methods': 'Other Contact Methods',
+        'online-consultation': 'Online Consultation Booking (Calendly)',
+        'line-official': 'LINE Official Account'
+    },
+    
+    es: {
+        // Navigation
+        'nav-home': 'Inicio',
+        'nav-fomus': 'FOMUS',
+        'nav-services': 'Servicios',
+        'nav-works': 'Trabajos',
+        'nav-voice': 'Voz',
+        'nav-blog': 'Blog',
+        'nav-shop': 'Tienda',
+        'nav-contact': 'Contacto',
+        
+        // Hero section
+        'hero-name': 'MaSU',
+        'hero-subtitle': 'Representante de FOMUS | Fotógrafo・Artista・Instructor de IA・Productor',
+        'hero-intro-1': 'Viajar por el mundo y co-crear valor.',
+        'hero-intro-2': 'Combinando la cultura tradicional japonesa con la tecnología moderna, desarrollamos actividades internacionales con base en Irlanda, Dubai y Japón. A través de la fotografía, IA y branding de masu, maximizamos tu valor sin importar si eres individual o corporativo.',
+        'services-overview': 'Vista General de Servicios',
+        'contact-us': 'Contáctanos',
+        'blog-button': 'Blog',
+        'works-button': 'Trabajos',
+        
+        // FOMUS section
+        'fomus-intro': 'Sitio oficial de la marca FOMUS que fusiona la cultura tradicional japonesa con la tecnología moderna',
+        'fomus-brand-experience': 'Experiencia de Marca Tradicional × Innovación',
+        'fomus-description': 'FOMUS es un proyecto que actualiza modernamente la hermosa artesanía tradicional japonesa \"masu\" y la presenta al mundo. Con base en Irlanda, Dubai y Japón, creamos nuevos valores para la cultura japonesa desde una perspectiva global.',
+        'fomus-official-site': 'Sitio Oficial FOMUS',
+        'fomus-site-description': 'Línea de productos, historia de marca, métodos de compra y más detalles aquí',
+        'visit-fomus-site': 'Visitar Sitio Oficial FOMUS',
+        
+        // Works section
+        'works-title': 'Trabajos',
+        'photography-tab': 'Fotografía',
+        'music-tab': 'Producción Musical',
+        'design-tab': 'Producción de Diseño',
+        'all-filter': 'Todo',
+        'japan-filter': 'Japón',
+        'ireland-filter': 'Irlanda',
+        'dubai-filter': 'Dubai',
+        'asia-filter': 'Asia',
+        'collaboration-filter': 'Colaboración',
+        'photography-gallery': 'Galería de Fotografía',
+        'collaboration-achievements': 'Logros de Colaboración',
+        'music-production': 'Producción Musical',
+        'design-production': 'Producción de Diseño',
+        
+        // Services section
+        'photography-desc': 'Servicios de fotografía que incluyen retratos, fotografía de productos y eventos que maximizan tu valor',
+        'portrait-photography': 'Fotografía de Retratos',
+        'product-photography': 'Fotografía de Productos y Marca',
+        'event-photography': 'Fotografía de Eventos y Conmemorativa',
+        'ai-consulting-desc': '¡Amigable para principiantes! Soporte de utilización de IA para propietarios de tiendas y creadores',
+        'ai-basic-course': 'Curso Básico de IA',
+        'ai-personal-support': 'Soporte Personal de Implementación de IA',
+        'ai-creative-method': 'Métodos Creativos de IA',
+        'kindle-publishing-support': 'Soporte de Publicación Kindle',
+        'kindle-support-desc': 'Soporte para convertir tu experiencia y conocimiento en libros para distribución global',
+        'creative-support-desc': 'Soporte potenciado por IA para producción de música, video e ilustración',
+        'corporate-lecture-desc': 'Conferencias sobre utilización de IA, expansión global y pensamiento creativo',
+        'ai-training-desc': 'Entrenamiento de IA para empleados y consultoría de implementación',
+        'masu-branding-desc': 'Regalos corporativos y branding usando masu tradicional japonés',
+        'global-strategy-desc': 'Estrategia de SNS y soporte de creación de contenido para expansión global',
+        
+        // Voice section
+        'voice-title': 'Voz - Testimonios de Clientes',
+        
+        // Blog section
+        'blog-title': 'Registros de Actividad de MaSU',
+        'blog-subtitle': 'Transmitiendo registros de actividades de MaSU en el extranjero',
+        'world-activity-record': 'Registros de Actividad de Viajes por el Mundo',
+        'activity-description': 'Irlanda, Dubai, Taiwán, Corea... Cobertura detallada de actividades fotográficas, colaboraciones con artistas locales e intercambios culturales alrededor del mundo.',
+        'subscription-service': 'Servicio de Suscripción',
+        'subscription-desc': 'Registros detallados de actividades entregados mensualmente',
+        'subscription-price': 'Mensual ¥980',
+        'trial-subscription': 'Suscripción de Prueba (Primer Mes Gratis)',
+        'sample-article': 'Ver Artículos de Muestra',
+        
+        // Shop section
+        'shop-title': 'Tienda / Productos',
+        'shop-intro': 'Entregamos productos originales FOMUS que actualizan modernamente la artesanía tradicional japonesa \"masu\"',
+        'shop-masu-collection': '🏮 Colección FOMUS Masu',
+        'product-masu-set': 'Set Original FOMUS Masu',
+        'product-masu-desc': 'Masu tradicional hecho a mano por artesanos japoneses en empaque moderno',
+        'product-masu-original': 'Masu Original FOMUS',
+        'product-masu-original-desc': 'Masu tradicional hecho a mano por artesanos japoneses, modernamente actualizado',
+        'product-masu-custom': 'Masu Personalizado',
+        'product-masu-custom-desc': 'Producción completamente personalizada según los requisitos del cliente',
+        'order-inquiry': 'Pedido・Consulta',
+        'buy-base': 'Comprar en BASE',
+        'product-corporate-gift': 'Set de Regalo Corporativo',
+        'product-corporate-desc': 'Set de regalo corporativo con soporte de branding original',
+        'custom-order': 'Pedido Personalizado',
+        'external-shops': 'Enlaces de Tiendas Externas',
+        'base-desc': 'Productos Masu・Regalos',
+        'stores-desc': 'Reservas・Servicios',
+        'booth-desc': 'Productos Digitales',
+        
+        // Contact section
+        'contact-title': 'Contacto',
+        'contact-intro': 'Por favor, no dudes en contactarnos para consultas, solicitudes, entrevistas y colaboraciones',
+        'contact-type': 'Tipo de Consulta *',
+        'select-option': 'Por favor selecciona',
+        'individual': 'Individual',
+        'corporate': 'Corporativo',
+        'media': 'Medios・Entrevista',
+        'collaboration': 'Colaboración・Asociación',
+        'contact-name': 'Nombre *',
+        'contact-company': 'Empresa・Organización',
+        'contact-email': 'Dirección de Email *',
+        'contact-phone': 'Número de Teléfono',
+        'desired-service': 'Servicio Deseado',
+        'personal-services': 'Servicios Personales',
+        'photography-request': 'Solicitud de Fotografía',
+        'ai-consulting': 'Consultoría de IA・Curso',
+        'kindle-support': 'Soporte de Publicación Kindle',
+        'creative-support': 'Soporte Creativo',
+        'business-services': 'Servicios Empresariales',
+        'corporate-lecture': 'Conferencia Corporativa・Seminario',
+        'ai-training': 'Entrenamiento Corporativo de IA',
+        'masu-branding': 'Producción de Regalos Masu y Branding',
+        'global-strategy': 'SNS × Estrategia Global',
+        'other-services': 'Otros',
+        'media-interview': 'Entrevista de Medios',
+        'partnership': 'Colaboración・Asociación',
+        'other': 'Otros',
+        'contact-message': 'Detalles・Preguntas *',
+        'message-placeholder': 'Por favor cuéntanos sobre los detalles del proyecto, preguntas, solicitudes, etc.',
+        'privacy-agreement': 'Acepto la Política de Privacidad *',
+        'submit-button': 'Enviar',
+        'other-contact-methods': 'Otros Métodos de Contacto',
+        'online-consultation': 'Reserva de Consulta Online (Calendly)',
+        'line-official': 'Cuenta Oficial LINE'
+    },
+    
+    ko: {
+        // Navigation
+        'nav-home': '홈',
+        'nav-fomus': 'FOMUS',
+        'nav-services': '서비스',
+        'nav-works': '작품',
+        'nav-voice': '목소리',
+        'nav-blog': '블로그',
+        'nav-shop': '쇼핑',
+        'nav-contact': '연락처',
+        
+        // Hero section
+        'hero-name': 'MaSU',
+        'hero-subtitle': 'FOMUS 대표 | 사진가・아티스트・AI 강사・프로듀서',
+        'hero-intro-1': '세계를 여행하며 가치를 공동 창조합니다.',
+        'hero-intro-2': '일본의 전통 문화와 현대 기술을 융합하여 아일랜드, 두바이, 일본을 거점으로 국제적인 활동을 전개하고 있습니다. 사진, AI, 마스 브랜딩을 통해 개인과 기업을 불문하고 여러분의 가치를 최대한 끌어냅니다.',
+        'services-overview': '서비스 개요',
+        'contact-us': '문의하기',
+        'blog-button': '블로그',
+        'works-button': '작품',
+        
+        // FOMUS section
+        'fomus-intro': '일본 전통 문화와 현대 기술을 융합한 브랜드 FOMUS의 공식 사이트',
+        'fomus-brand-experience': '전통 × 혁신의 브랜드 경험',
+        'fomus-description': 'FOMUS는 일본의 아름다운 전통 공예인 "마스"를 현대적으로 업데이트하여 세계에 발신하는 프로젝트입니다. 아일랜드, 두바이, 일본을 거점으로 글로벌한 관점에서 일본 문화의 새로운 가치를 창조하고 있습니다.',
+        'fomus-official-site': 'FOMUS 공식 사이트',
+        'fomus-site-description': '제품 라인업, 브랜드 스토리, 구매 방법 등 자세한 내용은 여기',
+        'visit-fomus-site': 'FOMUS 공식 사이트 보기',
+        
+        // Works section
+        'works-title': '작품',
+        'photography-tab': '촬영',
+        'music-tab': '음악 제작',
+        'design-tab': '디자인 제작',
+        'all-filter': '전체',
+        'japan-filter': '일본',
+        'ireland-filter': '아일랜드',
+        'dubai-filter': '두바이',
+        'asia-filter': '아시아',
+        'collaboration-filter': '콜라보',
+        'photography-gallery': '촬영 갤러리',
+        'collaboration-achievements': '콜라보레이션 실적',
+        'music-production': '음악 제작',
+        'design-production': '디자인 제작',
+        
+        // Services section
+        'photography-desc': '포트레이트, 제품 촬영, 이벤트 촬영 등 당신의 가치를 최대한 끌어내는 촬영 서비스',
+        'portrait-photography': '포트레이트 촬영',
+        'product-photography': '제품・브랜드 촬영',
+        'event-photography': '이벤트・기념 촬영',
+        'ai-consulting-desc': '초보자 환영! 점포 경영자・크리에이터를 위한 AI 활용 지원',
+        'ai-basic-course': 'AI 활용 기초 강좌',
+        'ai-personal-support': '개인용 AI 도입 지원',
+        'ai-creative-method': '크리에이티브 AI 활용법',
+        'kindle-publishing-support': 'Kindle 출간 지원',
+        'kindle-support-desc': '당신의 경험과 지식을 책으로 만들어 세계에 발신하는 지원',
+        'creative-support-desc': '음악, 영상, 일러스트 제작을 AI를 활용해 지원',
+        'corporate-lecture-desc': 'AI 활용, 글로벌 전개, 크리에이티브 사고에 대한 강연',
+        'ai-training-desc': '직원용 AI 활용 연수・도입 컨설팅',
+        'masu-branding-desc': '일본의 전통적인 마스를 활용한 기업 선물・브랜딩',
+        'global-strategy-desc': '해외 전개를 고려한 SNS 전략・콘텐츠 제작 지원',
+        
+        // Voice section
+        'voice-title': '목소리 - 고객의 소리',
+        
+        // Blog section
+        'blog-title': 'MaSU 활동기',
+        'blog-subtitle': 'MaSU의 해외 활동 기록을 배신 중',
+        'world-activity-record': '세계를 도는 활동 기록',
+        'activity-description': '아일랜드, 두바이, 대만, 한국... 세계 각지에서의 촬영 활동, 현지 아티스트와의 콜라보레이션, 문화 교류의 모습을 자세히 전달합니다.',
+        'subscription-service': '구독 서비스',
+        'subscription-desc': '월액제로 활동 기록의 상세판을 전달',
+        'subscription-price': '월액 ¥980',
+        'trial-subscription': '시험 구독 (첫 달 무료)',
+        'sample-article': '샘플 기사 보기',
+        
+        // Shop section
+        'shop-title': '쇼핑 / 제품',
+        'shop-intro': '일본의 전통 공예 "마스"를 현대적으로 업데이트한 FOMUS 오리지널 제품을 제공합니다',
+        'shop-masu-collection': '🏮 FOMUS 마스 컬렉션',
+        'product-masu-set': 'FOMUS 오리지널 마스 세트',
+        'product-masu-desc': '일본 장인이 수작업으로 만든 전통 마스를 현대적으로 포장',
+        'product-masu-original': 'FOMUS 오리지널 마스',
+        'product-masu-original-desc': '일본 장인이 수작업으로 만든 전통 마스를 현대적으로 업데이트',
+        'product-masu-custom': '주문 제작 마스',
+        'product-masu-custom-desc': '고객의 요구에 맞춰 완전 주문 제작으로 제작',
+        'order-inquiry': '주문・문의',
+        'buy-base': 'BASE에서 구매',
+        'product-corporate-gift': '기업용 선물 세트',
+        'product-corporate-desc': '오리지널 브랜딩 지원이 가능한 기업용 선물 세트',
+        'custom-order': '맞춤 주문',
+        'external-shops': '외부 쇼핑몰 링크',
+        'base-desc': '마스・선물 제품',
+        'stores-desc': '예약・서비스',
+        'booth-desc': '디지털 제품',
+        
+        // Contact section
+        'contact-title': '연락처',
+        'contact-intro': '상담, 의뢰, 인터뷰, 협업에 대한 연락은 부담없이 해주세요',
+        'contact-type': '문의 구분 *',
+        'select-option': '선택해주세요',
+        'individual': '개인',
+        'corporate': '법인',
+        'media': '미디어・인터뷰',
+        'collaboration': '협업・파트너십',
+        'contact-name': '성함 *',
+        'contact-company': '회사명・소속',
+        'contact-email': '이메일 주소 *',
+        'contact-phone': '전화번호',
+        'desired-service': '희망 서비스',
+        'personal-services': '개인 서비스',
+        'photography-request': '촬영 의뢰',
+        'ai-consulting': 'AI 컨설팅・강의',
+        'kindle-support': 'Kindle 출간 지원',
+        'creative-support': '창작 지원',
+        'business-services': '비즈니스 서비스',
+        'corporate-lecture': '기업 강연・세미나',
+        'ai-training': '기업 AI 연수',
+        'masu-branding': '마스 선물 제작 & 브랜딩',
+        'global-strategy': 'SNS × 글로벌 전략',
+        'other-services': '기타',
+        'media-interview': '미디어 인터뷰',
+        'partnership': '협업・파트너십',
+        'other': '기타',
+        'contact-message': '상세 내용・질문 *',
+        'message-placeholder': '프로젝트 상세 내용, 질문, 요청 사항 등을 알려주세요',
+        'privacy-agreement': '개인정보처리방침에 동의합니다 *',
+        'submit-button': '보내기',
+        'other-contact-methods': '기타 연락 방법',
+        'online-consultation': '온라인 상담 예약 (Calendly)',
+        'line-official': 'LINE 공식 계정'
+    },
+    
+    ar: {
+        // Navigation
+        'nav-home': 'الرئيسية',
+        'nav-fomus': 'FOMUS',
+        'nav-services': 'الخدمات',
+        'nav-works': 'الأعمال',
+        'nav-voice': 'الصوت',
+        'nav-blog': 'المدونة',
+        'nav-shop': 'المتجر',
+        'nav-contact': 'اتصل بنا',
+        
+        // Hero section
+        'hero-name': 'MaSU',
+        'hero-subtitle': 'ممثل FOMUS | مصور・فنان・مدرب ذكي اصطناعي・منتج',
+        'hero-intro-1': 'السفر حول العالم وخلق القيمة معاً.',
+        'hero-intro-2': 'من خلال دمج الثقافة اليابانية التقليدية مع التكنولوجيا الحديثة، نطور أنشطة دولية مقرها في أيرلندا ودبي واليابان. من خلال التصوير والذكي الاصطناعي وعلامة ماسو التجارية، نحقق أقصى قيمة لك سواء كنت فرداً أو شركة.',
+        'services-overview': 'نظرة عامة على الخدمات',
+        'contact-us': 'اتصل بنا',
+        'blog-button': 'المدونة',
+        'works-button': 'الأعمال',
+        
+        // FOMUS section
+        'fomus-intro': 'الموقع الرسمي لعلامة FOMUS التي تدمج الثقافة اليابانية التقليدية مع التكنولوجيا الحديثة',
+        'fomus-brand-experience': 'تجربة العلامة التجارية التقليدية × الابتكار',
+        'fomus-description': 'FOMUS هو مشروع يحدث الحرفة اليابانية التقليدية الجميلة "ماسو" بشكل عصري ويقدمها للعالم. مقرها في أيرلندا ودبي واليابان، نخلق قيماً جديدة للثقافة اليابانية من منظور عالمي.',
+        'fomus-official-site': 'الموقع الرسمي FOMUS',
+        'fomus-site-description': 'تشكيلة المنتجات وقصة العلامة التجارية وطرق الشراء والمزيد من التفاصيل هنا',
+        'visit-fomus-site': 'زيارة الموقع الرسمي FOMUS',
+        
+        // Works section
+        'works-title': 'الأعمال',
+        'photography-tab': 'التصوير',
+        'music-tab': 'إنتاج الموسيقى',
+        'design-tab': 'إنتاج التصميم',
+        'all-filter': 'الكل',
+        'japan-filter': 'اليابان',
+        'ireland-filter': 'أيرلندا',
+        'dubai-filter': 'دبي',
+        'asia-filter': 'آسيا',
+        'collaboration-filter': 'التعاون',
+        'photography-gallery': 'معرض التصوير',
+        'collaboration-achievements': 'إنجازات التعاون',
+        'music-production': 'إنتاج الموسيقى',
+        'design-production': 'إنتاج التصميم',
+        
+        // Services section
+        'photography-desc': 'خدمات التصوير بما في ذلك الصور الشخصية وتصوير المنتجات والأحداث التي تعظم قيمتك',
+        'portrait-photography': 'التصوير الشخصي',
+        'product-photography': 'تصوير المنتجات والعلامة التجارية',
+        'event-photography': 'تصوير الأحداث والتذكاري',
+        'ai-consulting-desc': 'ودود للمبتدئين! دعم استخدام الذكي الاصطناعي لأصحاب المتاجر والمبدعين',
+        'ai-basic-course': 'دورة أساسيات الذكي الاصطناعي',
+        'ai-personal-support': 'دعم تنفيذ الذكي الاصطناعي الشخصي',
+        'ai-creative-method': 'طرق الذكي الاصطناعي الإبداعية',
+        'kindle-publishing-support': 'دعم نشر Kindle',
+        'kindle-support-desc': 'دعم لتحويل خبرتك ومعرفتك إلى كتب للتوزيع العالمي',
+        'creative-support-desc': 'دعم مدعوم بالذكي الاصطناعي لإنتاج الموسيقى والفيديو والرسوم التوضيحية',
+        'corporate-lecture-desc': 'محاضرات حول استخدام الذكي الاصطناعي والتوسع العالمي والتفكير الإبداعي',
+        'ai-training-desc': 'تدريب الذكي الاصطناعي للموظفين واستشارات التنفيذ',
+        'masu-branding-desc': 'هدايا الشركات والعلامة التجارية باستخدام ماسو اليابانية التقليدية',
+        'global-strategy-desc': 'استراتيجية وسائل التواصل الاجتماعي ودعم إنشاء المحتوى للتوسع العالمي',
+        
+        // Voice section
+        'voice-title': 'الصوت - شهادات العملاء',
+        
+        // Blog section
+        'blog-title': 'سجلات نشاط MaSU',
+        'blog-subtitle': 'بث سجلات أنشطة MaSU في الخارج',
+        'world-activity-record': 'سجلات نشاط السفر حول العالم',
+        'activity-description': 'أيرلندا، دبي، تايوان، كوريا... تغطية مفصلة لأنشطة التصوير والتعاون مع الفنانين المحليين والتبادلات الثقافية حول العالم.',
+        'subscription-service': 'خدمة الاشتراك',
+        'subscription-desc': 'سجلات نشاط مفصلة يتم تسليمها شهرياً',
+        'subscription-price': 'شهرياً ¥980',
+        'trial-subscription': 'اشتراك تجريبي (الشهر الأول مجاناً)',
+        'sample-article': 'عرض المقالات النموذجية',
+        
+        // Shop section
+        'shop-title': 'المتجر / المنتجات',
+        'shop-intro': 'نقدم منتجات FOMUS الأصلية التي تحدث الحرفة اليابانية التقليدية "ماسو" بشكل عصري',
+        'shop-masu-collection': '🏮 مجموعة FOMUS ماسو',
+        'product-masu-set': 'طقم ماسو الأصلي من FOMUS',
+        'product-masu-desc': 'ماسو تقليدي مصنوع يدوياً من قبل حرفيين يابانيين في تغليف عصري',
+        'product-masu-original': 'ماسو FOMUS الأصلي',
+        'product-masu-original-desc': 'ماسو تقليدي مصنوع يدوياً من قبل حرفيين يابانيين، محدث بشكل عصري',
+        'product-masu-custom': 'ماسو مخصص الصنع',
+        'product-masu-custom-desc': 'إنتاج مخصص بالكامل وفقاً لمتطلبات العميل',
+        'order-inquiry': 'طلب・استفسار',
+        'buy-base': 'اشتري من BASE',
+        'product-corporate-gift': 'طقم هدايا الشركات',
+        'product-corporate-desc': 'طقم هدايا للشركات مع دعم العلامة التجارية الأصلية',
+        'custom-order': 'طلب مخصص',
+        'external-shops': 'روابط المتاجر الخارجية',
+        'base-desc': 'منتجات ماسو・الهدايا',
+        'stores-desc': 'الحجوزات・الخدمات',
+        'booth-desc': 'المنتجات الرقمية',
+        
+        // Contact section
+        'contact-title': 'اتصل بنا',
+        'contact-intro': 'يرجى عدم التردد في الاتصال بنا للاستشارات والطلبات والمقابلات والتعاون',
+        'contact-type': 'نوع الاستفسار *',
+        'select-option': 'يرجى الاختيار',
+        'individual': 'فردي',
+        'corporate': 'شركة',
+        'media': 'إعلام・مقابلة',
+        'collaboration': 'تعاون・شراكة',
+        'contact-name': 'الاسم *',
+        'contact-company': 'الشركة・المؤسسة',
+        'contact-email': 'عنوان البريد الإلكتروني *',
+        'contact-phone': 'رقم الهاتف',
+        'desired-service': 'الخدمة المطلوبة',
+        'personal-services': 'الخدمات الشخصية',
+        'photography-request': 'طلب تصوير',
+        'ai-consulting': 'استشارات الذكي الاصطناعي・دورة',
+        'kindle-support': 'دعم نشر Kindle',
+        'creative-support': 'الدعم الإبداعي',
+        'business-services': 'خدمات الأعمال',
+        'corporate-lecture': 'محاضرة الشركات・ندوة',
+        'ai-training': 'تدريب الذكي الاصطناعي للشركات',
+        'masu-branding': 'إنتاج هدايا ماسو والعلامة التجارية',
+        'global-strategy': 'وسائل التواصل الاجتماعي × الاستراتيجية العالمية',
+        'other-services': 'أخرى',
+        'media-interview': 'مقابلة إعلامية',
+        'partnership': 'تعاون・شراكة',
+        'other': 'أخرى',
+        'contact-message': 'التفاصيل・الأسئلة *',
+        'message-placeholder': 'يرجى إخبارنا عن تفاصيل المشروع والأسئلة والطلبات وما إلى ذلك',
+        'privacy-agreement': 'أوافق على سياسة الخصوصية *',
+        'submit-button': 'إرسال',
+        'other-contact-methods': 'طرق الاتصال الأخرى',
+        'online-consultation': 'حجز استشارة عبر الإنترنت (Calendly)',
+        'line-official': 'حساب LINE الرسمي'
+    }
+};
+
+// Translation functionality
+function translatePage(language) {
+    const elements = document.querySelectorAll('[data-translate]');
+    
+    elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[language] && translations[language][key]) {
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = translations[language][key];
+            } else {
+                element.textContent = translations[language][key];
+            }
+        }
+    });
+    
+    // Update document direction for Arabic
+    if (language === 'ar') {
+        document.dir = 'rtl';
+        document.body.style.fontFamily = "'Noto Sans Arabic', 'Noto Serif JP', serif";
+    } else {
+        document.dir = 'ltr';
+        document.body.style.fontFamily = "'Noto Serif JP', serif";
+    }
+    
+    // Save language preference
+    localStorage.setItem('selectedLanguage', language);
+}
+
+// Language selector functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const langButtons = document.querySelectorAll('.lang-btn');
+    
+    // Load saved language or default to Japanese
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'ja';
+    translatePage(savedLanguage);
+    
+    // Update active button
+    langButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang') === savedLanguage) {
+            btn.classList.add('active');
+        }
+    });
+    
+    langButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const selectedLang = this.getAttribute('data-lang');
+            
+            // Remove active class from all buttons
+            langButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Translate page
+            translatePage(selectedLang);
+        });
+    });
+});
