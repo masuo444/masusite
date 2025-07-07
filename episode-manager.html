@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エピソード管理 | まっすーのブログ</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .episode-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            height: 300px;
+            resize: vertical;
+            font-family: monospace;
+        }
+        
+        button {
+            background: #0099cc;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        button:hover {
+            background: #0077aa;
+        }
+        
+        .episode-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .episode-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+        
+        .episode-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .episode-number {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .episode-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .episode-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .episode-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            background: #6c757d;
+        }
+        
+        .btn-small.edit {
+            background: #28a745;
+        }
+        
+        .btn-small.view {
+            background: #17a2b8;
+        }
+        
+        .output {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #0099cc, #0077aa);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 エピソード管理システム</h1>
+            <p>ヨーロッパ活動記2025のエピソードを簡単に管理・追加できます</p>
+        </div>
+        
+        <!-- 統計 -->
+        <div class="section">
+            <h2>📊 統計</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-episodes">0</div>
+                    <div class="stat-label">総エピソード数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="europe2025-count">0</div>
+                    <div class="stat-label">ヨーロッパ2025編</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="europe2025-2-count">0</div>
+                    <div class="stat-label">ヨーロッパ2025②編</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- エピソード追加フォーム -->
+        <div class="section">
+            <h2>➕ 新しいエピソードを追加</h2>
+            <div class="episode-form">
+                <div class="form-group">
+                    <label for="series">シリーズ:</label>
+                    <select id="series">
+                        <option value="europe2025">ヨーロッパ活動記2025 (138-164話)</option>
+                        <option value="europe2025_2">ヨーロッパ活動記2025② (165-253話)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="episodeNumber">エピソード番号:</label>
+                    <input type="number" id="episodeNumber" min="138" max="253" placeholder="例: 169">
+                </div>
+                
+                <div class="form-group">
+                    <label for="title">タイトル:</label>
+                    <input type="text" id="title" placeholder="例: ストックホルムの朝">
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">日付:</label>
+                    <input type="text" id="date" placeholder="例: 2025年2月6日">
+                </div>
+                
+                <div class="form-group">
+                    <label for="location">場所:</label>
+                    <input type="text" id="location" placeholder="例: 🇸🇪 スウェーデン">
+                </div>
+                
+                <div class="form-group">
+                    <label for="content">内容 (HTML):</label>
+                    <textarea id="content" placeholder="<h2>見出し</h2>
+<p>内容をここに書きます...</p>
+
+<h3>小見出し</h3>
+<ul>
+  <li>ポイント1</li>
+  <li>ポイント2</li>
+</ul>
+
+<blockquote>
+  引用や感想...
+</blockquote>"></textarea>
+                </div>
+                
+                <button onclick="generateEpisodeCode()">📋 コードを生成</button>
+            </div>
+            
+            <div id="generated-code" class="output" style="display: none;"></div>
+        </div>
+        
+        <!-- 既存エピソード一覧 -->
+        <div class="section">
+            <h2>📚 既存エピソード一覧</h2>
+            <div id="episode-list" class="episode-list"></div>
+        </div>
+    </div>
+    
+    <script src="./assets/js/episodes-content.js"></script>
+    <script>
+        // 統計を更新
+        function updateStats() {
+            const europe2025Count = Object.keys(EPISODES_CONTENT.europe2025 || {}).length;
+            const europe2025_2Count = Object.keys(EPISODES_CONTENT.europe2025_2 || {}).length;
+            const totalCount = europe2025Count + europe2025_2Count;
+            
+            document.getElementById('total-episodes').textContent = totalCount;
+            document.getElementById('europe2025-count').textContent = europe2025Count;
+            document.getElementById('europe2025-2-count').textContent = europe2025_2Count;
+        }
+        
+        // エピソード一覧を表示
+        function displayEpisodes() {
+            const container = document.getElementById('episode-list');
+            container.innerHTML = '';
+            
+            ['europe2025', 'europe2025_2'].forEach(seriesKey => {
+                const episodes = EPISODES_CONTENT[seriesKey] || {};
+                const seriesName = seriesKey === 'europe2025' ? 'ヨーロッパ2025' : 'ヨーロッパ2025②';
+                
+                Object.entries(episodes).forEach(([episodeNum, episode]) => {
+                    const card = document.createElement('div');
+                    card.className = 'episode-card';
+                    card.innerHTML = `
+                        <div class="episode-number">${seriesName} 第${episodeNum}話</div>
+                        <div class="episode-title">${episode.title}</div>
+                        <div class="episode-meta">
+                            📅 ${episode.date} | 📍 ${episode.location}
+                        </div>
+                        <div class="episode-actions">
+                            <button class="btn-small view" onclick="viewEpisode('${seriesKey}', ${episodeNum})">
+                                👀 確認
+                            </button>
+                            <button class="btn-small edit" onclick="editEpisode('${seriesKey}', ${episodeNum})">
+                                ✏️ 編集
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            });
+        }
+        
+        // エピソードを確認
+        function viewEpisode(series, episodeNumber) {
+            const countryParam = series === 'europe2025' ? 'europe2025' : 'europe2025-2';
+            window.open(`episode-template.html?episode=${episodeNumber}&country=${countryParam}`, '_blank');
+        }
+        
+        // エピソードを編集
+        function editEpisode(series, episodeNumber) {
+            const episode = EPISODES_CONTENT[series][episodeNumber];
+            
+            document.getElementById('series').value = series;
+            document.getElementById('episodeNumber').value = episodeNumber;
+            document.getElementById('title').value = episode.title.replace(/^\d+:/, '');
+            document.getElementById('date').value = episode.date;
+            document.getElementById('location').value = episode.location;
+            document.getElementById('content').value = episode.content.trim();
+            
+            // フォームまでスクロール
+            document.querySelector('.episode-form').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // コードを生成
+        function generateEpisodeCode() {
+            const series = document.getElementById('series').value;
+            const episodeNumber = document.getElementById('episodeNumber').value;
+            const title = document.getElementById('title').value;
+            const date = document.getElementById('date').value;
+            const location = document.getElementById('location').value;
+            const content = document.getElementById('content').value;
+            
+            if (!episodeNumber || !title || !content) {
+                alert('エピソード番号、タイトル、内容は必須です。');
+                return;
+            }
+            
+            const code = `        ${episodeNumber}: {
+            title: "${episodeNumber}:${title}",
+            date: "${date}",
+            location: "${location}",
+            content: \`${content}\`
+        },`;
+            
+            const outputDiv = document.getElementById('generated-code');
+            outputDiv.textContent = code;
+            outputDiv.style.display = 'block';
+            
+            // クリップボードにコピー
+            navigator.clipboard.writeText(code).then(() => {
+                alert('✅ コードをクリップボードにコピーしました！\n\nassets/js/episodes-content.js の該当箇所に貼り付けてください。');
+            });
+        }
+        
+        // 初期化
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStats();
+            displayEpisodes();
+        });
+    </script>
+</body>
+</html>

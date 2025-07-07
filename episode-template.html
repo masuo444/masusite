@@ -183,6 +183,7 @@
 
     <script src="./assets/js/notion-api.js"></script>
     <script src="./assets/js/static-episodes.js"></script>
+    <script src="./assets/js/episodes-content.js"></script>
     <script>
         // エピソードタイトルのマッピング（Notionから取得できない場合のフォールバック）
         const episodeTitles = {
@@ -237,35 +238,25 @@
 
                 let episode;
                 
-                // GitHub Pages用：まず静的データを確認
+                // 新しいエピソードコンテンツシステムを使用
                 if (country === 'europe2025') {
-                    const staticEpisode = getStaticEpisodeContent('europe2025', episodeNumber);
-                    if (staticEpisode.content && !staticEpisode.content.includes('エピソード準備中')) {
-                        episode = {
-                            episode: episodeNumber,
-                            title: staticEpisode.title,
-                            date: staticEpisode.date,
-                            location: staticEpisode.location,
-                            content: staticEpisode.content
-                        };
-                    } else {
-                        // 静的データがない場合はNotionから取得を試行
-                        episode = await notionAPI.getEurope2025EpisodeContent(episodeNumber);
-                    }
+                    const episodeContent = getEpisodeContent('europe2025', episodeNumber);
+                    episode = {
+                        episode: episodeNumber,
+                        title: episodeContent.title,
+                        date: episodeContent.date,
+                        location: episodeContent.location,
+                        content: episodeContent.content
+                    };
                 } else if (country === 'europe2025-2') {
-                    const staticEpisode = getStaticEpisodeContent('europe2025_2', episodeNumber);
-                    if (staticEpisode.content && !staticEpisode.content.includes('エピソード準備中')) {
-                        episode = {
-                            episode: episodeNumber,
-                            title: staticEpisode.title,
-                            date: staticEpisode.date,
-                            location: staticEpisode.location,
-                            content: staticEpisode.content
-                        };
-                    } else {
-                        // 静的データがない場合はNotionから取得を試行
-                        episode = await notionAPI.getEurope2025Part2EpisodeContent(episodeNumber);
-                    }
+                    const episodeContent = getEpisodeContent('europe2025_2', episodeNumber);
+                    episode = {
+                        episode: episodeNumber,
+                        title: episodeContent.title,
+                        date: episodeContent.date,
+                        location: episodeContent.location,
+                        content: episodeContent.content
+                    };
                 } else {
                     // その他の国は従来通りNotionから取得
                     if (country === 'spain') {
