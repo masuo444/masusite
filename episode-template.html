@@ -238,25 +238,35 @@
 
                 let episode;
                 
-                // 新しいエピソードコンテンツシステムを使用
+                // 新しいエピソードコンテンツシステムを使用（静的コンテンツ優先）
                 if (country === 'europe2025') {
-                    const episodeContent = getEpisodeContent('europe2025', episodeNumber);
-                    episode = {
-                        episode: episodeNumber,
-                        title: episodeContent.title,
-                        date: episodeContent.date,
-                        location: episodeContent.location,
-                        content: episodeContent.content
-                    };
+                    // EPISODES_CONTENTから直接取得
+                    if (typeof EPISODES_CONTENT !== 'undefined' && EPISODES_CONTENT.europe2025 && EPISODES_CONTENT.europe2025[episodeNumber]) {
+                        const episodeContent = EPISODES_CONTENT.europe2025[episodeNumber];
+                        episode = {
+                            episode: episodeNumber,
+                            title: episodeContent.title,
+                            date: episodeContent.date,
+                            location: episodeContent.location,
+                            content: episodeContent.content
+                        };
+                    } else {
+                        throw new Error(`エピソード ${episodeNumber} が見つかりません`);
+                    }
                 } else if (country === 'europe2025-2') {
-                    const episodeContent = getEpisodeContent('europe2025_2', episodeNumber);
-                    episode = {
-                        episode: episodeNumber,
-                        title: episodeContent.title,
-                        date: episodeContent.date,
-                        location: episodeContent.location,
-                        content: episodeContent.content
-                    };
+                    // EPISODES_CONTENTから直接取得
+                    if (typeof EPISODES_CONTENT !== 'undefined' && EPISODES_CONTENT.europe2025_2 && EPISODES_CONTENT.europe2025_2[episodeNumber]) {
+                        const episodeContent = EPISODES_CONTENT.europe2025_2[episodeNumber];
+                        episode = {
+                            episode: episodeNumber,
+                            title: episodeContent.title,
+                            date: episodeContent.date,
+                            location: episodeContent.location,
+                            content: episodeContent.content
+                        };
+                    } else {
+                        throw new Error(`エピソード ${episodeNumber} が見つかりません`);
+                    }
                 } else {
                     // その他の国は従来通りNotionから取得
                     if (country === 'spain') {
@@ -313,18 +323,51 @@
                 document.getElementById('episode-number').textContent = `第${episodeNumber}話`;
                 document.getElementById('episode-title').textContent = fallbackTitle;
                 document.getElementById('episode-meta').textContent = '📅 2024年 | 📍 アメリカ';
-                document.getElementById('episode-content').innerHTML = `
-                    <div style="text-align: center; padding: 3rem;">
-                        <h2>⚠️ 記事の読み込みに失敗しました</h2>
-                        <p>Notion APIへの接続に問題があります。</p>
-                        <p style="color: #666; font-size: 0.9rem;">エラー: ${error.message}</p>
-                        <div style="margin-top: 2rem;">
-                            <button onclick="location.reload()" style="background: #0099cc; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; cursor: pointer;">
-                                🔄 再読み込み
-                            </button>
+                // 静的コンテンツが見つからない場合の詳細エラー表示
+                let errorContent = '';
+                if (country === 'europe2025' || country === 'europe2025-2') {
+                    errorContent = `
+                        <div style="background: #f8f9fa; border-left: 4px solid #dc3545; padding: 2rem; margin: 2rem 0; border-radius: 8px;">
+                            <h2 style="color: #721c24; margin-bottom: 1rem;">❌ エピソードが見つかりません</h2>
+                            <p style="color: #721c24; margin-bottom: 1rem;">エピソード ${episodeNumber} は${country === 'europe2025' ? 'ヨーロッパ活動記2025' : 'ヨーロッパ活動記2025②'}にまだ追加されていません。</p>
+                            
+                            <div style="background: #e9ecef; padding: 1rem; border-radius: 4px; margin: 1rem 0;">
+                                <h4>利用可能なエピソード:</h4>
+                                <p style="margin: 0.5rem 0;">
+                                    ${country === 'europe2025' ? 
+                                        'ヨーロッパ活動記2025: エピソード 138-145 (アイルランド〜フランス)' : 
+                                        'ヨーロッパ活動記2025②: エピソード 165-175 (デンマーク〜スウェーデン)'
+                                    }
+                                </p>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 1.5rem;">
+                                <a href="${country === 'europe2025' ? 'europe2025-blog.html' : 'europe2025-2-blog.html'}" 
+                                   style="background: #007bff; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 4px; display: inline-block; margin: 0.5rem;">
+                                    📋 エピソード一覧に戻る
+                                </a>
+                                <button onclick="location.reload()" style="background: #28a745; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; margin: 0.5rem;">
+                                    🔄 再読み込み
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                } else {
+                    errorContent = `
+                        <div style="text-align: center; padding: 3rem;">
+                            <h2>⚠️ 記事の読み込みに失敗しました</h2>
+                            <p>Notion APIへの接続に問題があります。</p>
+                            <p style="color: #666; font-size: 0.9rem;">エラー: ${error.message}</p>
+                            <div style="margin-top: 2rem;">
+                                <button onclick="location.reload()" style="background: #0099cc; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; cursor: pointer;">
+                                    🔄 再読み込み
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                document.getElementById('episode-content').innerHTML = errorContent;
                 
                 // ナビゲーションボタンを設定
                 setupNavigation(episodeNumber, country);
