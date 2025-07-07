@@ -184,6 +184,7 @@
     <script src="./assets/js/notion-api.js"></script>
     <script src="./assets/js/static-episodes.js"></script>
     <script src="./assets/js/episodes-content.js"></script>
+    <script src="./assets/js/sanity-api.js"></script>
     <script>
         // エピソードタイトルのマッピング（Notionから取得できない場合のフォールバック）
         const episodeTitles = {
@@ -238,47 +239,67 @@
 
                 let episode;
                 
-                // 新しいエピソードコンテンツシステムを使用（静的コンテンツ優先）
-                if (country === 'europe2025') {
-                    // EPISODES_CONTENTから直接取得
-                    if (typeof EPISODES_CONTENT !== 'undefined' && EPISODES_CONTENT.europe2025 && EPISODES_CONTENT.europe2025[episodeNumber]) {
-                        const episodeContent = EPISODES_CONTENT.europe2025[episodeNumber];
+                // Sanity APIを使用してエピソードを取得（優先）
+                if (typeof window.SanityAPI !== 'undefined') {
+                    console.log(`🔄 Sanity APIからエピソードを取得中: ${country}/${episodeNumber}`);
+                    
+                    const sanityEpisode = window.SanityAPI.getEpisodeByNumber(country, episodeNumber);
+                    
+                    if (sanityEpisode) {
                         episode = {
-                            episode: episodeNumber,
-                            title: episodeContent.title,
-                            date: episodeContent.date,
-                            location: episodeContent.location,
-                            content: episodeContent.content
+                            episode: sanityEpisode.episodeNumber,
+                            title: sanityEpisode.title,
+                            date: sanityEpisode.date,
+                            location: sanityEpisode.location,
+                            content: sanityEpisode.htmlContent || sanityEpisode.content,
+                            seriesName: sanityEpisode.seriesName,
+                            tags: sanityEpisode.tags
                         };
-                    } else {
-                        throw new Error(`エピソード ${episodeNumber} が見つかりません`);
+                        console.log(`✅ Sanityから取得成功: ${sanityEpisode.title}`);
                     }
-                } else if (country === 'europe2025-2') {
-                    // EPISODES_CONTENTから直接取得
-                    if (typeof EPISODES_CONTENT !== 'undefined' && EPISODES_CONTENT.europe2025_2 && EPISODES_CONTENT.europe2025_2[episodeNumber]) {
-                        const episodeContent = EPISODES_CONTENT.europe2025_2[episodeNumber];
-                        episode = {
-                            episode: episodeNumber,
-                            title: episodeContent.title,
-                            date: episodeContent.date,
-                            location: episodeContent.location,
-                            content: episodeContent.content
-                        };
+                }
+                
+                // Sanityで見つからない場合は従来のシステムを使用
+                if (!episode) {
+                    console.log(`⚠️ Sanityで見つからないため、従来システムを使用: ${country}/${episodeNumber}`);
+                    
+                    if (country === 'europe2025') {
+                        // EPISODES_CONTENTから直接取得
+                        if (typeof EPISODES_CONTENT !== 'undefined' && EPISODES_CONTENT.europe2025 && EPISODES_CONTENT.europe2025[episodeNumber]) {
+                            const episodeContent = EPISODES_CONTENT.europe2025[episodeNumber];
+                            episode = {
+                                episode: episodeNumber,
+                                title: episodeContent.title,
+                                date: episodeContent.date,
+                                location: episodeContent.location,
+                                content: episodeContent.content
+                            };
+                        }
+                    } else if (country === 'europe2025-2') {
+                        // EPISODES_CONTENTから直接取得
+                        if (typeof EPISODES_CONTENT !== 'undefined' && EPISODES_CONTENT.europe2025_2 && EPISODES_CONTENT.europe2025_2[episodeNumber]) {
+                            const episodeContent = EPISODES_CONTENT.europe2025_2[episodeNumber];
+                            episode = {
+                                episode: episodeNumber,
+                                title: episodeContent.title,
+                                date: episodeContent.date,
+                                location: episodeContent.location,
+                                content: episodeContent.content
+                            };
+                        }
                     } else {
-                        throw new Error(`エピソード ${episodeNumber} が見つかりません`);
-                    }
-                } else {
-                    // その他の国は従来通りNotionから取得
-                    if (country === 'spain') {
-                        episode = await notionAPI.getSpainEpisodeContent(episodeNumber);
-                    } else if (country === 'cebu') {
-                        episode = await notionAPI.getCebuEpisodeContent(episodeNumber);
-                    } else if (country === 'malaysia') {
-                        episode = await notionAPI.getMalaysiaEpisodeContent(episodeNumber);
-                    } else if (country === 'europe') {
-                        episode = await notionAPI.getEuropeEpisodeContent(episodeNumber);
-                    } else {
-                        episode = await notionAPI.getEpisodeContent(episodeNumber);
+                        // その他の国は従来通りNotionから取得
+                        if (country === 'spain') {
+                            episode = await notionAPI.getSpainEpisodeContent(episodeNumber);
+                        } else if (country === 'cebu') {
+                            episode = await notionAPI.getCebuEpisodeContent(episodeNumber);
+                        } else if (country === 'malaysia') {
+                            episode = await notionAPI.getMalaysiaEpisodeContent(episodeNumber);
+                        } else if (country === 'europe') {
+                            episode = await notionAPI.getEuropeEpisodeContent(episodeNumber);
+                        } else {
+                            episode = await notionAPI.getEpisodeContent(episodeNumber);
+                        }
                     }
                 }
                 

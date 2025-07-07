@@ -302,6 +302,7 @@
     </footer>
 
     <script src="./assets/js/notion-api.js"></script>
+    <script src="./assets/js/sanity-api.js"></script>
     <script>
         // マレーシアエピソードデータ（0-12話）
         const malaysiaEpisodes = [
@@ -325,29 +326,65 @@
             loadMalaysiaEpisodes();
         });
 
-        // マレーシアエピソードを読み込み
+        // マレーシアエピソードを読み込み（Sanity API優先）
         function loadMalaysiaEpisodes() {
             const malaysiaEpisodesContainer = document.getElementById('malaysia-episodes');
             const episodeCountElement = document.getElementById('episode-count');
             
-            // エピソード数を更新
-            episodeCountElement.textContent = malaysiaEpisodes.length;
+            let episodes = [];
             
-            const episodesHTML = malaysiaEpisodes.map((episode, index) => {
-                const episodeNumber = index; // 0から始まる
+            // Sanity APIが利用可能な場合はそれを使用
+            if (typeof window.SanityAPI !== 'undefined') {
+                console.log('🔄 Sanity APIからマレーシアエピソードを取得中...');
+                const sanityEpisodes = window.SanityAPI.getEpisodesBySeries('malaysia');
+                
+                if (sanityEpisodes && sanityEpisodes.length > 0) {
+                    episodes = sanityEpisodes.map(episode => ({
+                        id: episode.notionPageId || episode.id,
+                        title: episode.title,
+                        preview: extractPreview(episode.content || episode.htmlContent),
+                        featured: episode.featured || false,
+                        episodeNumber: episode.episodeNumber,
+                        date: episode.date,
+                        location: episode.location,
+                        tags: episode.tags || []
+                    }));
+                    console.log(`✅ Sanityから${episodes.length}件のマレーシアエピソードを取得`);
+                }
+            }
+            
+            // Sanityで取得できない場合は従来のデータを使用
+            if (episodes.length === 0) {
+                console.log('⚠️ Sanityで取得できないため、従来データを使用');
+                episodes = malaysiaEpisodes.map((episode, index) => ({
+                    ...episode,
+                    episodeNumber: index
+                }));
+            }
+            
+            // エピソード数を更新
+            episodeCountElement.textContent = episodes.length;
+            
+            const episodesHTML = episodes.map(episode => {
+                const episodeNumber = episode.episodeNumber;
                 const featuredClass = episode.featured ? ' featured' : '';
+                const displayNumber = episode.title.includes('序章') ? '序章' : 
+                                    episode.title.includes('番外編') ? episode.title.match(/番外編\d+/)?.[0] || '番外編' :
+                                    `${episodeNumber}日目`;
                 
                 return `
-                    <div class="episode-card${featuredClass}" onclick="openMalaysiaEpisodePage(${episodeNumber})">
+                    <div class="episode-card${featuredClass}" onclick="openMalaysiaEpisodePage('${episodeNumber}')">
                         <div class="episode-image">🇲🇾</div>
                         <div class="episode-content">
-                            <div class="episode-number">${episodeNumber}日目</div>
+                            <div class="episode-number">${displayNumber}</div>
                             <div class="episode-title">${episode.title}</div>
                             <div class="episode-preview">${episode.preview}</div>
                             <div class="episode-meta">
-                                <span>📅 2024年</span>
-                                <span>📍 クアラルンプール</span>
+                                <span>📅 ${episode.date || '2024年'}</span>
+                                <span>📍 ${episode.location || 'クアラルンプール'}</span>
                                 <span>📖 読了時間: 3-5分</span>
+                                ${episode.tags && episode.tags.length > 0 ? 
+                                    '<span>🏷️ ' + episode.tags.slice(0, 2).join(', ') + '</span>' : ''}
                             </div>
                         </div>
                     </div>
@@ -355,6 +392,20 @@
             }).join('');
             
             malaysiaEpisodesContainer.innerHTML = episodesHTML;
+        }
+        
+        // プレビューテキストを抽出（HTMLから）
+        function extractPreview(content, maxLength = 120) {
+            if (!content) return 'エピソードの詳細な内容をお楽しみください。';
+            
+            // HTMLタグを除去
+            const textContent = content.replace(/<[^>]*>/g, '').trim();
+            
+            if (textContent.length <= maxLength) {
+                return textContent;
+            }
+            
+            return textContent.substring(0, maxLength) + '...';
         }
 
         // マレーシアエピソードページを開く
