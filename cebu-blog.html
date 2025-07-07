@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セブ島活動記 🇵🇭 | まっすー</title>
+    <meta name="description" content="まっすーのセブ島活動記。フィリピン・セブ島での写真撮影活動、現地交流、海外展開の記録。">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .blog-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .cebu-intro {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 20px;
+        }
+        
+        .cebu-intro h2 {
+            color: #00bcd4;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+        
+        .cebu-intro p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .activity-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .highlight-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-desc {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .episode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .episode-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .episode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .episode-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .episode-content {
+            padding: 1.5rem;
+        }
+        
+        .episode-number {
+            display: inline-block;
+            background: #00bcd4;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .episode-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+        
+        .episode-preview {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .episode-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .coming-soon {
+            opacity: 0.6;
+        }
+        
+        .coming-soon .episode-number {
+            background: #ccc;
+        }
+        
+        .featured {
+            border: 2px solid #00bcd4;
+        }
+        
+        .featured .episode-number {
+            background: linear-gradient(135deg, #00bcd4, #0097a7);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .blog-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .episode-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">まっすー</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#fomus">FOMUS</a></li>
+                <li><a href="index.html#works">Works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#blog">活動記</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="ja">🇯🇵</button>
+                <button class="lang-btn" data-lang="en">🇺🇸</button>
+                <button class="lang-btn" data-lang="es">🇪🇸</button>
+                <button class="lang-btn" data-lang="ko">🇰🇷</button>
+                <button class="lang-btn" data-lang="ar">🇸🇦</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <div class="container">
+                <h1>セブ島活動記 🇵🇭</h1>
+                <p>フィリピン・セブ島での写真撮影活動、現地交流、海外展開の記録。美しい海と温かい人々との出会いの物語です。</p>
+                
+                <div class="blog-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="episode-count">準備中</span>
+                        <span class="stat-label">エピソード</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2024年</span>
+                        <span class="stat-label">撮影期間</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">🇵🇭</span>
+                        <span class="stat-label">フィリピン</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-articles">
+            <div class="container">
+                <div class="cebu-intro">
+                    <h2>🏝️ セブ島での冒険</h2>
+                    <p>フィリピンの美しい島、セブ島での写真撮影プロジェクトとその過程での様々な体験をお届けします。現地の文化に触れ、地元の人々との交流を通じて得た貴重な経験と感動の記録です。</p>
+                    
+                    <div class="activity-highlights">
+                        <div class="highlight-card">
+                            <div class="highlight-icon">📸</div>
+                            <div class="highlight-title">写真撮影</div>
+                            <div class="highlight-desc">セブ島の美しい風景と現地の生活を記録</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🤝</div>
+                            <div class="highlight-title">現地交流</div>
+                            <div class="highlight-desc">フィリピンの人々との心温まる交流</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🌊</div>
+                            <div class="highlight-title">海外活動</div>
+                            <div class="highlight-desc">国際的な写真活動の展開</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🎯</div>
+                            <div class="highlight-title">プロジェクト</div>
+                            <div class="highlight-desc">FOMUS海外展開プロジェクト</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="episode-grid" id="cebu-episodes">
+                    <!-- セブ島エピソードを動的に読み込み -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 まっすー (FOMUS) All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/notion-api.js"></script>
+    <script>
+        // セブ島エピソードデータ（実際のNotionタイトル - 90話）
+        const cebuEpisodes = [
+            { id: '8cb1d49aafc64c949e8cdad37eaa8401', title: '自己紹介と目的', preview: 'FOMUSまっすーのセブ島活動記の始まり。目的と抱負を語る。', featured: true },
+            { id: '568b81a08db84861987d56ad9e7b6184', title: '前日準備', preview: 'セブ島出発前日の準備。期待と不安を胸に最終チェック。' },
+            { id: '01ffff8625e0463b88754fafed6e2fcd', title: 'セブ島に到着！', preview: 'ついにフィリピン・セブ島に到着。新たな冒険の始まり。' },
+            { id: 'c98c695a908a462fb47ffa8139de2540', title: '英語力テストを受けた', preview: '語学学校での英語力テスト。現在のレベルを把握する重要な第一歩。' },
+            { id: 'cfa32dc69cd545e397d64290f931e8c3', title: '授業スタート', preview: 'セブ島での語学学習がついにスタート。新しい環境での学び。' },
+            { id: '11330b79a76f451d93730dbf0f5ad0da', title: '4つのスキル', preview: '英語の4つのスキル（読む・書く・聞く・話す）について学ぶ。' },
+            { id: '769e747b3f8f48dcb990a6f96beb869c', title: '経験を活かす(マーケティング）', preview: 'これまでのマーケティング経験をセブ島でどう活かすか考察。' },
+            { id: '8dfd6d9d95f74948a7c508dc7540cbb0', title: '枡フォトという最強のコミュニケーションツール', preview: '枡フォトがもたらすコミュニケーションの力について。' },
+            { id: '8a974785ee6f44e3b618d8b31ac13814', title: '文化を知る', preview: 'フィリピンの文化に触れる。異文化理解の重要性を実感。' },
+            { id: 'a538c0f6beca419aaf411fd223f519c1', title: '枡フォトをする理由', preview: '枡フォトプロジェクトを行う意味と目的について深く考える。' },
+            { id: 'f3a391da263b496e8b38b61a1f36e106', title: 'フィリピンで使えるワード', preview: '現地で実際に使える便利なフィリピン語を学習。' },
+            { id: '23722b4d4f5941ec9649c8d4071ece59', title: 'アウトプットのためのインプット', preview: '効果的な学習のためのインプットとアウトプットのバランス。' },
+            { id: '50498e1dc4084f9ca212f0078c082fe2', title: 'バレンタインデー', preview: 'セブ島でのバレンタインデー。現地の文化を体験。' },
+            { id: '0246cb6fccef46c79b02f6538b84f6b9', title: '実験の繰り返し', preview: '様々なアプローチを試行錯誤。実験を通じて学ぶ大切さ。' },
+            { id: 'fbad961a386a4bfc8fe652082659e56c', title: '卒業式というシステム', preview: '語学学校の卒業式システムについて。区切りの重要性。' },
+            { id: '1f123070408a47a1acd487e6791f6235', title: '上手く行かなかったこと', preview: '失敗から学ぶ。上手くいかなかった経験と改善策。' },
+            { id: '8b117e3ef12a4b0bb6d1b3ab302c7b7b', title: 'セブ島での普通の休日', preview: 'セブ島での何気ない日常。リラックスした時間の過ごし方。' },
+            { id: '692d0caa590c492eb1cfcf5120ec4e59', title: 'バルートを喰らう', preview: 'フィリピンの珍味バルートに挑戦。勇気ある食文化体験。' },
+            { id: '925e5a3159c44c70b0e6a679461d3383', title: 'リアルビジネス英語', preview: '実践的なビジネス英語の習得。現場で使える表現を学ぶ。' },
+            { id: '8268d0dd77ed43819c0d67ee44684daa', title: '朝活を始めた', preview: '早朝活動の開始。効率的な時間活用のための新しい習慣。' },
+            { id: '59501227b11d4a408775fc8222a38282', title: 'アプローチを考える', preview: '目標達成のための戦略的アプローチについて考察。' },
+            { id: 'ddf2686c2afa43f5b5eff5b04bade326', title: 'ZUNBA体験！', preview: 'ズンバダンスに挑戦。フィリピンのエネルギッシュな文化を体験。' },
+            { id: '91785cfe6b974caca3c345d84466640b', title: '改善策を練る', preview: '課題に対する具体的な改善策を検討。継続的な成長への取り組み。' },
+            { id: '9e6116d87f8146469a75538f63b140fd', title: '国際交流イベントに参加！', preview: '多国籍な参加者との交流イベント。国際感覚を養う貴重な機会。' },
+            { id: 'b733a22cf02f4426b56df0857afcc1b5', title: 'ルームメイトが変わった', preview: '新しいルームメイトとの生活。環境の変化への適応。' },
+            { id: '29bd227fe27d4926b6e33e4da5276698', title: 'SNS時代の表現', preview: 'ソーシャルメディア時代の効果的な表現方法について。' },
+            { id: 'dab99c9493234615b3b26facefe27f75', title: '攻めにいく！', preview: '積極的な姿勢の重要性。チャレンジ精神で新しいことに挑戦。' },
+            { id: 'ce80a49ebccd407fbf3d27d871245184', title: 'テストを受けました', preview: '定期的なテストで成長を確認。客観的な評価の大切さ。' },
+            { id: '9fe26cac741549cc92e0184c8e17cbee', title: '久しぶりに他人を羨んだ', preview: '他者との比較から生まれる感情。モチベーションへの転換。' },
+            { id: '9effa9bb04c543ebbc429f5bb8b58957', title: 'リフレッシュDAY', preview: 'リフレッシュの重要性。メンタルヘルスを大切にする一日。' },
+            { id: 'e2f756da067e40358a16852f851fc234', title: '走り切った1ヶ月', preview: 'セブ島生活1ヶ月目の振り返り。達成感と次への意欲。', featured: true },
+            { id: '961459bf87cd4aee98f56d75282f448d', title: 'セブ生活2ヶ月目がスタート', preview: '2ヶ月目の新たなスタート。経験を活かした次のステップ。' },
+            { id: '919c55b99311439593069f104e380dcd', title: 'セブ生活をより面白く', preview: 'セブ島での生活をより充実させるための工夫と発見。' },
+            { id: '44d99f1088db4e7c8ae1e01f5ce67be1', title: 'やるしかない！', preview: '困難に立ち向かう決意。前向きな姿勢で課題に取り組む。' },
+            { id: '3ad3366678f049c29d5129bfcb210c09', title: '環境を変えることの大切さ', preview: '環境変化がもたらす成長効果。新しい環境での学び。' },
+            { id: '491212f41de440c4b738f6762d02142c', title: '語学留学の醍醐味を感じる1日', preview: '語学留学ならではの体験。多様な文化との出会い。' },
+            { id: '943b7aa076594cceb07ba9ad788791c5', title: '友達と島巡り', preview: '友人たちとセブ島の美しい島々を探索。友情と冒険の記録。' },
+            { id: '6de21f408e9f4c6fb642fa69db45d585', title: '徹底的な環境作り', preview: '学習効果を最大化するための環境整備。集中できる空間作り。' },
+            { id: '89050c89dd9245c897a6d494315873b5', title: 'やったもん勝ち', preview: '行動することの重要性。実行力がもたらす成果。' },
+            { id: '971077fe52f64fdf9e5b978d5ee2dcc1', title: '近い目標を置いておく', preview: '短期目標設定の効果。達成可能な目標による動機維持。' },
+            { id: 'ecc9f53a7f2c44f49d0ae5f3924f589f', title: 'スペシャルクラスが良い！', preview: '特別授業での新しい学び。通常とは違うアプローチの価値。' },
+            { id: '2ee1046467b74d0d9f1a498213cd4450', title: '準備を進める', preview: '次のステップに向けた準備。計画的な行動の重要性。' },
+            { id: 'd7ae9984e1f8474eb4cb7c60e5a653b0', title: '飲み会が人を繋ぐ', preview: '交流の場としての飲み会。人とのつながりを深める機会。' },
+            { id: 'c57d0e6a89d64472b0b2c95fc6adecde', title: 'ピクニックっていいね', preview: '自然の中でのリラックスタイム。心身のリフレッシュ効果。' },
+            { id: '9297e2144ca34777b10f98d697a23c67', title: '面白い未来を迎えに行く', preview: '未来への積極的なアプローチ。可能性を広げる行動力。' },
+            { id: '5486f7e36cef491fb2aff01bdab593f5', title: '枡フォトは世界を繋ぐ', preview: '枡フォトプロジェクトの国際的な可能性。世界との架け橋。' },
+            { id: 'bf611b8f7f604615b437adef0d49b520', title: '必要な能力を高めるために', preview: 'スキルアップの必要性。目標達成に必要な能力の向上。' },
+            { id: '307f11245a5a4174922184e20b6143ec', title: 'セブ島でのAI活用', preview: 'AI技術の活用方法。現代的なツールを使った効率化。' },
+            { id: 'c4471c006a0643e8b2f2e2be4eed711b', title: '枡×カードゲームの可能性', preview: '枡とカードゲームの融合アイデア。新しいエンターテイメント。' },
+            { id: 'd82207207702434087264a6c402cec04', title: 'フィリピンフードを食べに行く', preview: '現地料理の探求。食文化を通じた文化理解。' },
+            { id: '70e9a1b09ab14806bcebab766d1a03e1', title: '身だしなみは大切', preview: '外見の重要性。第一印象を左右する身だしなみの意識。' },
+            { id: '0c63415a3d3b437fb6934597034405f8', title: '人を繋ぐこと', preview: '人と人とのつながりの価値。コミュニケーションの力。' },
+            { id: '35043906b9574a398773e09532be149b', title: '一緒に仕事がしたいと思われる人に', preview: '魅力的な人材になるために。協働したいと思われる人物像。' },
+            { id: '9606edbe02cf4ac2b363e38bf8a47fa4', title: '少し寂しくなった話〔番外編〕', preview: '率直な感情の記録。孤独感との向き合い方。' },
+            { id: 'ffb76bb9bc96496f9047d1736940a8a4', title: '一歩踏み込む', preview: '積極性の重要性。コンフォートゾーンを出る勇気。' },
+            { id: '711d011aeeb04ac1ade69dd275b0d186', title: 'ザンボアンガへ！', preview: 'ザンボアンガへの旅。新しい土地での発見と体験。' },
+            { id: 'db4a8602ec8d4b36887f40715c41aac1', title: '観光と学び', preview: '観光を通じた学習効果。楽しみながら知識を深める。' },
+            { id: '441c237c235545a7bfb928eb7931f7c8', title: '枡フォトinザンボアンガ！', preview: 'ザンボアンガでの枡フォト撮影。地域に根ざした活動。' },
+            { id: '763c23f73f444850a745885e2971d0dc', title: '思い出を創出する', preview: '意図的な思い出作り。価値ある体験の積み重ね。' },
+            { id: '136d977ccc444b129ec667a94ddc001c', title: 'あと1ヶ月！', preview: 'セブ島生活残り1ヶ月。時間を大切に使う意識。' },
+            { id: 'a4d64f24e9c54e91bf89a0351f418c90', title: '広告宣伝費の使い道', preview: 'マーケティング予算の効果的な活用法について。' },
+            { id: '607cc6ea5aee4b2dbc14e986a7eb5177', title: '習慣化すること', preview: '良い習慣を身につける重要性。継続の力について。' },
+            { id: '15a534b784e44d358bb9da4a1a05754c', title: '疲れが溜まっていた', preview: '疲労との向き合い方。適切な休息の必要性。' },
+            { id: 'faa2f965361048eaa501be322d38b6b7', title: 'マニラ戦に備える', preview: 'マニラでの活動に向けた準備。次なる挑戦への備え。' },
+            { id: 'd3bea8284e8743a28b290b52b1177e96', title: 'プロのモデル達との撮影！', preview: 'プロフェッショナルとのコラボレーション。高いレベルでの経験。' },
+            { id: '0cc2635b6ca24087bc01ba285ab6a3c6', title: '事務作業DAY', preview: '事務作業の重要性。基盤となる作業の価値。' },
+            { id: 'db13d7e1120948a6a08af556559187e5', title: '警告を喰らった', preview: '困難な状況への対処。逆境からの学び。' },
+            { id: 'b0cd38617367444784c6b7f9e6141658', title: '何が何でも実現させる', preview: '強い意志の力。目標達成への執念。' },
+            { id: '15e146b48b4d422b88a6ed4cabed36ef', title: '現在地と目的地の共有', preview: '進捗の可視化。目標に向けた現状把握。' },
+            { id: '8d20acbab5d545aeafbfec33415f65e3', title: 'クラファンスタート', preview: 'クラウドファンディングの開始。支援者とのつながり。' },
+            { id: 'da97025698704b7192de505574d2bb1a', title: '世界展開と広告の推測', preview: 'グローバル展開戦略。効果的な広告手法の考察。' },
+            { id: 'd162799a237d49cba550550860945c9d', title: 'ファッションショーに参加', preview: 'ファッションイベントへの参加。新しい分野での挑戦。' },
+            { id: '56f8739366804e51823c17f933efd681', title: '誕生日！29歳になりました', preview: 'セブ島での誕生日祝い。29歳の新たなスタート。', featured: true },
+            { id: '35f8af74bfb9453891fa42b28cee0770', title: 'ヘッドコーチとの授業', preview: 'トップレベルの指導者から学ぶ。質の高い教育の価値。' },
+            { id: 'a0670adc46d94baba77316a58df58207', title: '日本からセブ島に荷物を送る際の注意点', preview: '国際郵送のノウハウ。実用的な情報の共有。' },
+            { id: '7264dc3b33f54a96aff19b80cc9a58e0', title: '初めてのアロマセラピー', preview: 'リラクゼーション体験。心身のケアの重要性。' },
+            { id: '41cfeca11b034522994c1a95f85c96a6', title: 'FOMUSの理念を"英語"で共有する', preview: 'ブランド理念の国際的な発信。英語でのメッセージ伝達。' },
+            { id: 'abf017fa66c441a898d59d3a0f0bc318', title: '継続と準備', preview: '持続可能な成長のための基盤作り。継続の重要性。' },
+            { id: 'faf99e8ee897458d82f120ab6a7a6f0a', title: 'セブの絶景', preview: 'セブ島の美しい景色。自然の美しさに感動。' },
+            { id: 'c0884d03a9424be0991cbf0fa0918e8f', title: 'FOMUSイベントin Cebu', preview: 'セブ島でのFOMUSイベント開催。現地でのブランド展開。' },
+            { id: 'b0d09fe6c87048a9a14d8ea1941b5231', title: '仲間から刺激を受けた', preview: '仲間からのインスピレーション。相互成長の価値。' },
+            { id: '5428d0a76d7f4135ac8cd936bd341151', title: 'BARでの交流', preview: 'バーでの国際交流。リラックスした環境での会話。' },
+            { id: '621975106f9b45dba3044d760529acce', title: '先人達との交流', preview: '経験豊富な先輩方からの学び。知恵の継承。' },
+            { id: '4eafbd865a5449cb8e784de9e639f645', title: 'あっという間の３ヶ月', preview: '3ヶ月間の振り返り。時間の速さと成長の実感。' },
+            { id: '90d91016e19d4a3bb4fdafe99428a6b5', title: 'セブ島留学終了！', preview: 'セブ島での学習期間終了。成果と感謝の気持ち。', featured: true },
+            { id: '30675c6f84cf49d98dba55ccf32d9410', title: 'マニラ編・枡フォト撮影会', preview: 'マニラでの枡フォト撮影。新天地での活動開始。' },
+            { id: '1f3716dde3814e3da87ed205cc92f733', title: '世界に友達がいる面白さ', preview: '国際的なネットワークの価値。世界とのつながり。' },
+            { id: '144835dd3270457cb2ce2d7f44bb8168', title: 'スラム街・ハッピーランドへ', preview: '社会課題への向き合い。現実を知る重要性。' },
+            { id: '59be6234471a4b2281e4f7d79a7959ad', title: '機転を利かせる動き方', preview: '臨機応変な対応力。状況に応じた判断力。' },
+            { id: '2ed9e866cc5b4d2482068e6a0b1fb79d', title: '総括・3ヶ月間のフィリピン活動を終えて', preview: 'フィリピン活動の完全総括。3ヶ月間の学びと成長の記録。', featured: true }
+        ];
+
+        // ページ読み込み時の初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCebuEpisodes();
+        });
+
+        // セブ島エピソードを読み込み
+        function loadCebuEpisodes() {
+            const cebuEpisodesContainer = document.getElementById('cebu-episodes');
+            const episodeCountElement = document.getElementById('episode-count');
+            
+            // エピソード数を更新
+            episodeCountElement.textContent = cebuEpisodes.length;
+            
+            const episodesHTML = cebuEpisodes.map((episode, index) => {
+                const episodeNumber = index + 1;
+                const featuredClass = episode.featured ? ' featured' : '';
+                
+                return `
+                    <div class="episode-card${featuredClass}" onclick="openCebuEpisodePage(${episodeNumber})">
+                        <div class="episode-image">🇵🇭</div>
+                        <div class="episode-content">
+                            <div class="episode-number">第${episodeNumber}話</div>
+                            <div class="episode-title">${episode.title}</div>
+                            <div class="episode-preview">${episode.preview}</div>
+                            <div class="episode-meta">
+                                <span>📅 2024年</span>
+                                <span>📍 セブ島</span>
+                                <span>📖 読了時間: 3-5分</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            cebuEpisodesContainer.innerHTML = episodesHTML;
+        }
+
+        // セブ島エピソードページを開く
+        function openCebuEpisodePage(episodeNumber) {
+            window.location.href = `episode-template.html?episode=${episodeNumber}&country=cebu`;
+        }
+    </script>
+</body>
+</html>

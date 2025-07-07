@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヨーロッパ活動記2024 🇮🇪🇪🇪 | まっすー</title>
+    <meta name="description" content="まっすーのヨーロッパ活動記2024。アイルランド・エストニアでの写真撮影活動、現地交流、海外展開の記録。">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, #228b22 0%, #006400 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><polygon fill="rgba(255,255,255,0.1)" points="0,300 1000,300 1000,100 0,200"/></svg>');
+            z-index: 1;
+        }
+        
+        .blog-hero > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .blog-hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .blog-hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .blog-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .europe-intro {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 20px;
+            border: 2px solid #228b22;
+        }
+        
+        .europe-intro h2 {
+            color: #228b22;
+            margin-bottom: 1.5rem;
+            font-size: 2.4rem;
+        }
+        
+        .europe-intro p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .country-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .country-tab {
+            background: #f8f9fa;
+            border: 2px solid #228b22;
+            color: #228b22;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .country-tab:hover,
+        .country-tab.active {
+            background: #228b22;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(34, 139, 34, 0.3);
+        }
+        
+        .activity-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-left: 4px solid #228b22;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .highlight-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-desc {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .episode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .episode-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .episode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: #228b22;
+        }
+        
+        .episode-image {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .ireland-episode .episode-image {
+            background: linear-gradient(135deg, #228b22, #006400);
+        }
+        
+        .estonia-episode .episode-image {
+            background: linear-gradient(135deg, #0055cc, #003388);
+        }
+        
+        .episode-content {
+            padding: 1.5rem;
+        }
+        
+        .episode-number {
+            display: inline-block;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .ireland-episode .episode-number {
+            background: #228b22;
+        }
+        
+        .estonia-episode .episode-number {
+            background: #0055cc;
+        }
+        
+        .episode-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+        
+        .episode-preview {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .episode-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .featured {
+            border: 2px solid #228b22;
+        }
+        
+        .featured .episode-number {
+            background: linear-gradient(135deg, #228b22, #006400);
+        }
+        
+        .country-section {
+            margin: 4rem 0;
+        }
+        
+        .country-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .country-header h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .ireland-header h3 {
+            color: #228b22;
+        }
+        
+        .estonia-header h3 {
+            color: #0055cc;
+        }
+        
+        .country-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .blog-stats {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .stat-item {
+                width: 200px;
+            }
+            
+            .episode-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .country-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">まっすー</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#fomus">FOMUS</a></li>
+                <li><a href="index.html#works">Works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#blog">活動記</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="ja">🇯🇵</button>
+                <button class="lang-btn" data-lang="en">🇺🇸</button>
+                <button class="lang-btn" data-lang="es">🇪🇸</button>
+                <button class="lang-btn" data-lang="ko">🇰🇷</button>
+                <button class="lang-btn" data-lang="ar">🇸🇦</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <div class="container">
+                <h1>ヨーロッパ活動記2024 🇮🇪🇪🇪</h1>
+                <p>アイルランド・エストニアでの写真撮影活動、現地交流、海外展開の記録。ヨーロッパでの国際的な活動とコミュニティ形成の物語です。</p>
+                
+                <div class="blog-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="episode-count">準備中</span>
+                        <span class="stat-label">エピソード</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2024年</span>
+                        <span class="stat-label">活動期間</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">🇮🇪🇪🇪</span>
+                        <span class="stat-label">ヨーロッパ</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-articles">
+            <div class="container">
+                <div class="europe-intro">
+                    <h2>🌍 ヨーロッパでの冒険</h2>
+                    <p>2024年のヨーロッパ活動記へようこそ。アイルランドでの語学学習と国際交流イベント運営、マルタ・ギリシャ・キプロスでの活動、137日間にわたるヨーロッパでの活動記録をお届けします。</p>
+                    
+                    <div class="activity-highlights">
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇮🇪</div>
+                            <div class="highlight-title">アイルランド編</div>
+                            <div class="highlight-desc">ダブリンでの語学学習と国際交流イベント運営</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🇪🇪</div>
+                            <div class="highlight-title">エストニア編</div>
+                            <div class="highlight-desc">タリンでのデジタル社会体験とAI活用</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🏃‍♂️</div>
+                            <div class="highlight-title">メドックマラソン</div>
+                            <div class="highlight-desc">フランス・ボルドーでのワイナリーマラソン挑戦</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🎯</div>
+                            <div class="highlight-title">国際展開</div>
+                            <div class="highlight-desc">FOREスプロジェクトの欧州展開</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- アイルランド編 -->
+                <div class="country-section">
+                    <div class="country-header ireland-header">
+                        <h3>🇮🇪 アイルランド編 (1-78話 + 番外編)</h3>
+                        <p>ダブリンでの語学学習、国際交流イベントの運営、そしてメドックマラソンへの挑戦</p>
+                    </div>
+                    <div class="episode-grid" id="ireland-episodes">
+                        <!-- アイルランドエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- エストニア編 -->
+                <div class="country-section">
+                    <div class="country-header estonia-header">
+                        <h3>🇪🇪 エストニア編 (80-89話)</h3>
+                        <p>タリンでのデジタル社会体験、AI活用、そして新たなコミュニティとの出会い</p>
+                    </div>
+                    <div class="episode-grid" id="estonia-episodes">
+                        <!-- エストニアエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <!-- ヨーロッパ活動記② -->
+                <div class="country-section">
+                    <div class="country-header malta-header" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);">
+                        <h3>🇲🇹 マルタ編 (90-98話)</h3>
+                        <p>地中海の島国マルタでの活動記録。バレッタ、イムディーナ、ゴゾ島での写真撮影と交流。</p>
+                    </div>
+                    <div class="episode-grid" id="malta-episodes">
+                        <!-- マルタエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <div class="country-section">
+                    <div class="country-header greece-header" style="background: linear-gradient(135deg, #0099cc 0%, #0077aa 100%);">
+                        <h3>🇬🇷 ギリシャ編 (99-103話)</h3>
+                        <p>古代文明の地ギリシャでの活動。パルテノン神殿での枡フォト撮影、アテネでの国際交流。</p>
+                    </div>
+                    <div class="episode-grid" id="greece-episodes">
+                        <!-- ギリシャエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <div class="country-section">
+                    <div class="country-header cyprus-header" style="background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);">
+                        <h3>🇨🇾 キプロス編 (104-109話)</h3>
+                        <p>地中海東部の島国キプロスでの活動。現地パートナーとの協力、国際展開の戦略構築。</p>
+                    </div>
+                    <div class="episode-grid" id="cyprus-episodes">
+                        <!-- キプロスエピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <div class="country-section">
+                    <div class="country-header ireland2-header" style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%);">
+                        <h3>🇮🇪 アイルランド再滞在編 (110-137話)</h3>
+                        <p>アイルランドに戻り、現地コミュニティとの深い関係構築。大使館イベントや長期滞在での活動。</p>
+                    </div>
+                    <div class="episode-grid" id="ireland2-episodes">
+                        <!-- アイルランド再滞在エピソードを動的に読み込み -->
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 4rem 0; padding: 3rem; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border-radius: 20px; border: 2px solid #228b22;">
+                    <h3 style="color: #228b22; margin-bottom: 1rem;">✨ 続きは「ヨーロッパ活動記2025」で！</h3>
+                    <p style="color: #666; margin-bottom: 2rem;">138話以降の活動は、新しい年の記録として別のページでご覧いただけます。</p>
+                    <a href="europe2025-blog.html" style="display: inline-block; padding: 1rem 2rem; background: #228b22; color: white; text-decoration: none; border-radius: 25px; font-weight: 500; transition: all 0.3s ease;">
+                        🌍 ヨーロッパ活動記2025を見る
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 まっすー (FOMUS) All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/notion-api.js"></script>
+    <script>
+        // ヨーロッパエピソードデータ（1-164話）
+        const europeEpisodes = [
+            // アイルランド編 (1-78話)
+            { id: 'bfeb6726851a4c5fafdc9799d0c4cde8', title: 'アイルランドを選んだ理由', preview: 'なぜアイルランドを選んだのか、その理由と期待について。', country: 'ireland', featured: true },
+            { id: '0fe6633ff29042d08106131a47fa85d7', title: '郷に入れば郷に従え', preview: '現地の文化に適応することの重要性。アイルランドでの第一歩。', country: 'ireland' },
+            { id: '88167616be604f88986f55f70a2b05c0', title: '日本とアイルランドの交流イベントへ', preview: '日愛交流イベントに参加し、現地のコミュニティと触れ合う。', country: 'ireland' },
+            { id: '35c8d07d8c3241fbb2d1c31f0588708f', title: '日本とのビジネス', preview: 'アイルランドと日本の間でのビジネス機会について探る。', country: 'ireland' },
+            { id: 'dbb0f387db08425c89a4445ece2a5c4b', title: '制作を進める', preview: 'プロジェクトの制作フェーズに入り、具体的な作業を開始。', country: 'ireland' },
+            { id: '65c4299ec3724ed9b9dc752489bdc542', title: 'Cliffs of Moherへ', preview: 'アイルランドの象徴的な断崖絶壁Cliffs of Moherを訪問。', country: 'ireland' },
+            { id: 'ea5b557d278a436aaa2181cf65315524', title: 'ダブリン散策', preview: 'アイルランドの首都ダブリンを探索し、街の魅力を発見。', country: 'ireland' },
+            { id: 'f146b24117db44f78b4ce7621d9fe699', title: '仕事とマラソン', preview: '仕事とマラソントレーニングの両立について。', country: 'ireland' },
+            { id: 'd1561db3b0124fa0914b506afdd2c543', title: 'アプリで見つけた交流イベントへ', preview: 'アプリを活用して現地の交流イベントを発見し参加。', country: 'ireland' },
+            { id: '319fd4c0b10e41c18946023bdf278c01', title: 'コンテンツよりも先に自分を知ってもらう', preview: '人間関係構築の基本：まず自分を知ってもらうことの重要性。', country: 'ireland' },
+            { id: 'df9704d10f6942e3be7aeb3c00e138cb', title: '生産性を上げるために', preview: '効率的な作業環境を整え、生産性向上に取り組む。', country: 'ireland' },
+            { id: 'd33767c874ba4fd7b54d3d422a6e8345', title: 'もう１ヶ月を切っている', preview: '滞在残り期間が1ヶ月を切り、時間の大切さを実感。', country: 'ireland' },
+            { id: 'bf54716e206649998f66bb47a07706fb', title: 'ひたすら作業', preview: '集中的な作業期間。目標達成に向けて努力を続ける。', country: 'ireland' },
+            { id: 'd6e40d9bfbf347599700dd22dd23ba8c', title: '新しいミートアップへ', preview: '新たなミートアップイベントに参加し、ネットワークを拡大。', country: 'ireland' },
+            { id: '79c4b587eba644de82272389842578bd', title: 'アイルランドでの生活（3週目）', preview: '3週間のアイルランド生活を振り返り、成長を実感。', country: 'ireland' },
+            { id: '60ece9f07bde4f598e85535deea7e59f', title: 'ある程度ルールがある方が楽？', preview: 'ルールや構造があることのメリットについて考察。', country: 'ireland' },
+            { id: 'dc38ad341bfc41e5a1e0f8fdfb9b81ad', title: 'ビジネス英語を強制的に使う環境', preview: 'ビジネス英語力向上のための環境作りについて。', country: 'ireland' },
+            { id: '10eac4b22ac246039f7e2a2b03f41f94', title: '企画を作る', preview: '新しい企画の立案と準備フェーズについて。', country: 'ireland' },
+            { id: '04d269cc6fd544e68e651e2fd894c3d4', title: 'イベンターから学ぶこと', preview: '経験豊富なイベンターから学んだノウハウとコツ。', country: 'ireland' },
+            { id: 'f56b92410f5d409e98c9ca5d6d71df17', title: '枡フォト撮影スタート！', preview: 'アイルランドでの枡フォト撮影プロジェクト開始。', country: 'ireland', featured: true },
+            { id: '4724c9d33418402b814b421aa4670141', title: 'ホームステイ先が変わる？！', preview: '突然のホームステイ先変更とその対応について。', country: 'ireland' },
+            { id: 'e5d827dd711c4e69a25d27167a42e38d', title: '初の内見へ！', preview: '新しい住居の内見体験と住環境の重要性。', country: 'ireland' },
+            { id: 'd485d7e9226041f5a7c097bfaa2f0743', title: 'ギネス・ストアハウスへ', preview: 'アイルランドの象徴的なギネス博物館を訪問。', country: 'ireland' },
+            { id: '498473d0980a4e74a3e3a52618b85242', title: '出会いに時間を割く', preview: '人との出会いに投資する時間の価値について。', country: 'ireland' },
+            { id: 'cd012b8c7de44bef9ba7b99b1b80bb16', title: '実験あるのみ！！', preview: '様々なアプローチを試してみることの重要性。', country: 'ireland' },
+            { id: '569cd395a7e145a5a9161805ff4ddc1a', title: '面白い出会い', preview: '予期しない面白い出会いとそこから生まれる可能性。', country: 'ireland' },
+            { id: 'c70d01f18d00425786170b31a8406d69', title: 'メドックマラソンのトレーニングDAY', preview: 'メドックマラソンに向けたトレーニングの様子。', country: 'ireland' },
+            { id: 'ff0321c96d7d4f7ea3f09ff62f204d13', title: 'ドブ板営業しまくった4週間！', preview: '4週間の集中的な営業活動とその成果について。', country: 'ireland' },
+            { id: 'b69565b23e6a4f9992fbd23f552a1c00', title: '挑戦する過程で得られるもの', preview: '挑戦そのものから得られる価値と成長について。', country: 'ireland' },
+            { id: '038578d846b34f3aa48938fdd635ea39', title: '効率よくイベントを運営するために', preview: 'イベント運営の効率化とベストプラクティス。', country: 'ireland' },
+            { id: '4d1a81a366e9432cad14a18bea425149', title: '一つずつ丁寧にやっていく', preview: '丁寧な作業の積み重ねの重要性について。', country: 'ireland' },
+            { id: '3f157c512bbf448f80c3bdc01505a067', title: 'アイルランドで初イベント！', preview: 'アイルランドでの初めてのイベント開催。', country: 'ireland', featured: true },
+            { id: '4b1c8f318ed2450b8a152b907a6b5d9b', title: '枡が展示されました！', preview: 'FOMUSの枡がアイルランドで展示される記念すべき瞬間。', country: 'ireland', featured: true },
+            { id: 'd05cb442f1db46dd96cc366a6797d321', title: 'プレウォーキングイベント！', preview: 'ウォーキングイベントの事前準備と下見について。', country: 'ireland' },
+            { id: '57235b6a1f42440380453a661873a860', title: 'ダブリンの美容院へ【番外編】', preview: 'アイルランドでの美容院体験。文化の違いを実感。', country: 'ireland' },
+            { id: 'e0441fff643c479fb33dedfc46bc0eba', title: '海外で国際交流イベントを主催するメリット', preview: '海外でのイベント主催がもたらす独特のメリット。', country: 'ireland' },
+            { id: 'dfed7121a16d448e92b1764c9d3068cf', title: '外国人登録へ', preview: 'アイルランドでの外国人登録手続きについて。', country: 'ireland' },
+            { id: 'e036084616bb477ba106425fb60e8fc9', title: '小さなハプニング', preview: '日常の小さなハプニングから学ぶこと。', country: 'ireland' },
+            { id: '0f651f38ecfe4a44977deaea1a883719', title: '行動あるのみ！', preview: '考えるよりもまず行動することの大切さ。', country: 'ireland' },
+            { id: 'e6511841460f40b8ae2ea3c18008070d', title: 'フランスへ！！', preview: 'メドックマラソンのためフランス・ボルドーへ出発。', country: 'ireland' },
+            { id: 'df0bd7fe86a64d88affb15995573f387', title: 'メドックマラソン前夜祭', preview: 'メドックマラソン前夜祭の様子と期待。', country: 'ireland' },
+            { id: 'e6c93c54ad1e4bb7b8615282414568ee', title: 'メドックマラソン本番', preview: 'ワイナリーを巡るメドックマラソン本番の体験記。', country: 'ireland', featured: true },
+            { id: '52dc7508cd9a4ff594f50db424481e01', title: 'メドックマラソン後夜祭', preview: 'マラソン完走後の達成感と後夜祭の様子。', country: 'ireland' },
+            { id: '596b82eea4624be2817a3ee4e9559c9b', title: 'ボルドー最終日', preview: 'フランス・ボルドーでの最終日の過ごし方。', country: 'ireland' },
+            { id: '33fb6f5b6835436489aa620b8ed3b40b', title: 'アイルランドへ戻ってきた', preview: 'フランスからアイルランドに戻り、日常が再開。', country: 'ireland' },
+            { id: '3fd6c67f4d93497591b753c264021e57', title: '日本酒イベント/3回目の引越し？', preview: '日本酒イベントの企画と住居変更について。', country: 'ireland' },
+            { id: 'b576ab4a91414775ad97b43ab4e78faa', title: '近況報告〔YouTube〕', preview: 'YouTube動画での近況報告と活動の振り返り。', country: 'ireland' },
+            { id: '2864604085b04080a60c83127b39d969', title: '久しぶりの枡フォト撮影！', preview: '久しぶりの枡フォト撮影セッションと新たな発見。', country: 'ireland' },
+            { id: '4144ddb94a204b879b9edfe66456b706', title: '繋がること', preview: '人とのつながりの大切さとコミュニティの力。', country: 'ireland' },
+            { id: 'd8ec51af24c442df8b49e4c0f99d7e9c', title: '異常に評判が良い国際交流イベント', preview: '大成功を収めた国際交流イベントの秘訣。', country: 'ireland', featured: true },
+            { id: '62d6f7b7ea81476f8f448975f589315b', title: '現地の日本人達とのお食事会へ', preview: '現地在住日本人コミュニティとの交流。', country: 'ireland' },
+            { id: 'cf1f156bdbb14f46be11c8db3a00d2b2', title: '飲み会は最強', preview: '飲み会が持つコミュニケーション促進効果について。', country: 'ireland' },
+            { id: 'ccd61fdd335745a2ba27824134fd8780', title: 'CultureNight in Dublin', preview: 'ダブリンのカルチャーナイトイベントに参加。', country: 'ireland' },
+            { id: '0847d6eae2304df7bc0458bb174ec2e7', title: 'シェアハウスでの生活が開始！', preview: 'シェアハウスでの共同生活開始と新たな体験。', country: 'ireland' },
+            { id: '6a3cd5deabae43589876a6c5b6728b86', title: 'とにかく打席に立たないと始まらない', preview: 'チャレンジし続けることの重要性について。', country: 'ireland' },
+            { id: '022c9aad39c7461a8eb34d2d21cb5d62', title: 'あっという間に9週目に突入！', preview: 'アイルランド滞在9週目を迎えた感想と振り返り。', country: 'ireland' },
+            { id: 'e43893514aeb4eb8aa53f0d4bf115840', title: '地獄の3日間', preview: '特に困難だった3日間とその乗り越え方。', country: 'ireland' },
+            { id: 'e80497f696404836a621b297d8957f68', title: 'ディナーと星', preview: '特別なディナーと夜空の星を楽しんだ夜。', country: 'ireland' },
+            { id: 'e6e6376bb8d94a08861aa5471bb112d6', title: '1ヶ月イベントを運営してみて分かったこと', preview: '1ヶ月間のイベント運営から得た知見と学び。', country: 'ireland' },
+            { id: '8fcfdee449b6482f9e15d5152bd86e4a', title: '課題は山積みだがやるしかない', preview: '多くの課題を抱えながらも前進し続ける姿勢。', country: 'ireland' },
+            { id: 'f2ea83be3e8c45ecbb7e6527f47705b8', title: 'アジアマーケットへ', preview: 'ダブリンのアジア系マーケットを訪問し、故郷を感じる。', country: 'ireland' },
+            { id: '41f44b850e5d4631add735defdd5f4e5', title: '全然足りない！', preview: '様々な面での不足を感じ、更なる努力の必要性を実感。', country: 'ireland' },
+            { id: '46522dab53114b128fef78e6004077bb', title: '大盛況のカードゲーム「SILVA」', preview: 'カードゲームSILVAの大成功とその影響。', country: 'ireland', featured: true },
+            { id: '095b017c77dc45cea6dd96464a248247', title: '説得力を付けるための資料を作る', preview: '効果的なプレゼンテーション資料の作成について。', country: 'ireland' },
+            { id: '02caeed6d47b41ebacf05cef451ed114', title: '仕込みは大切', preview: '事前準備の重要性とその効果について。', country: 'ireland' },
+            { id: '362c4b308cf14d1cac5cfa85a27d13a4', title: '誰よりも足で稼ぐ', preview: '足を使った営業活動の効果と重要性。', country: 'ireland' },
+            { id: '7bf78ed334d34786b4c1dcac3a87776b', title: 'まさかの「0」？', preview: '予期しない結果に直面した時の対処法。', country: 'ireland' },
+            { id: 'b18a438990bc429086f9de9e99482c78', title: '上手くいかないことの方が多い', preview: '失敗から学ぶことの価値と成長への転換。', country: 'ireland' },
+            { id: 'f478b696643e4ef2a5f4d404e67c4648', title: '失うものはない！！', preview: 'リスクを恐れず挑戦することの大切さ。', country: 'ireland' },
+            { id: '68cfc0fcf1904b9d9386bb563b316188', title: 'アイルランドのお寿司屋へ', preview: '現地の日本料理店での体験と文化の融合。', country: 'ireland' },
+            { id: 'b01cdd794e8d49cc9894169dd9b016e3', title: '国際交流パーティーへ', preview: '多国籍な参加者との交流パーティー体験。', country: 'ireland' },
+            { id: '5ee3729cb2234fa0be6975d5771460d4', title: '久しぶりの1人の時間', preview: '一人の時間の大切さとリフレッシュ効果。', country: 'ireland' },
+            { id: 'a197a41c9f35486e93bc887aa6156621', title: '良い経験ができている', preview: 'アイルランドでの経験の価値を実感する瞬間。', country: 'ireland' },
+            { id: 'a62445b0a7084b7093658fad57718297', title: 'ダブリンハウス会議', preview: 'シェアハウスでの住人会議とコミュニティ運営。', country: 'ireland' },
+            { id: 'e118876d682544c7a5d393867074dc16', title: '相談されることも増えた', preview: '信頼関係の構築と相談される立場になった実感。', country: 'ireland' },
+            { id: '2950d501baec420da7600633b7dd08b0', title: 'pubイベント開催🍻', preview: 'アイリッシュパブでのイベント開催体験。', country: 'ireland' },
+            { id: '5cdf276e67f649c490d2d028ec16d93f', title: '語学学校卒業🎓と大使館へ🏯', preview: '語学学校卒業と日本大使館訪問の記録。', country: 'ireland' },
+            { id: '1dff5c78b8d842b68ce5c5eeaf7a26ec', title: 'ウォーキングイベントの裏側', preview: 'ウォーキングイベント運営の舞台裏と工夫。', country: 'ireland' },
+            { id: '55f4d563bf5148659b21166b0f3882a4', title: '半年ぶりに海外アドレスホッパーへ', preview: '再び海外を拠点とした活動への復帰。', country: 'ireland' },
+            
+            // エストニア編 (79-89話)
+            { id: '71827b25bcb64cd2955ac301f62c4e76', title: 'エストニア編に突入！', preview: 'アイルランドからエストニアへ。新たな国での活動開始。', country: 'estonia', featured: true },
+            { id: '20f8e34518b248a3bbf4b8785aae8d2d', title: '枡フォト撮影inエストニア', preview: 'エストニアでの枡フォト撮影プロジェクト開始。', country: 'estonia', featured: true },
+            { id: '976dde336eae406ea948022ea7ba357f', title: 'エストニア料理ワークショップ', preview: 'エストニアの伝統料理を学ぶワークショップ体験。', country: 'estonia' },
+            { id: '90e86ff28cf24803bbb6c59bfa383937', title: '現地のサウナとBARはヤバい！', preview: 'エストニアのサウナ文化とバーでの体験。', country: 'estonia' },
+            { id: '5832fb68abf349f4b7d55de091ad6bef', title: '本気のAI活用', preview: 'エストニアのデジタル社会でのAI活用事例。', country: 'estonia', featured: true },
+            { id: '7318e20677414b09b928b7528a5d8837', title: '才能ある若者に出逢えた', preview: 'エストニアの才能豊かな若者たちとの出会い。', country: 'estonia' },
+            { id: 'cd2070d9a2d64b159e5176c963736c51', title: '枡で繋がるコミュニティ', preview: '枡を通じて形成される国際的なコミュニティ。', country: 'estonia' },
+            { id: 'b06c69d9d6b44705801cbeeb561b6f9b', title: 'アイルランドへ戻りました', preview: 'エストニアからアイルランドへの帰還。', country: 'estonia' },
+            { id: '9f52ae6a2fba4858b274cf9dced884c7', title: '仕事が好きだ', preview: '仕事への情熱と充実感について。', country: 'estonia' },
+            { id: '247102f98b2744b494a1e72f1d75a682', title: '誰と話すか', preview: '人とのコミュニケーションの重要性と選択。', country: 'estonia' },
+            { id: '344b3ebfa4b84a2b8ce4a86194b7efe3', title: 'ハロウィン！のはずが…', preview: 'ハロウィンの予定が思わぬ展開に。', country: 'estonia' }
+        ];
+
+        // ページ読み込み時の初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEuropeEpisodes();
+        });
+
+        // ヨーロッパエピソードを読み込み
+        function loadEuropeEpisodes() {
+            const irelandContainer = document.getElementById('ireland-episodes');
+            const estoniaContainer = document.getElementById('estonia-episodes');
+            const episodeCountElement = document.getElementById('episode-count');
+            
+            // エピソード数を更新
+            episodeCountElement.textContent = europeEpisodes.length;
+            
+            // アイルランド編エピソード（1-78話 + 番外編）
+            const irelandEpisodes = europeEpisodes.filter(ep => ep.country === 'ireland');
+            const irelandHTML = irelandEpisodes.map((episode, index) => {
+                const episodeNumber = index + 1;
+                const featuredClass = episode.featured ? ' featured' : '';
+                const isSpecial = episode.title.includes('番外編');
+                const displayNumber = isSpecial ? '番外編' : `第${episodeNumber}話`;
+                
+                return `
+                    <div class="episode-card ireland-episode${featuredClass}" onclick="openEuropeEpisodePage(${episodeNumber}, 'ireland')">
+                        <div class="episode-image">🇮🇪</div>
+                        <div class="episode-content">
+                            <div class="episode-number">${displayNumber}</div>
+                            <div class="episode-title">${episode.title}</div>
+                            <div class="episode-preview">${episode.preview}</div>
+                            <div class="episode-meta">
+                                <span>📅 2024年</span>
+                                <span>📍 アイルランド</span>
+                                <span>📖 読了時間: 5-7分</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // エストニア編エピソード（80-89話）
+            const estoniaEpisodes = europeEpisodes.filter(ep => ep.country === 'estonia');
+            const estoniaHTML = estoniaEpisodes.map((episode, index) => {
+                const episodeNumber = index + 80; // 80から開始
+                const featuredClass = episode.featured ? ' featured' : '';
+                
+                return `
+                    <div class="episode-card estonia-episode${featuredClass}" onclick="openEuropeEpisodePage(${episodeNumber}, 'estonia')">
+                        <div class="episode-image">🇪🇪</div>
+                        <div class="episode-content">
+                            <div class="episode-number">第${episodeNumber}話</div>
+                            <div class="episode-title">${episode.title}</div>
+                            <div class="episode-preview">${episode.preview}</div>
+                            <div class="episode-meta">
+                                <span>📅 2024年</span>
+                                <span>📍 エストニア</span>
+                                <span>📖 読了時間: 5-7分</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            irelandContainer.innerHTML = irelandHTML;
+            estoniaContainer.innerHTML = estoniaHTML;
+            
+            // ヨーロッパ活動記②のエピソードを追加生成
+            generateEurope2Episodes();
+        }
+
+        // ヨーロッパ活動記②（90-164話）のエピソード生成
+        function generateEurope2Episodes() {
+            // マルタ編 (90-98話)
+            const maltaContainer = document.getElementById('malta-episodes');
+            const maltaEpisodes = [
+                { num: 90, title: '"昼呑みイベント"やってみた' },
+                { num: 91, title: '繋ぐ・繋がる' },
+                { num: 92, title: 'マルタに来ました！' },
+                { num: 93, title: 'バレッタ＆ミートアップへ' },
+                { num: 94, title: 'イムディーナ視察' },
+                { num: 95, title: 'ゴゾ島の視察＆ホームパーティ' },
+                { num: 96, title: '枡フォト撮影inマルタ' },
+                { num: 97, title: '雨のバレッタ' },
+                { num: 98, title: 'マルタ最終日！' }
+            ];
+            
+            // ギリシャ編 (99-103話)
+            const greeceContainer = document.getElementById('greece-episodes');
+            const greeceEpisodes = [
+                { num: 99, title: 'ギリシャ編へ' },
+                { num: 100, title: 'パルテノン神殿/枡フォトinギリシャ' },
+                { num: 101, title: '国際交流会へ' },
+                { num: 102, title: 'すぐに人は信じない' },
+                { num: 103, title: '枡フォトコミュニティを創る' }
+            ];
+            
+            // キプロス編 (104-109話)
+            const cyprusContainer = document.getElementById('cyprus-episodes');
+            const cyprusEpisodes = [
+                { num: 104, title: 'キプロスに来ました' },
+                { num: 105, title: '枡フォトinキプロス' },
+                { num: 106, title: '失うものはないからこそできること' },
+                { num: 107, title: '世界中にパートナーを見つける必要がある' },
+                { num: 108, title: '覚悟を決める' },
+                { num: 109, title: '戦略を考える' }
+            ];
+            
+            // アイルランド再滞在編 (110-137話)
+            const ireland2Container = document.getElementById('ireland2-episodes');
+            const ireland2Episodes = [
+                { num: 110, title: '在アイランド日本大使館イベント！' },
+                { num: 111, title: '久しぶりのダブリンイベント' },
+                { num: 112, title: '日曜日のあれやこれ' },
+                { num: 113, title: '興味の無い話題への葛藤' },
+                { num: 114, title: 'ウイスキー博物館へ' },
+                { num: 115, title: '行けば何かある' },
+                { num: 116, title: '忘年会イベントへ' },
+                { num: 117, title: '栄養のことを考えなかった結果' },
+                { num: 118, title: '国際チャリティーイベントへ' },
+                { num: 119, title: '腐っていた数日間' },
+                { num: 120, title: '水面下でコツコツと' },
+                { num: 121, title: 'ティーリングウイスキー蒸留所へ' },
+                { num: 122, title: '寒いと難しい' },
+                { num: 123, title: '事務作業とプラン決め' },
+                { num: 124, title: 'リバティーズ蒸留所へ' },
+                { num: 125, title: 'ジェムソン蒸留所ツアーへ' },
+                { num: 126, title: '今年最後の日本のミートアップ' },
+                { num: 127, title: 'FOMUSオンライン忘年会！' },
+                { num: 128, title: '家飲みに招待してもらった' },
+                { num: 129, title: '海外飛び回って見えてきたFOMUSの方向性' },
+                { num: 130, title: '仕込みの1週間が始まる' },
+                { num: 131, title: 'FOMUS Parureの方向性を変える' },
+                { num: 132, title: '怒涛の作業DAY' },
+                { num: 133, title: 'スペイン写真集リリース' },
+                { num: 134, title: '今年の忘年会は少ない笑' },
+                { num: 135, title: '出会いの数を増やす' },
+                { num: 136, title: '今年の総括' },
+                { num: 137, title: '無事に2024が終了！' }
+            ];
+            
+            // 各セクションのHTML生成
+            function generateEpisodeHTML(episodes, countryColor = '#228b22') {
+                return episodes.map(episode => `
+                    <div class="episode-card" onclick="openEuropeEpisodePage(${episode.num}, 'europe')">
+                        <div class="episode-number" style="background: ${countryColor}">${episode.num}</div>
+                        <div class="episode-content">
+                            <h4 class="episode-title">${episode.title}</h4>
+                            <div class="episode-meta">
+                                <span>📅 2024年</span>
+                                <span>📖 読了時間: 5-7分</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            maltaContainer.innerHTML = generateEpisodeHTML(maltaEpisodes, '#d4af37');
+            greeceContainer.innerHTML = generateEpisodeHTML(greeceEpisodes, '#0099cc');
+            cyprusContainer.innerHTML = generateEpisodeHTML(cyprusEpisodes, '#e67e22');
+            ireland2Container.innerHTML = generateEpisodeHTML(ireland2Episodes, '#27ae60');
+        }
+
+        // ヨーロッパエピソードページを開く
+        function openEuropeEpisodePage(episodeNumber, country) {
+            window.location.href = `episode-template.html?episode=${episodeNumber}&country=europe`;
+        }
+    </script>
+</body>
+</html>

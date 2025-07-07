@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まっすー活動記 | FOMUS代表</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">まっすー</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#fomus">FOMUS</a></li>
+                <li><a href="index.html#works">Works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="ja">🇯🇵</button>
+                <button class="lang-btn" data-lang="en">🇺🇸</button>
+                <button class="lang-btn" data-lang="es">🇪🇸</button>
+                <button class="lang-btn" data-lang="ko">🇰🇷</button>
+                <button class="lang-btn" data-lang="ar">🇸🇦</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="blog-main">
+        <!-- ヒーローセクション -->
+        <section class="blog-hero">
+            <div class="container">
+                <h1>まっすー活動記</h1>
+                <p>世界を巡る写真家・アーティストの活動記録</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">記事数</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">訪問国</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">365</span>
+                        <span class="stat-label">活動日数</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- フィルター・検索 -->
+        <section class="blog-controls">
+            <div class="container">
+                <div class="controls-grid">
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">すべて</button>
+                        <button class="filter-btn" data-filter="free">無料記事</button>
+                        <button class="filter-btn" data-filter="premium">プレミアム記事</button>
+                        <button class="filter-btn" data-filter="collaboration">コラボ記録</button>
+                        <button class="filter-btn" data-filter="photography">撮影記録</button>
+                    </div>
+                    <div class="location-filter">
+                        <select id="location-select">
+                            <option value="all">すべての国</option>
+                            <option value="philippines">🇵🇭 フィリピン</option>
+                            <option value="ireland">🇮🇪 アイルランド</option>
+                            <option value="dubai">🇦🇪 ドバイ</option>
+                            <option value="taiwan">🇹🇼 台湾</option>
+                            <option value="korea">🇰🇷 韓国</option>
+                            <option value="japan">🇯🇵 日本</option>
+                        </select>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="記事を検索...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 記事一覧 -->
+        <section class="blog-articles">
+            <div class="container">
+                <div id="articles-grid" class="articles-grid">
+                    <!-- Notion APIから記事を動的に読み込み -->
+                </div>
+
+                <div class="pagination">
+                    <button class="page-btn prev">← 前のページ</button>
+                    <span class="page-info">1 / 8</span>
+                    <button class="page-btn next">次のページ →</button>
+                </div>
+
+                <!-- 手動更新ボタン -->
+                <div class="manual-refresh" style="text-align: center; margin-top: 2rem;">
+                    <button onclick="refreshArticles()" style="background: #0099cc; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem;">
+                        🔄 記事を更新
+                    </button>
+                    <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">
+                        最新の記事を取得します
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- プレミアム会員案内 -->
+        <section class="premium-section">
+            <div class="container">
+                <div class="premium-card">
+                    <h2>🔓 プレミアム記事を読むには</h2>
+                    <p>月額¥980でまっすーの詳細な活動記録をすべてお読みいただけます</p>
+                    <div class="premium-benefits">
+                        <div class="benefit">
+                            <span class="benefit-icon">📚</span>
+                            <div>
+                                <h4>1年分の全記録</h4>
+                                <p>50本以上の詳細な活動記録</p>
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">📸</span>
+                            <div>
+                                <h4>未公開コンテンツ</h4>
+                                <p>写真・動画・制作プロセス</p>
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-icon">🌍</span>
+                            <div>
+                                <h4>リアルタイム更新</h4>
+                                <p>月2-3本の新規記事</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="subscribe-button" onclick="handleSubscription()">
+                        月額¥980で購読する
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 まっすー (FOMUS) All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="notion-api.js"></script>
+    <script src="blog.js"></script>
+    <script src="translations.js"></script>
+    <script>
+        // 記事を読み込み（キャッシュ優先）
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const articlesGrid = document.getElementById('articles-grid');
+                if (articlesGrid) {
+                    // まずキャッシュから記事を取得
+                    let realArticles = await loadCachedArticles();
+                    
+                    // キャッシュがない場合はNotionから直接取得
+                    if (!realArticles || realArticles.length === 0) {
+                        realArticles = await notionAPI.getRealArticles();
+                    }
+                    
+                    if (realArticles.length === 0) {
+                        // 記事がない場合の表示
+                        articlesGrid.innerHTML = `
+                            <div class="no-articles" style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+                                <h3>記事を読み込み中...</h3>
+                                <p>Notionから記事データを取得しています。しばらくお待ちください。</p>
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    // 実際の記事のHTMLカードを作成（全記事無料公開）
+                    const articlesHTML = realArticles.map((article, index) => {
+                        const cardClass = 'article-card free'; // 全記事無料
+                        const premiumBadge = ''; // プレミアムバッジなし
+                        const actionButton = `<a href="${article.url}" class="read-btn">続きを読む</a>`;
+                        
+                        return `
+                            <div class="${cardClass}" id="article-${index}">
+                                ${premiumBadge}
+                                <div class="article-image">
+                                    <img src="${article.featuredImage || 'https://via.placeholder.com/350x200/0099cc/ffffff?text=Activity+Record'}" 
+                                         alt="${article.title}" 
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="placeholder-image" style="display: none; justify-content: center; align-items: center; height: 200px; background: #f0f0f0; font-size: 2rem;">📸</div>
+                                </div>
+                                <div class="article-info">
+                                    <div class="article-meta">
+                                        <span class="article-date">${article.date}</span>
+                                        <span class="article-location">${article.location}</span>
+                                    </div>
+                                    <h3 class="article-title">${article.title}</h3>
+                                    <p class="article-excerpt">${article.excerpt}</p>
+                                    <div class="article-tags">
+                                        ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                                    </div>
+                                    <div class="article-footer">
+                                        ${actionButton}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                    
+                    // 記事を表示
+                    articlesGrid.innerHTML = articlesHTML;
+                    
+                    // 記事をローカルキャッシュに保存
+                    cacheArticles(realArticles);
+                    
+                    console.log(`${realArticles.length}個のNotion記事が正常に読み込まれました`);
+                    realArticles.forEach((article, index) => {
+                        console.log(`記事 ${index + 1}: ${article.title}`);
+                    });
+                }
+            } catch (error) {
+                console.error('Notion記事の読み込みに失敗しました:', error);
+                // エラー時の表示
+                const articlesGrid = document.getElementById('articles-grid');
+                if (articlesGrid) {
+                    articlesGrid.innerHTML = `
+                        <div class="error-message" style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; color: #cc0000;">
+                            <h3>記事の読み込みに失敗しました</h3>
+                            <p>Notion APIの接続に問題があります。ページを再読み込みしてください。</p>
+                            <button onclick="location.reload()" style="background: #0099cc; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; cursor: pointer; margin-top: 1rem;">再読み込み</button>
+                        </div>
+                    `;
+                }
+            }
+        });
+
+        // キャッシュされた記事を読み込む関数
+        async function loadCachedArticles() {
+            try {
+                // ローカルAPIサーバーから取得を試行
+                const response = await fetch('/api/articles');
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('📚 キャッシュから記事を読み込みました:', data.articles.length);
+                    return data.articles;
+                }
+            } catch (error) {
+                console.log('ℹ️ ローカルAPIサーバーが利用できません。Notionから直接取得します。');
+            }
+            
+            // ローカルストレージからのキャッシュを確認
+            try {
+                const cached = localStorage.getItem('cached_articles');
+                const cacheTime = localStorage.getItem('cache_time');
+                
+                if (cached && cacheTime) {
+                    const cacheAge = Date.now() - parseInt(cacheTime);
+                    const maxAge = 30 * 60 * 1000; // 30分
+                    
+                    if (cacheAge < maxAge) {
+                        console.log('📱 ローカルキャッシュから記事を読み込みました');
+                        return JSON.parse(cached);
+                    }
+                }
+            } catch (error) {
+                console.warn('⚠️ ローカルキャッシュの読み込みに失敗しました:', error);
+            }
+            
+            return null;
+        }
+
+        // 記事をローカルキャッシュに保存
+        function cacheArticles(articles) {
+            try {
+                localStorage.setItem('cached_articles', JSON.stringify(articles));
+                localStorage.setItem('cache_time', Date.now().toString());
+                console.log('💾 記事をローカルキャッシュに保存しました');
+            } catch (error) {
+                console.warn('⚠️ ローカルキャッシュの保存に失敗しました:', error);
+            }
+        }
+
+        // 手動更新ボタンの処理
+        function refreshArticles() {
+            localStorage.removeItem('cached_articles');
+            localStorage.removeItem('cache_time');
+            location.reload();
+        }
+    </script>
+</body>
+</html>

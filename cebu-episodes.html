@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セブ島活動記録 - エピソード一覧 | まっすー活動記</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <style>
+        .episodes-hero {
+            background: linear-gradient(135deg, #0099cc 0%, #004466 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .episodes-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .episodes-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .episodes-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .episodes-stats .stat {
+            text-align: center;
+        }
+
+        .episodes-stats .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .episodes-stats .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .episodes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .episode-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .episode-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .episode-header {
+            background: linear-gradient(135deg, #0099cc, #00aadd);
+            color: white;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .episode-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .episode-date {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .episode-status {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .episode-status.available {
+            background: #28a745;
+        }
+
+        .episode-status.coming-soon {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .episode-content {
+            padding: 1.5rem;
+        }
+
+        .episode-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .episode-excerpt {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .episode-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .episode-tag {
+            background: #f0f8ff;
+            color: #0066cc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid #e0e8f0;
+        }
+
+        .episode-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .read-time {
+            font-size: 0.8rem;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .episode-link {
+            background: #0099cc;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .episode-link:hover {
+            background: #0077aa;
+        }
+
+        .episode-link.disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .filter-section {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .episode-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active {
+            background: #0099cc;
+            color: white;
+            border-color: #0099cc;
+        }
+
+        .back-to-blog {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #5a6268;
+        }
+
+        @media (max-width: 768px) {
+            .episodes-hero h1 {
+                font-size: 2rem;
+            }
+
+            .episodes-stats {
+                gap: 1rem;
+            }
+
+            .episodes-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .episode-filters {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">まっすー</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#fomus">FOMUS</a></li>
+                <li><a href="index.html#works">Works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="ja">🇯🇵</button>
+                <button class="lang-btn" data-lang="en">🇺🇸</button>
+                <button class="lang-btn" data-lang="es">🇪🇸</button>
+                <button class="lang-btn" data-lang="ko">🇰🇷</button>
+                <button class="lang-btn" data-lang="ar">🇸🇦</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- パンくずナビ -->
+        <nav class="breadcrumb" style="padding: 1rem 0; background: #f8f9fa;">
+            <div class="container">
+                <a href="index.html">Home</a> 
+                <span>/</span> 
+                <a href="blog.html">活動記</a> 
+                <span>/</span> 
+                <span>セブ島活動記録</span>
+            </div>
+        </nav>
+
+        <!-- ヒーローセクション -->
+        <section class="episodes-hero">
+            <div class="container">
+                <h1>🇵🇭 セブ島活動記録</h1>
+                <p>フィリピン・セブ島での90日間の撮影活動記録。美しい海と現地の人々との出会いを通じて感じた文化の違いと共通点、そして忘れられない瞬間たちをお届けします。</p>
+                <div class="episodes-stats" id="episodes-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="stat-episodes">0</span>
+                        <span class="stat-label">記事</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="stat-locations">0</span>
+                        <span class="stat-label">撮影地</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="stat-photos">∞</span>
+                        <span class="stat-label">思い出</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- フィルターセクション -->
+        <section class="filter-section">
+            <div class="container">
+                <div class="episode-filters">
+                    <button class="filter-btn active" data-filter="all">すべて</button>
+                    <button class="filter-btn" data-filter="available">読める記事</button>
+                    <button class="filter-btn" data-filter="coming-soon">近日公開</button>
+                    <button class="filter-btn" data-filter="photography">撮影記録</button>
+                    <button class="filter-btn" data-filter="culture">文化交流</button>
+                    <button class="filter-btn" data-filter="adventure">冒険</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- エピソード一覧 -->
+        <section class="episodes-section">
+            <div class="container">
+                <div class="episodes-grid" id="episodes-grid">
+                    <!-- エピソードはJavaScriptで動的に生成 -->
+                </div>
+
+                <!-- ページング -->
+                <div class="pagination" style="margin-top: 3rem;">
+                    <button class="page-btn prev" id="prev-btn">← 前の20話</button>
+                    <span class="page-info" id="page-info">1-20 / 90話</span>
+                    <button class="page-btn next" id="next-btn">次の20話 →</button>
+                </div>
+
+                <!-- ブログ一覧に戻る -->
+                <div class="back-to-blog">
+                    <a href="blog.html" class="back-btn">← 活動記一覧に戻る</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 まっすー (FOMUS) All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="notion-api.js"></script>
+    <script>
+        // エピソードデータ（Notionから実際のデータを取得）
+        let episodes = [];
+        
+        // Notionデータベースからエピソードデータを取得
+        async function loadEpisodesFromNotion() {
+            try {
+                // Notionデータベースから記事を取得
+                const databaseArticles = await notionAPI.getCebuDatabaseArticles();
+                
+                // 実際のNotion記事をエピソード形式に変換
+                episodes = databaseArticles.map((article, index) => {
+                    const episodeNumber = index + 1;
+                    return {
+                        number: episodeNumber,
+                        title: article.title,
+                        date: article.date,
+                        location: article.location,
+                        category: 'photography', // デフォルトカテゴリ
+                        tags: article.tags,
+                        excerpt: article.excerpt,
+                        readTime: Math.floor(Math.random() * 8) + 3,
+                        available: true, // Notionから取得できる記事は閲覧可能
+                        id: article.id,
+                        url: article.url
+                    };
+                });
+
+                console.log(`${episodes.length}個のエピソードが読み込まれました（全てNotionデータベースから）`);
+                
+                // 統計情報を更新
+                updateStats();
+                
+                if (episodes.length === 0) {
+                    console.warn('Notionデータベースから記事が取得できませんでした');
+                }
+            } catch (error) {
+                console.error('Notionからのエピソード取得に失敗:', error);
+                episodes = [];
+            }
+        }
+
+        // エピソードが見つからない場合の表示
+        function showNoEpisodesMessage() {
+            const grid = document.getElementById('episodes-grid');
+            grid.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+                    <h3>📝 記事を準備中...</h3>
+                    <p>Notionデータベースに記事を追加すると、ここに表示されます。</p>
+                    <p><strong>確認事項:</strong></p>
+                    <ul style="text-align: left; max-width: 400px; margin: 1rem auto;">
+                        <li>データベースIDが正しく設定されているか</li>
+                        <li>記事のStatusが「Published」になっているか</li>
+                        <li>Notionトークンがデータベースにアクセスできるか</li>
+                    </ul>
+                    <button onclick="location.href='test-database.html'" style="background: #0099cc; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; cursor: pointer; margin-top: 1rem;">
+                        データベース接続をテスト
+                    </button>
+                </div>
+            `;
+        }
+
+        // 統計情報を更新
+        function updateStats() {
+            const episodeCountEl = document.getElementById('stat-episodes');
+            const locationCountEl = document.getElementById('stat-locations');
+            
+            if (episodeCountEl) {
+                episodeCountEl.textContent = episodes.length;
+            }
+            
+            if (locationCountEl && episodes.length > 0) {
+                // ユニークな場所の数を計算
+                const uniqueLocations = [...new Set(episodes.map(ep => ep.location))];
+                locationCountEl.textContent = uniqueLocations.length;
+            }
+        }
+
+        // ページング関連の変数
+        let currentPage = 1;
+        const episodesPerPage = 20;
+        let filteredEpisodes = [];
+
+        // エピソードカードを生成
+        function createEpisodeCard(episode) {
+            return `
+                <div class="episode-card" data-category="${episode.category}" onclick="openEpisode('${episode.id}', ${episode.available})">
+                    <div class="episode-header">
+                        <div class="episode-number">第${episode.number}話</div>
+                        <div class="episode-date">${episode.date}</div>
+                        <div class="episode-status ${episode.available ? 'available' : 'coming-soon'}">
+                            ${episode.available ? '読める' : '近日公開'}
+                        </div>
+                    </div>
+                    <div class="episode-content">
+                        <h3 class="episode-title">${episode.title}</h3>
+                        <p class="episode-excerpt">${episode.excerpt}</p>
+                        <div class="episode-tags">
+                            ${episode.tags.map(tag => `<span class="episode-tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="episode-footer">
+                            <div class="read-time">
+                                <span>📖</span>
+                                <span>約${episode.readTime}分</span>
+                            </div>
+                            ${episode.available ? 
+                                `<a href="article.html?id=${episode.id}" class="episode-link">読む</a>` :
+                                `<span class="episode-link disabled">近日公開</span>`
+                            }
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // エピソードを表示
+        function displayEpisodes(page = 1) {
+            if (filteredEpisodes.length === 0) {
+                showNoEpisodesMessage();
+                return;
+            }
+
+            const startIndex = (page - 1) * episodesPerPage;
+            const endIndex = startIndex + episodesPerPage;
+            const pageEpisodes = filteredEpisodes.slice(startIndex, endIndex);
+
+            const grid = document.getElementById('episodes-grid');
+            grid.innerHTML = pageEpisodes.map(episode => createEpisodeCard(episode)).join('');
+
+            // ページング情報を更新
+            updatePagination(page);
+        }
+
+        // ページング更新
+        function updatePagination(page) {
+            const totalPages = Math.ceil(filteredEpisodes.length / episodesPerPage);
+            const startEpisode = (page - 1) * episodesPerPage + 1;
+            const endEpisode = Math.min(page * episodesPerPage, filteredEpisodes.length);
+
+            document.getElementById('page-info').textContent = `${startEpisode}-${endEpisode} / ${filteredEpisodes.length}話`;
+            document.getElementById('prev-btn').disabled = page === 1;
+            document.getElementById('next-btn').disabled = page === totalPages;
+        }
+
+        // フィルタリング
+        function filterEpisodes(category) {
+            if (category === 'all') {
+                filteredEpisodes = [...episodes];
+            } else if (category === 'available') {
+                filteredEpisodes = episodes.filter(ep => ep.available);
+            } else if (category === 'coming-soon') {
+                filteredEpisodes = episodes.filter(ep => !ep.available);
+            } else {
+                filteredEpisodes = episodes.filter(ep => ep.category === category);
+            }
+            
+            currentPage = 1;
+            displayEpisodes(1);
+        }
+
+        // エピソードを開く
+        function openEpisode(episodeId, available) {
+            if (available) {
+                // 実際のNotionの記事URLがある場合はそれを使用
+                const episode = episodes.find(ep => ep.id === episodeId);
+                if (episode && episode.url && !episode.url.includes('cebu-episode-')) {
+                    window.location.href = episode.url;
+                } else {
+                    window.location.href = `article.html?id=${episodeId}`;
+                }
+            } else {
+                alert('この記事は近日公開予定です。もうしばらくお待ちください。');
+            }
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Notionからエピソードデータを読み込み
+            await loadEpisodesFromNotion();
+            filteredEpisodes = [...episodes];
+            displayEpisodes(1);
+
+            // フィルターボタンのイベント設定
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    filterEpisodes(this.dataset.filter);
+                });
+            });
+
+            // ページングボタンのイベント設定
+            document.getElementById('prev-btn').addEventListener('click', function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayEpisodes(currentPage);
+                }
+            });
+
+            document.getElementById('next-btn').addEventListener('click', function() {
+                const totalPages = Math.ceil(filteredEpisodes.length / episodesPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayEpisodes(currentPage);
+                }
+            });
+        });
+    </script>
+    <script src="translations.js"></script>
+</body>
+</html>

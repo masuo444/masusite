@@ -1,0 +1,482 @@
+/* FOMUS エルメス風洗練されたデザイン */
+
+/* FOMUS セクション全体 */
+.section-fomus {
+    background: linear-gradient(135deg, #fefefe 0%, #f8f6f0 100%);
+    padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-fomus::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="%23d4af37" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+}
+
+/* メインセクション - 左右レイアウト */
+.fomus-main-section {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    margin-bottom: 6rem;
+    min-height: 400px;
+}
+
+.fomus-logo-section {
+    flex: 0 0 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fomus-logo-container-new {
+    position: relative;
+    display: inline-block;
+}
+
+.fomus-logo-new {
+    width: 300px;
+    height: auto;
+    filter: drop-shadow(0 8px 32px rgba(212, 175, 55, 0.2));
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fomus-logo-new:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 12px 48px rgba(212, 175, 55, 0.3));
+}
+
+.fomus-content-section {
+    flex: 1;
+    padding-left: 2rem;
+}
+
+.fomus-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--hermes-dark);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+.fomus-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--hermes-gray);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+}
+
+.fomus-description-extended {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--hermes-gray);
+    font-weight: 300;
+    opacity: 0.9;
+    letter-spacing: 0.01em;
+}
+
+/* ブランドアイデンティティセクション */
+.fomus-hero {
+    text-align: center;
+    margin-bottom: 6rem;
+    position: relative;
+}
+
+.fomus-brand-identity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.fomus-logo-container {
+    position: relative;
+    display: inline-block;
+}
+
+.fomus-logo-refined {
+    max-width: 200px;
+    height: auto;
+    filter: drop-shadow(0 4px 20px rgba(212, 175, 55, 0.1));
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fomus-logo-refined:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 8px 32px rgba(212, 175, 55, 0.15));
+}
+
+.fomus-brand-line {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
+    position: relative;
+}
+
+.fomus-brand-line::before,
+.fomus-brand-line::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #d4af37;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.fomus-brand-line::before {
+    left: -2px;
+}
+
+.fomus-brand-line::after {
+    right: -2px;
+}
+
+.fomus-tagline {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--hermes-dark);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: 'Noto Serif JP', serif;
+    position: relative;
+}
+
+/* ナラティブセクション */
+.fomus-narrative {
+    margin: 6rem 0;
+    position: relative;
+}
+
+.fomus-story-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.fomus-philosophy {
+    font-size: 1.2rem;
+    line-height: 2;
+    color: var(--hermes-gray);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    margin: 0;
+    padding: 2rem;
+    position: relative;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.fomus-philosophy::before {
+    content: '"';
+    font-size: 4rem;
+    color: #d4af37;
+    font-family: serif;
+    position: absolute;
+    top: -1rem;
+    left: 2rem;
+    opacity: 0.3;
+}
+
+/* コレクションセクション */
+.fomus-collections {
+    margin: 6rem 0;
+}
+
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.collection-item {
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.collection-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+    border-color: rgba(212, 175, 55, 0.2);
+}
+
+.collection-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #d4af37, #ff6600, #d4af37);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.collection-item:hover::before {
+    opacity: 1;
+}
+
+.collection-image-container {
+    position: relative;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background: #f8f6f0;
+}
+
+.collection-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.collection-item:hover .collection-image {
+    transform: scale(1.05);
+}
+
+.collection-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    opacity: 0.3;
+    display: none;
+}
+
+.collection-details {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    background: white;
+}
+
+.collection-name {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--hermes-dark);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+}
+
+.collection-category {
+    font-size: 0.85rem;
+    color: var(--hermes-gray);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* アクションボタン */
+.fomus-actions-refined {
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.fomus-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 3rem;
+    background: var(--hermes-dark);
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 2px solid var(--hermes-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.fomus-btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.fomus-btn-primary:hover::before {
+    left: 100%;
+}
+
+.fomus-btn-primary:hover {
+    background: transparent;
+    color: var(--hermes-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.btn-text {
+    font-size: 0.95rem;
+}
+
+.btn-arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.fomus-btn-primary:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 968px) {
+    .fomus-main-section {
+        flex-direction: column;
+        gap: 4rem;
+        text-align: center;
+    }
+    
+    .fomus-logo-section {
+        flex: none;
+    }
+    
+    .fomus-content-section {
+        padding-left: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-fomus {
+        padding: 4rem 0;
+    }
+    
+    .fomus-main-section {
+        gap: 3rem;
+    }
+    
+    .fomus-logo-new {
+        width: 250px;
+    }
+    
+    .fomus-title {
+        font-size: 2rem;
+    }
+    
+    .fomus-description {
+        font-size: 1.1rem;
+    }
+    
+    .fomus-description-extended {
+        font-size: 1rem;
+    }
+    
+    .fomus-hero {
+        margin-bottom: 4rem;
+    }
+    
+    .fomus-tagline {
+        font-size: 1.4rem;
+    }
+    
+    .fomus-philosophy {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+    }
+    
+    .collections-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .fomus-btn-primary {
+        padding: 1rem 2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .collections-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .collections-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .fomus-logo-new {
+        width: 200px;
+    }
+    
+    .fomus-title {
+        font-size: 1.8rem;
+    }
+    
+    .collections-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .collection-details {
+        padding: 1rem;
+    }
+    
+    .collection-name {
+        font-size: 1rem;
+    }
+    
+    .collection-category {
+        font-size: 0.8rem;
+    }
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fomus-brand-identity > * {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.fomus-brand-identity > *:nth-child(1) { animation-delay: 0.1s; }
+.fomus-brand-identity > *:nth-child(2) { animation-delay: 0.2s; }
+.fomus-brand-identity > *:nth-child(3) { animation-delay: 0.3s; }
+
+.collection-item {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.collection-item:nth-child(1) { animation-delay: 0.1s; }
+.collection-item:nth-child(2) { animation-delay: 0.2s; }
+.collection-item:nth-child(3) { animation-delay: 0.3s; }

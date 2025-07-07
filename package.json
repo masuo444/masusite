@@ -1,0 +1,34 @@
+{
+  "name": "masusite-blog",
+  "version": "1.0.0",
+  "description": "まっすーのブログサイト - Notion連携",
+  "main": "notion-webhook.js",
+  "scripts": {
+    "start": "node notion-webhook.js",
+    "dev": "nodemon notion-webhook.js",
+    "proxy": "node notion-proxy.js",
+    "proxy-dev": "nodemon notion-proxy.js",
+    "serve": "node server.js",
+    "serve-dev": "nodemon server.js",
+    "refresh": "node -e \"require('./notion-webhook.js').refreshArticles()\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "@octokit/rest": "^20.0.2",
+    "dotenv": "^16.3.1",
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "notion",
+    "blog",
+    "webhook",
+    "auto-update"
+  ],
+  "author": "まっすー",
+  "license": "MIT"
+}

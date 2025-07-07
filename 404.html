@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ページが見つかりません | まっすー</title>
+    <meta name="description" content="お探しのページが見つかりませんでした。まっすーのポートフォリオサイトのホームページに戻ってください。">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --hermes-orange: #ff6600;
+            --hermes-brown: #8b4513;
+            --hermes-beige: #f5f2e8;
+            --hermes-gold: #d4af37;
+            --hermes-dark: #2c2c2c;
+            --hermes-light: #fefefe;
+            --hermes-gray: #8e8e8e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif JP', serif;
+            line-height: 1.7;
+            color: var(--hermes-dark);
+            background: linear-gradient(135deg, var(--hermes-beige) 0%, #fff 50%, var(--hermes-beige) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 200;
+            color: var(--hermes-orange);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--hermes-dark);
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+        
+        .error-description {
+            font-size: 1.1rem;
+            color: var(--hermes-gray);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+        
+        .btn-primary {
+            background: var(--hermes-orange);
+            color: white;
+            box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--hermes-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255, 102, 0, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--hermes-dark);
+            border: 2px solid var(--hermes-orange);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--hermes-orange);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .suggestions {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 102, 0, 0.2);
+        }
+        
+        .suggestions h3 {
+            font-size: 1.2rem;
+            color: var(--hermes-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .suggestions ul {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
+        }
+        
+        .suggestions li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .suggestions a {
+            color: var(--hermes-orange);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .suggestions a:hover {
+            color: var(--hermes-brown);
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .error-container {
+                margin: 2rem 1rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 1.5rem;
+            }
+            
+            .error-description {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                min-width: 180px;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">ページが見つかりません</h1>
+        <p class="error-description">
+            申し訳ございませんが、お探しのページは移動または削除された可能性があります。<br>
+            以下のリンクからサイトをご利用ください。
+        </p>
+        
+        <div class="error-actions">
+            <a href="/" class="btn btn-primary">ホームページに戻る</a>
+            <a href="javascript:history.back()" class="btn btn-secondary">前のページに戻る</a>
+        </div>
+        
+        <div class="suggestions">
+            <h3>人気のページ</h3>
+            <ul>
+                <li><a href="/#fomus">FOMUS ブランド</a></li>
+                <li><a href="/#works">作品ギャラリー</a></li>
+                <li><a href="/#services">サービス一覧</a></li>
+                <li><a href="/#contact">お問い合わせ</a></li>
+                <li><a href="https://fomus.jp" target="_blank" rel="noopener noreferrer">FOMUS 公式サイト</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

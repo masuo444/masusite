@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アメリカ・スペイン活動記 🇺🇸🇪🇸 | まっすー</title>
+    <meta name="description" content="まっすーのアメリカ・スペイン旅行記。ロサンゼルス、ラスベガス、ニューヨークからスペインまでの冒険の記録。">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <style>
+        .country-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .country-tab {
+            background: white;
+            border: 2px solid #0099cc;
+            color: #0099cc;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .country-tab.active {
+            background: #0099cc;
+            color: white;
+        }
+        
+        .country-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 153, 204, 0.3);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .episode-list {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .episode-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #0099cc;
+        }
+        
+        .episode-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .episode-number {
+            background: #0099cc;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+        
+        .episode-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .episode-preview {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .episode-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .coming-soon {
+            opacity: 0.6;
+            border-left-color: #ccc;
+        }
+        
+        .coming-soon .episode-number {
+            background: #ccc;
+        }
+        
+        .country-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+        }
+        
+        .country-intro h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .country-intro p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">まっすー</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#fomus">FOMUS</a></li>
+                <li><a href="index.html#works">Works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#blog">活動記</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="ja">🇯🇵</button>
+                <button class="lang-btn" data-lang="en">🇺🇸</button>
+                <button class="lang-btn" data-lang="es">🇪🇸</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="blog-main">
+        <!-- ヒーローセクション -->
+        <section class="blog-hero">
+            <div class="container">
+                <h1>アメリカ・スペイン活動記 🇺🇸🇪🇸</h1>
+                <p>ロサンゼルス、ラスベガス、ニューヨークからスペインまでの冒険の記録</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">エピソード</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">国</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">30</span>
+                        <span class="stat-label">活動日数</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 国別タブ -->
+        <section class="blog-controls">
+            <div class="container">
+                <div class="country-tabs">
+                    <button class="country-tab active" data-country="usa">
+                        🇺🇸 アメリカ編
+                    </button>
+                    <button class="country-tab" data-country="spain">
+                        🇪🇸 スペイン編
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- アメリカ編 -->
+        <section class="blog-articles">
+            <div class="container">
+                <div class="tab-content active" id="usa-content">
+                    <div class="country-intro">
+                        <h2>🇺🇸 アメリカ編</h2>
+                        <p>ロサンゼルス、ラスベガス、ニューヨークを巡る25日間の冒険。ドジャース戦観戦から、ブロードウェイミュージカル、カウチサーフィンでの現地交流まで、アメリカの多様な文化と出会いの記録です。</p>
+                    </div>
+                    
+                    <div class="episode-list" id="usa-episodes">
+                        <!-- アメリカ編エピソードを動的に読み込み -->
+                    </div>
+                </div>
+
+                <!-- スペイン編 -->
+                <div class="tab-content" id="spain-content">
+                    <div class="country-intro">
+                        <h2>🇪🇸 スペイン編</h2>
+                        <p>マドリード、バルセロナ、セビリアを巡るスペインでの文化体験とフラメンコ、タパス、美術館巡りの記録。情熱の国スペインでの新たな発見と出会いの物語です。</p>
+                    </div>
+                    
+                    <div class="episode-list" id="spain-episodes">
+                        <!-- スペイン編エピソードを動的に読み込み -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 まっすー (FOMUS) All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/notion-api.js"></script>
+    <script>
+        // アメリカ編のエピソードデータ
+        const usaEpisodes = [
+            { id: '288536845ec64b038efe674c0392dd18', title: 'ロサンゼルスへ！', preview: '待ちに待ったアメリカ旅行の始まり。ロサンゼルス国際空港に降り立った瞬間の興奮と初日の印象を記録。' },
+            { id: '44a0685e33ef43f4b548bc18060efb13', title: '合流！ドジャース戦！', preview: '友人と合流してドジャースタジアムへ。本場のベースボール観戦と現地の熱狂を体験。' },
+            { id: 'd735623a1ac841949f7bb655ab8e010f', title: 'ロサンゼルスを走る！', preview: 'ロサンゼルスの街をランニングで探索。カリフォルニアの美しい朝日と街の雰囲気を満喫。' },
+            { id: '73ffe7a1300f4d949ce6c60bf7533c3d', title: '人生最高記録を更新！', preview: 'ランニングで自己ベストを記録！モチベーション最高潮の1日。' },
+            { id: '518323780d0142b58b0046b31713e0b7', title: '観光Day', preview: 'ハリウッドサインやサンタモニカピアなど、LA定番スポットを巡る観光の日。' },
+            { id: 'a092ade489974c06851821a8d00c125a', title: '一般の生活に触れる', preview: 'アメリカの日常生活を体験。スーパーマーケットや地元の人々との交流。' },
+            { id: 'a6f50ad11cc04e80ba09d35754ba9c3d', title: '枡フォトプロジェクト開始', preview: 'アメリカで枡フォトプロジェクトを開始。日本文化を海外で表現する挑戦。' },
+            { id: '3398c31870ee4439b85bd0836eb54f20', title: 'パブツアーに参加！', preview: 'ロサンゼルスのパブツアーに参加。現地の夜の文化と国際交流を楽しむ。' },
+            { id: '73f43ecd83674d26a0182815f4406adf', title: '仕事と観光', preview: 'リモートワークと観光のバランス。アメリカでの働き方を模索。' },
+            { id: '63fda1676d44480ab63329d6ad2ff769', title: 'ビバリーヒルズへ！', preview: 'セレブの街ビバリーヒルズを探索。豪華な街並みと高級ショッピング体験。' },
+            { id: '77b26eaf30eb4593a16842aaffa56b0d', title: 'やらかした！', preview: 'アメリカで起こったハプニング。トラブルも旅の思い出の一部。' },
+            { id: '9515467aaa5e4ad4be4d0968b7d31b6f', title: 'ラスベガスへ！', preview: 'エンターテイメントの都ラスベガスに移動。煌びやかな街の第一印象。' },
+            { id: '098f01b798bd4614a4e60d5594d1442e', title: 'カウチサーフィン最高だ', preview: 'ラスベガスでカウチサーフィン体験。現地の人との深い交流。' },
+            { id: 'f796b60237f34868a8ebec9adefa5721', title: '最高峰のエンタメ', preview: 'ラスベガスのショーを体験。世界最高峰のエンターテイメントに感動。' },
+            { id: '7ad45e83c6d44e2c9b7dd61c2c04bce6', title: 'ニューヨークへ', preview: 'アメリカ最大の都市ニューヨークに到着。街のエネルギーに圧倒される。' },
+            { id: '74b772488a5d44d28b02593538590708', title: '出会いがたくさん！', preview: 'ニューヨークでの様々な出会い。多様性の街で感じた人間関係の豊かさ。' },
+            { id: 'f208e91c9c6a42e1b36d3d163423d5ae', title: 'ランニング文化の強さ', preview: 'ニューヨークのランニング文化を体験。セントラルパークでの朝ラン。' },
+            { id: 'd08b520a90d14b889b0465f90fd20c1c', title: 'ブロードウェイミュージカルへ！', preview: '本場ブロードウェイでミュージカル鑑賞。感動的なパフォーマンスに涙。', featured: true },
+            { id: '4c2c9b4128f84141925e325ad354c30e', title: 'コミュ力を最大限に', preview: 'ニューヨークでコミュニケーション力を最大限に発揮。積極的な交流の成果。' },
+            { id: 'd30751724e29477ab3b01ddd4dc53ade', title: 'ムーラン・ルージュ観劇', preview: '話題のミュージカル「ムーラン・ルージュ」を観劇。圧倒的な舞台演出に感動。' },
+            { id: '687c675f1e81485badd63b480ea5c957', title: 'デスクワークに集中する', preview: 'ニューヨークのカフェでリモートワーク。集中できる環境を求めて。' },
+            { id: '26b7e29380ed45968a0a41b656fa0148', title: 'フル稼働の1日', preview: '仕事と観光を両立した充実の1日。効率的なスケジュール管理の重要性。' },
+            { id: 'a732c6f0fc4447bf90e94890f1ba3a0f', title: 'カウチサーフィンの醍醐味', preview: 'ニューヨークでもカウチサーフィン。現地の人との深いつながりを実感。' },
+            { id: 'db850e86fe894a83a73f8f3cb22a6de2', title: '環境を大切に', preview: 'アメリカの環境意識について考察。持続可能な旅行のあり方。' },
+            { id: '39ea9d48cc86450c813756d7bd4c0cda', title: 'アメリカ編ラスト！', preview: 'アメリカ滞在最後の日。25日間の冒険を振り返る感動的なフィナーレ。', featured: true }
+        ];
+
+        // スペイン編エピソードデータ（実際のNotionタイトル）
+        const spainEpisodes = [
+            { id: '1325d0e112914a8ea01f3601e6363ac9', title: 'バルセロナへ！', preview: 'アメリカからスペインのバルセロナへ移動。新たな冒険の始まり。', featured: true },
+            { id: 'c20845ad6d4a44378c53e78611ca6974', title: 'ガウディ建築へ', preview: 'バルセロナの象徴、ガウディの建築群を巡る。芸術と建築の融合に感動。' },
+            { id: '3e7ec47313f343c194650e88083fafdf', title: 'バルセロナの絶景とフラメンコ💃', preview: 'バルセロナの美しい景色と本場のフラメンコを体験。情熱的な夜。' },
+            { id: '4464b65cefa24261b138298a0e711e57', title: 'バルセロナのClubへ', preview: 'バルセロナの夜のクラブシーンを体験。現地の若者文化に触れる。' },
+            { id: 'db34e97756f0442888e91ec081e0471e', title: '休息とデスクワーク', preview: 'バルセロナでの休息日。カフェでのデスクワークとリフレッシュタイム。' },
+            { id: '1416fd1ddc9a483c8e595d1634fe4bf9', title: 'バルセロナ最終日', preview: 'バルセロナでの最後の日。思い出を振り返りながら次の目的地へ。' },
+            { id: '1366ce888a764d90868316b69b48c882', title: 'マドリードへ！', preview: 'スペインの首都マドリードに移動。新たな街での冒険が始まる。' },
+            { id: 'f59201e3501e47879673b6241440cb4e', title: '美術館×AI活用', preview: 'マドリードの美術館でAI技術を活用した新しい体験。芸術と技術の融合。' },
+            { id: 'ee5cb234fb6d45279dfcaa040de14f61', title: 'マドリードのBAR巡り', preview: 'マドリードの伝統的なバル文化を体験。タパスとワインの夜。' },
+            { id: '631e64a1390c40128235802d20f7122b', title: '文化の違いを思い知らされた日', preview: 'スペインと日本の文化の違いを実感。異文化理解の深い体験。' },
+            { id: 'e5b89bf1041c4bfabdbbc78a7f4d2932', title: '王宮の天井画', preview: 'マドリード王宮の豪華な天井画に圧倒される。スペイン王室の歴史を感じる。' },
+            { id: '8da5b4bf3763468d87e394c9193f9f4e', title: '怒涛の枡フォト！', preview: 'スペインの名所で枡を使った写真撮影プロジェクト。日本文化の海外発信。' },
+            { id: 'dc5346057dfb4ffabb5da73c90e36001', title: 'ここからがスタート！', preview: 'スペイン編の締めくくり。新たなスタートへの決意を込めて。', featured: true }
+        ];
+
+        // ページ読み込み時の初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUSAEpisodes();
+            setupTabSwitching();
+        });
+
+        // アメリカ編エピソードを読み込み
+        function loadUSAEpisodes() {
+            const usaEpisodesContainer = document.getElementById('usa-episodes');
+            const episodesHTML = usaEpisodes.map((episode, index) => {
+                const episodeNumber = index + 1;
+                const featuredClass = episode.featured ? ' featured' : '';
+                
+                return `
+                    <div class="episode-item${featuredClass}" onclick="openEpisodePage(${episodeNumber})">
+                        <div class="episode-number">第${episodeNumber}話</div>
+                        <div class="episode-title">${episode.title}</div>
+                        <div class="episode-preview">${episode.preview}</div>
+                        <div class="episode-meta">
+                            <span>📅 2024年</span>
+                            <span>📍 アメリカ</span>
+                            <span>📖 読了時間: 3-5分</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            usaEpisodesContainer.innerHTML = episodesHTML;
+        }
+
+        // スペイン編エピソードを読み込み
+        function loadSpainEpisodes() {
+            const spainEpisodesContainer = document.getElementById('spain-episodes');
+            const episodesHTML = spainEpisodes.map((episode, index) => {
+                const episodeNumber = index + 1;
+                const featuredClass = episode.featured ? ' featured' : '';
+                
+                return `
+                    <div class="episode-item${featuredClass}" onclick="openSpainEpisodePage(${episodeNumber})">
+                        <div class="episode-number">第${episodeNumber}話</div>
+                        <div class="episode-title">${episode.title}</div>
+                        <div class="episode-preview">${episode.preview}</div>
+                        <div class="episode-meta">
+                            <span>📅 2024年</span>
+                            <span>📍 スペイン</span>
+                            <span>📖 読了時間: 3-5分</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            spainEpisodesContainer.innerHTML = episodesHTML;
+        }
+
+        // タブ切り替え機能
+        function setupTabSwitching() {
+            const tabs = document.querySelectorAll('.country-tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // アクティブなタブを切り替え
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // アクティブなコンテンツを切り替え
+                    const country = tab.dataset.country;
+                    contents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${country}-content`) {
+                            content.classList.add('active');
+                        }
+                    });
+                    
+                    // スペイン編が選択された場合、エピソードを読み込み
+                    if (country === 'spain') {
+                        loadSpainEpisodes();
+                    }
+                });
+            });
+        }
+
+        // アメリカ編エピソードページを開く
+        function openEpisodePage(episodeNumber) {
+            window.location.href = `episode-template.html?episode=${episodeNumber}`;
+        }
+
+        // スペイン編エピソードページを開く
+        function openSpainEpisodePage(episodeNumber) {
+            window.location.href = `episode-template.html?episode=${episodeNumber}&country=spain`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マレーシア活動記 🇲🇾 | まっすー</title>
+    <meta name="description" content="まっすーのマレーシア活動記。クアラルンプールでの写真撮影活動、現地交流、海外展開の記録。">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .blog-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .malaysia-intro {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 20px;
+        }
+        
+        .malaysia-intro h2 {
+            color: #e74c3c;
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+        
+        .malaysia-intro p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .activity-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .highlight-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-desc {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .episode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .episode-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .episode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .episode-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .episode-content {
+            padding: 1.5rem;
+        }
+        
+        .episode-number {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .episode-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+        
+        .episode-preview {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .episode-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .coming-soon {
+            opacity: 0.6;
+        }
+        
+        .coming-soon .episode-number {
+            background: #ccc;
+        }
+        
+        .featured {
+            border: 2px solid #e74c3c;
+        }
+        
+        .featured .episode-number {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .blog-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .episode-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">まっすー</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#fomus">FOMUS</a></li>
+                <li><a href="index.html#works">Works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#blog">活動記</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="ja">🇯🇵</button>
+                <button class="lang-btn" data-lang="en">🇺🇸</button>
+                <button class="lang-btn" data-lang="es">🇪🇸</button>
+                <button class="lang-btn" data-lang="ko">🇰🇷</button>
+                <button class="lang-btn" data-lang="ar">🇸🇦</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <div class="container">
+                <h1>マレーシア活動記 🇲🇾</h1>
+                <p>マレーシア・クアラルンプールでの写真撮影活動、現地交流、海外展開の記録。多文化共生社会での発見と成長の物語です。</p>
+                
+                <div class="blog-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="episode-count">準備中</span>
+                        <span class="stat-label">エピソード</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2024年</span>
+                        <span class="stat-label">撮影期間</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">🇲🇾</span>
+                        <span class="stat-label">マレーシア</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-articles">
+            <div class="container">
+                <div class="malaysia-intro">
+                    <h2>🏢 クアラルンプールでの冒険</h2>
+                    <p>マレーシアの首都クアラルンプールでの写真撮影プロジェクトとその過程での様々な体験をお届けします。多様な文化が共存する国際都市での活動を通じて得た貴重な経験と発見の記録です。</p>
+                    
+                    <div class="activity-highlights">
+                        <div class="highlight-card">
+                            <div class="highlight-icon">📸</div>
+                            <div class="highlight-title">写真撮影</div>
+                            <div class="highlight-desc">クアラルンプールの現代的な街並みと文化を記録</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🤝</div>
+                            <div class="highlight-title">現地交流</div>
+                            <div class="highlight-desc">マレーシアの多文化社会での交流体験</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🌏</div>
+                            <div class="highlight-title">海外活動</div>
+                            <div class="highlight-desc">東南アジアでの国際的な写真活動</div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">🎯</div>
+                            <div class="highlight-title">ブランド展開</div>
+                            <div class="highlight-desc">FOMUSマレーシア展開プロジェクト</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="episode-grid" id="malaysia-episodes">
+                    <!-- マレーシアエピソードを動的に読み込み -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 まっすー (FOMUS) All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/notion-api.js"></script>
+    <script>
+        // マレーシアエピソードデータ（0-12話）
+        const malaysiaEpisodes = [
+            { id: '6345579d969c42c1a86d94b5b648a51d', title: '新ブランドについて', preview: 'マレーシア活動記の開始。新しいブランド展開への思いと計画について。', featured: true },
+            { id: '9abf785bd2224dbbbb9c3516058d4378', title: 'マレーシアでの活動スタート', preview: 'クアラルンプールでの活動開始。現地での第一印象と活動の始まり。' },
+            { id: '1e0aae741178498f95abc69512f58813', title: 'クアラルンプールでビジネスするということ', preview: 'マレーシアでのビジネス環境について。現地でのビジネス展開の可能性を探る。' },
+            { id: '9947a9891a3e4d9bbabed3411ef45ad2', title: '日本のコンテンツは強い', preview: '日本文化の海外での影響力。マレーシアでの日本コンテンツの受容について。' },
+            { id: '423a9cb27717483eb45545cf901e4a49', title: '浴衣で枡フォト撮影？！', preview: '浴衣を使った枡フォト撮影の挑戦。日本文化とマレーシアの融合。' },
+            { id: '9ecd21ec0be54f81b5a057b2699414f8', title: 'アニメ・マンガの日本', preview: 'アニメ・マンガを通じた日本文化の発信。マレーシアでの反応と可能性。' },
+            { id: 'a52f64f2c46f4561b31ab8cabfb1408a', title: '挑戦している人はかっこいい', preview: 'チャレンジ精神の重要性。挑戦する人々への敬意と学び。' },
+            { id: '734f6262bec24b7496fbc2f98a937913', title: 'リアルなクアラルンプール事情', preview: 'クアラルンプールの実際の生活。現地での生活体験と発見。' },
+            { id: '884f32aad5f4451a801fc6452ccece8b', title: 'クアラルンプールのお店にFOMUS枡が！', preview: '現地店舗でのFOMUS枡展開。海外展開の第一歩となる重要な成果。', featured: true },
+            { id: '315c8efd310b444b84c6d9b409c3d248', title: '一泊1200円の宿から5つ星ホテルまで泊まった感想', preview: '様々な価格帯の宿泊体験。コストパフォーマンスと快適性の比較。' },
+            { id: '3a09f7b7d45b4e6d94ec130e2427a624', title: '枡フォト9日間連続撮影を達成', preview: '9日間連続での枡フォト撮影達成。継続することの価値と成果。', featured: true },
+            { id: 'ffc2043900ab4f8fa8fb9f8769e44b90', title: '総括・マレーシア9泊10日の弾丸遠征を終えて', preview: 'マレーシア活動の総括。9泊10日の集中的な活動から得た学びと成果。', featured: true },
+            { id: 'f7d9ee62075e402386e7dc805a6c26f4', title: 'マレーシアの宗教とその特徴', preview: 'マレーシアの多宗教社会について。宗教的多様性と共存の学び。' }
+        ];
+
+        // ページ読み込み時の初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMalaysiaEpisodes();
+        });
+
+        // マレーシアエピソードを読み込み
+        function loadMalaysiaEpisodes() {
+            const malaysiaEpisodesContainer = document.getElementById('malaysia-episodes');
+            const episodeCountElement = document.getElementById('episode-count');
+            
+            // エピソード数を更新
+            episodeCountElement.textContent = malaysiaEpisodes.length;
+            
+            const episodesHTML = malaysiaEpisodes.map((episode, index) => {
+                const episodeNumber = index; // 0から始まる
+                const featuredClass = episode.featured ? ' featured' : '';
+                
+                return `
+                    <div class="episode-card${featuredClass}" onclick="openMalaysiaEpisodePage(${episodeNumber})">
+                        <div class="episode-image">🇲🇾</div>
+                        <div class="episode-content">
+                            <div class="episode-number">${episodeNumber}日目</div>
+                            <div class="episode-title">${episode.title}</div>
+                            <div class="episode-preview">${episode.preview}</div>
+                            <div class="episode-meta">
+                                <span>📅 2024年</span>
+                                <span>📍 クアラルンプール</span>
+                                <span>📖 読了時間: 3-5分</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            malaysiaEpisodesContainer.innerHTML = episodesHTML;
+        }
+
+        // マレーシアエピソードページを開く
+        function openMalaysiaEpisodePage(episodeNumber) {
+            window.location.href = `episode-template.html?episode=${episodeNumber}&country=malaysia`;
+        }
+    </script>
+</body>
+</html>

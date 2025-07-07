@@ -973,7 +973,7 @@ class NotionBlogAPI {
             
             // まずローカルプロキシサーバーを試行
             try {
-                const proxyResponse = await fetch(`http://localhost:3002/api/episodes/${episodeNumber}`);
+                const proxyResponse = await fetch(`https://chrz842959.xsrv.jp/api/episodes/${episodeNumber}`);
                 
                 if (proxyResponse.ok) {
                     const episodeData = await proxyResponse.json();
@@ -1104,7 +1104,7 @@ class NotionBlogAPI {
             
             // まずローカルプロキシサーバーを試行
             try {
-                const proxyResponse = await fetch(`http://localhost:3002/api/spain-episodes/${episodeNumber}`);
+                const proxyResponse = await fetch(`https://chrz842959.xsrv.jp/api/spain-episodes/${episodeNumber}`);
                 
                 if (proxyResponse.ok) {
                     const episodeData = await proxyResponse.json();
@@ -1186,7 +1186,7 @@ class NotionBlogAPI {
             
             // まずローカルプロキシサーバーを試行
             try {
-                const proxyResponse = await fetch(`http://localhost:3002/api/cebu-episodes/${episodeNumber}`);
+                const proxyResponse = await fetch(`https://chrz842959.xsrv.jp/api/cebu-episodes/${episodeNumber}`);
                 
                 if (proxyResponse.ok) {
                     const episodeData = await proxyResponse.json();
@@ -1268,7 +1268,7 @@ class NotionBlogAPI {
             
             // まずローカルプロキシサーバーを試行
             try {
-                const proxyResponse = await fetch(`http://localhost:3002/api/malaysia-episodes/${episodeNumber}`);
+                const proxyResponse = await fetch(`https://chrz842959.xsrv.jp/api/malaysia-episodes/${episodeNumber}`);
                 
                 if (proxyResponse.ok) {
                     const episodeData = await proxyResponse.json();
@@ -1350,7 +1350,7 @@ class NotionBlogAPI {
             
             // まずローカルプロキシサーバーを試行
             try {
-                const proxyResponse = await fetch(`http://localhost:3002/api/europe-episodes/${episodeNumber}`);
+                const proxyResponse = await fetch(`https://chrz842959.xsrv.jp/api/europe-episodes/${episodeNumber}`);
                 
                 if (proxyResponse.ok) {
                     const episodeData = await proxyResponse.json();
@@ -1462,7 +1462,7 @@ class NotionBlogAPI {
             
             // まずローカルプロキシサーバーを試行
             try {
-                const proxyResponse = await fetch(`http://localhost:3002/api/europe2025-episodes/${episodeNumber}`);
+                const proxyResponse = await fetch(`https://chrz842959.xsrv.jp/api/europe2025-episodes/${episodeNumber}`);
                 
                 if (proxyResponse.ok) {
                     const episodeData = await proxyResponse.json();
@@ -1544,7 +1544,7 @@ class NotionBlogAPI {
             
             // まずローカルプロキシサーバーを試行
             try {
-                const proxyResponse = await fetch(`http://localhost:3002/api/europe2025-2-episodes/${episodeNumber}`);
+                const proxyResponse = await fetch(`https://chrz842959.xsrv.jp/api/europe2025-2-episodes/${episodeNumber}`);
                 
                 if (proxyResponse.ok) {
                     const episodeData = await proxyResponse.json();
