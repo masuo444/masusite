@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 エピソード管理Pro | 完全自動化システム</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0099cc, #0077aa);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0 0 1rem 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .header p {
+            margin: 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            padding: 2rem;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            background: white;
+            color: #0099cc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .quick-add {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+        }
+        
+        .quick-add h2 {
+            margin: 0 0 1rem 0;
+            font-size: 1.8rem;
+        }
+        
+        .notion-paste {
+            background: white;
+            border: 2px dashed #20c997;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1rem 0;
+            min-height: 200px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .notion-paste:focus {
+            outline: none;
+            border-color: #0099cc;
+            box-shadow: 0 0 0 3px rgba(0, 153, 204, 0.1);
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto auto;
+            gap: 1rem;
+            align-items: end;
+            margin: 1rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 0;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .btn {
+            background: #0099cc;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: #0077aa;
+            transform: translateY(-1px);
+        }
+        
+        .btn.success {
+            background: #28a745;
+        }
+        
+        .btn.success:hover {
+            background: #218838;
+        }
+        
+        .btn.danger {
+            background: #dc3545;
+        }
+        
+        .btn.danger:hover {
+            background: #c82333;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .preview {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1rem 0;
+            display: none;
+        }
+        
+        .preview.show {
+            display: block;
+        }
+        
+        .preview h3 {
+            margin-top: 0;
+            color: #0099cc;
+        }
+        
+        .episode-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1rem;
+        }
+        
+        .episode-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .episode-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .episode-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0099cc, #667eea);
+        }
+        
+        .episode-number {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .episode-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .episode-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .episode-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            border-radius: 6px;
+        }
+        
+        .output {
+            background: #1a1a1a;
+            color: #00ff00;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 1rem 0;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0099cc;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .batch-upload {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+        
+        .drop-zone {
+            border: 3px dashed rgba(255,255,255,0.3);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin: 1rem 0;
+            transition: all 0.3s;
+        }
+        
+        .drop-zone.dragover {
+            border-color: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 エピソード管理Pro</h1>
+            <p>Notionからワンクリックで記事変換・自動投稿システム</p>
+        </div>
+        
+        <div class="main-content">
+            <!-- タブナビゲーション -->
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab(0)">🎯 クイック追加</button>
+                <button class="tab" onclick="switchTab(1)">📊 統計・管理</button>
+                <button class="tab" onclick="switchTab(2)">🔄 バッチ処理</button>
+                <button class="tab" onclick="switchTab(3)">⚙️ 設定</button>
+            </div>
+            
+            <!-- タブ1: クイック追加 -->
+            <div class="tab-content active">
+                <div class="quick-add">
+                    <h2>⚡ Notion記事を即座に変換</h2>
+                    <p>Notionページからコピーしたテキストをそのまま貼り付けてください</p>
+                    
+                    <div class="controls">
+                        <div class="form-group">
+                            <label for="series">シリーズ:</label>
+                            <select id="series">
+                                <option value="europe2025">ヨーロッパ2025 (138-164話)</option>
+                                <option value="europe2025_2">ヨーロッパ2025② (165-253話)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="episodeNum">エピソード番号:</label>
+                            <input type="number" id="episodeNum" min="138" max="253" placeholder="例: 169">
+                        </div>
+                        
+                        <button class="btn success" onclick="autoConvert()">🪄 自動変換</button>
+                        <button class="btn" onclick="previewEpisode()">👀 プレビュー</button>
+                    </div>
+                    
+                    <textarea 
+                        class="notion-paste" 
+                        id="notionText" 
+                        placeholder="ここにNotionページの内容をコピペしてください...
+
+例:
+# ストックホルムの美しい朝
+
+2025年2月6日 🇸🇪 スウェーデン
+
+スウェーデンの首都ストックホルムで迎える朝は格別でした。
+
+## 北欧の魅力
+- 清潔で美しい街並み
+- 環境に配慮した設計
+
+画像URLも自動で処理されます！"
+                    ></textarea>
+                </div>
+                
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>🔄 Notion記事を変換中...</p>
+                </div>
+                
+                <div class="success-message">
+                    <h4>✅ 変換完了！</h4>
+                    <p id="successText"></p>
+                </div>
+                
+                <div class="preview">
+                    <h3>📖 プレビュー</h3>
+                    <div id="previewContent"></div>
+                </div>
+                
+                <div class="output" id="output"></div>
+            </div>
+            
+            <!-- タブ2: 統計・管理 -->
+            <div class="tab-content">
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalEpisodes">0</div>
+                        <div class="stat-label">総エピソード数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="europe2025Count">0</div>
+                        <div class="stat-label">ヨーロッパ2025編</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="europe2025_2Count">0</div>
+                        <div class="stat-label">ヨーロッパ2025②編</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="imagesCount">0</div>
+                        <div class="stat-label">処理済み画像数</div>
+                    </div>
+                </div>
+                
+                <h2>📚 既存エピソード一覧</h2>
+                <div id="episodeList" class="episode-list"></div>
+            </div>
+            
+            <!-- タブ3: バッチ処理 -->
+            <div class="tab-content">
+                <div class="batch-upload">
+                    <h2>🔄 一括アップロード</h2>
+                    <p>複数のNotion記事を一度に処理できます</p>
+                    
+                    <div class="drop-zone" id="dropZone">
+                        <h3>📁 ファイルをドロップ または クリックして選択</h3>
+                        <p>複数のテキストファイル(.txt)をまとめて処理</p>
+                        <input type="file" id="fileInput" multiple accept=".txt" style="display: none;">
+                    </div>
+                    
+                    <button class="btn" onclick="document.getElementById('fileInput').click()">
+                        📂 ファイル選択
+                    </button>
+                    <button class="btn success" onclick="processBatch()">
+                        🚀 一括変換開始
+                    </button>
+                </div>
+            </div>
+            
+            <!-- タブ4: 設定 -->
+            <div class="tab-content">
+                <h2>⚙️ システム設定</h2>
+                
+                <div class="form-group">
+                    <label>GitHub自動コミット:</label>
+                    <label>
+                        <input type="checkbox" id="autoCommit" checked> 
+                        変換後にGitHubへ自動プッシュ
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label>画像最適化:</label>
+                    <label>
+                        <input type="checkbox" id="optimizeImages" checked> 
+                        画像を自動でWebP形式に変換
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label>通知設定:</label>
+                    <label>
+                        <input type="checkbox" id="notifications" checked> 
+                        変換完了時にブラウザ通知
+                    </label>
+                </div>
+                
+                <button class="btn" onclick="exportSettings()">📋 設定をエクスポート</button>
+                <button class="btn danger" onclick="resetAll()">🗑️ 全データリセット</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./assets/js/episodes-content.js"></script>
+    <script>
+        class EpisodeManagerPro {
+            constructor() {
+                this.currentTab = 0;
+                this.processedImages = 0;
+                this.init();
+            }
+            
+            init() {
+                this.updateStats();
+                this.displayEpisodes();
+                this.setupDragAndDrop();
+                this.requestNotificationPermission();
+            }
+            
+            // タブ切り替え
+            switchTab(index) {
+                // すべてのタブとコンテンツを非アクティブに
+                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // 選択されたタブとコンテンツをアクティブに
+                document.querySelectorAll('.tab')[index].classList.add('active');
+                document.querySelectorAll('.tab-content')[index].classList.add('active');
+                
+                this.currentTab = index;
+            }
+            
+            // Notion記事を自動変換
+            async autoConvert() {
+                const notionText = document.getElementById('notionText').value.trim();
+                const episodeNumber = document.getElementById('episodeNum').value;
+                const series = document.getElementById('series').value;
+                
+                if (!notionText || !episodeNumber) {
+                    alert('Notionテキストとエピソード番号を入力してください。');
+                    return;
+                }
+                
+                this.showLoading(true);
+                this.log('🚀 変換開始...');
+                
+                try {
+                    // メタデータ抽出
+                    const metadata = this.extractMetadata(notionText);
+                    this.log(`📊 メタデータ: ${metadata.title || '無題'}`);
+                    
+                    // HTML変換
+                    let html = this.convertToHTML(notionText);
+                    this.log('🔄 HTML変換完了');
+                    
+                    // 画像処理シミュレーション
+                    html = await this.processImages(html, episodeNumber);
+                    
+                    // エピソード作成
+                    const episode = {
+                        title: metadata.title || `第${episodeNumber}話`,
+                        date: metadata.date || new Date().toLocaleDateString('ja-JP'),
+                        location: metadata.location || this.getDefaultLocation(series, episodeNumber),
+                        content: html
+                    };
+                    
+                    // episodes-content.jsに追加（シミュレーション）
+                    this.addEpisodeToContent(episode, episodeNumber, series);
+                    
+                    this.showLoading(false);
+                    this.showSuccess(`✅ エピソード${episodeNumber}: ${episode.title} が正常に追加されました！`);
+                    
+                    // 通知
+                    if (document.getElementById('notifications').checked) {
+                        this.showNotification('エピソード追加完了', `第${episodeNumber}話が正常に追加されました`);
+                    }
+                    
+                    // 統計更新
+                    this.updateStats();
+                    
+                    // フォームクリア
+                    document.getElementById('notionText').value = '';
+                    document.getElementById('episodeNum').value = '';
+                    
+                } catch (error) {
+                    this.showLoading(false);
+                    this.log(`❌ エラー: ${error.message}`);
+                }
+            }
+            
+            // メタデータ抽出
+            extractMetadata(text) {
+                const metadata = { title: '', date: '', location: '' };
+                
+                // タイトル抽出
+                const titleMatch = text.match(/^#\s*(.+)$/m) || text.match(/^(.+)$/m);
+                if (titleMatch) {
+                    metadata.title = titleMatch[1].trim().replace(/^[\d]+[:：]\s*/, '');
+                }
+                
+                // 日付抽出
+                const dateMatch = text.match(/(\d{4}年\d{1,2}月\d{1,2}日)/);
+                if (dateMatch) {
+                    metadata.date = dateMatch[1];
+                }
+                
+                // 場所抽出
+                const locationMatch = text.match(/([🇦-🇿]{2}\s*[^\n\r]+)/);
+                if (locationMatch) {
+                    metadata.location = locationMatch[1].trim();
+                }
+                
+                return metadata;
+            }
+            
+            // HTML変換
+            convertToHTML(text) {
+                return text
+                    .replace(/^# (.+)$/gm, '<h2>$1</h2>')
+                    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+                    .replace(/^### (.+)$/gm, '<h4>$1</h4>')
+                    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                    .replace(/^- (.+)$/gm, '<li>$1</li>')
+                    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+                    .replace(/^(?!<[^>]+>)(.+)$/gm, '<p>$1</p>')
+                    .replace(/<p><\/p>/g, '')
+                    .replace(/(<li>.*<\/li>)+/g, '<ul>$&</ul>')
+                    .replace(/<\/li><li>/g, '</li>\n<li>');
+            }
+            
+            // 画像処理シミュレーション
+            async processImages(html, episodeNumber) {
+                const imageRegex = /(https?:\/\/[^\s]+\.(?:jpg|jpeg|png|gif|webp))/gi;
+                const images = html.match(imageRegex) || [];
+                
+                for (let i = 0; i < images.length; i++) {
+                    const imageUrl = images[i];
+                    const localPath = `assets/images/episodes/episode-${episodeNumber}-${i + 1}.jpg`;
+                    
+                    // 処理シミュレーション
+                    await new Promise(resolve => setTimeout(resolve, 200));
+                    this.log(`📸 画像処理: ${imageUrl} -> ${localPath}`);
+                    
+                    html = html.replace(imageUrl, localPath);
+                    this.processedImages++;
+                }
+                
+                return html;
+            }
+            
+            // デフォルト場所取得
+            getDefaultLocation(series, episodeNumber) {
+                if (series === 'europe2025_2') {
+                    if (episodeNumber >= 165 && episodeNumber <= 167) return '🇩🇰 デンマーク';
+                    if (episodeNumber >= 168 && episodeNumber <= 178) return '🇸🇪 スウェーデン';
+                    if (episodeNumber >= 179 && episodeNumber <= 187) return '🇵🇱 ポーランド';
+                    if (episodeNumber >= 188 && episodeNumber <= 195) return '🇳🇴 ノルウェー';
+                    if (episodeNumber >= 196 && episodeNumber <= 201) return '🇮🇪 アイルランド';
+                    if (episodeNumber >= 202 && episodeNumber <= 207) return '🇦🇪 ドバイ';
+                    if (episodeNumber >= 208 && episodeNumber <= 225) return '🇫🇷 フランス';
+                    if (episodeNumber >= 226 && episodeNumber <= 231) return '🇯🇵🇨🇳 日本・上海';
+                    if (episodeNumber >= 232 && episodeNumber <= 243) return '🇱🇻🇱🇹🇪🇪 バルト三国';
+                    if (episodeNumber >= 244 && episodeNumber <= 253) return '🇬🇧 イギリス';
+                }
+                return series === 'europe2025' ? '🇮🇪 アイルランド' : '🌍 ヨーロッパ';
+            }
+            
+            // エピソード追加（シミュレーション）
+            addEpisodeToContent(episode, episodeNumber, series) {
+                this.log(`📝 episodes-content.jsに追加中...`);
+                this.log(`${episodeNumber}: ${episode.title}`);
+                this.log(`📅 ${episode.date} | 📍 ${episode.location}`);
+                
+                // 実際の処理では、ここでファイルに書き込み
+                const code = `        ${episodeNumber}: {
+            title: "${episodeNumber}:${episode.title}",
+            date: "${episode.date}",
+            location: "${episode.location}",
+            content: \`${episode.content.substring(0, 100)}...\`
+        },`;
+                
+                this.log('📋 生成されたコード:');
+                this.log(code);
+            }
+            
+            // プレビュー表示
+            previewEpisode() {
+                const notionText = document.getElementById('notionText').value.trim();
+                if (!notionText) {
+                    alert('プレビューするテキストがありません。');
+                    return;
+                }
+                
+                const metadata = this.extractMetadata(notionText);
+                const html = this.convertToHTML(notionText);
+                
+                const preview = document.querySelector('.preview');
+                const content = document.getElementById('previewContent');
+                
+                content.innerHTML = `
+                    <h4>${metadata.title || '無題'}</h4>
+                    <p><strong>日付:</strong> ${metadata.date || '未設定'}</p>
+                    <p><strong>場所:</strong> ${metadata.location || '未設定'}</p>
+                    <hr>
+                    <div>${html}</div>
+                `;
+                
+                preview.classList.add('show');
+            }
+            
+            // 統計更新
+            updateStats() {
+                const europe2025Count = Object.keys(EPISODES_CONTENT.europe2025 || {}).length;
+                const europe2025_2Count = Object.keys(EPISODES_CONTENT.europe2025_2 || {}).length;
+                const totalCount = europe2025Count + europe2025_2Count;
+                
+                document.getElementById('totalEpisodes').textContent = totalCount;
+                document.getElementById('europe2025Count').textContent = europe2025Count;
+                document.getElementById('europe2025_2Count').textContent = europe2025_2Count;
+                document.getElementById('imagesCount').textContent = this.processedImages;
+            }
+            
+            // エピソード一覧表示
+            displayEpisodes() {
+                const container = document.getElementById('episodeList');
+                container.innerHTML = '';
+                
+                ['europe2025', 'europe2025_2'].forEach(seriesKey => {
+                    const episodes = EPISODES_CONTENT[seriesKey] || {};
+                    const seriesName = seriesKey === 'europe2025' ? 'ヨーロッパ2025' : 'ヨーロッパ2025②';
+                    
+                    Object.entries(episodes).forEach(([episodeNum, episode]) => {
+                        const card = document.createElement('div');
+                        card.className = 'episode-card';
+                        card.innerHTML = `
+                            <div class="episode-number">${seriesName} 第${episodeNum}話</div>
+                            <div class="episode-title">${episode.title}</div>
+                            <div class="episode-meta">
+                                <span>📅 ${episode.date}</span>
+                                <span>📍 ${episode.location}</span>
+                            </div>
+                            <div class="episode-actions">
+                                <button class="btn btn-small" onclick="manager.viewEpisode('${seriesKey}', ${episodeNum})">
+                                    👀 確認
+                                </button>
+                                <button class="btn btn-small success" onclick="manager.editEpisode('${seriesKey}', ${episodeNum})">
+                                    ✏️ 編集
+                                </button>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                });
+            }
+            
+            // エピソード確認
+            viewEpisode(series, episodeNumber) {
+                const countryParam = series === 'europe2025' ? 'europe2025' : 'europe2025-2';
+                window.open(`episode-template.html?episode=${episodeNumber}&country=${countryParam}`, '_blank');
+            }
+            
+            // エピソード編集
+            editEpisode(series, episodeNumber) {
+                this.switchTab(0);
+                
+                const episode = EPISODES_CONTENT[series][episodeNumber];
+                document.getElementById('series').value = series;
+                document.getElementById('episodeNum').value = episodeNumber;
+                
+                // 逆変換してNotionテキストっぽく復元
+                const notionText = this.htmlToNotionText(episode.content, episode.title, episode.date, episode.location);
+                document.getElementById('notionText').value = notionText;
+            }
+            
+            // HTML→Notionテキスト逆変換
+            htmlToNotionText(html, title, date, location) {
+                return html
+                    .replace(/<h2>(.*?)<\/h2>/g, '# $1')
+                    .replace(/<h3>(.*?)<\/h3>/g, '## $1')
+                    .replace(/<h4>(.*?)<\/h4>/g, '### $1')
+                    .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
+                    .replace(/<em>(.*?)<\/em>/g, '*$1*')
+                    .replace(/<li>(.*?)<\/li>/g, '- $1')
+                    .replace(/<blockquote>(.*?)<\/blockquote>/g, '> $1')
+                    .replace(/<p>(.*?)<\/p>/g, '$1')
+                    .replace(/<ul>|<\/ul>/g, '')
+                    .replace(/\n+/g, '\n\n');
+            }
+            
+            // ドラッグ&ドロップ設定
+            setupDragAndDrop() {
+                const dropZone = document.getElementById('dropZone');
+                
+                dropZone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.add('dragover');
+                });
+                
+                dropZone.addEventListener('dragleave', () => {
+                    dropZone.classList.remove('dragover');
+                });
+                
+                dropZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.remove('dragover');
+                    
+                    const files = Array.from(e.dataTransfer.files);
+                    this.handleFiles(files);
+                });
+                
+                dropZone.addEventListener('click', () => {
+                    document.getElementById('fileInput').click();
+                });
+                
+                document.getElementById('fileInput').addEventListener('change', (e) => {
+                    this.handleFiles(Array.from(e.target.files));
+                });
+            }
+            
+            // ファイル処理
+            async handleFiles(files) {
+                this.log(`📁 ${files.length}個のファイルを処理中...`);
+                
+                for (const file of files) {
+                    if (file.type === 'text/plain') {
+                        const content = await this.readFile(file);
+                        this.log(`📄 ${file.name} を読み込み完了`);
+                        // ここで自動変換処理を実行
+                    }
+                }
+            }
+            
+            // ファイル読み込み
+            readFile(file) {
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.readAsText(file);
+                });
+            }
+            
+            // ログ出力
+            log(message) {
+                const output = document.getElementById('output');
+                const timestamp = new Date().toLocaleTimeString();
+                output.textContent += `[${timestamp}] ${message}\n`;
+                output.scrollTop = output.scrollHeight;
+            }
+            
+            // ローディング表示
+            showLoading(show) {
+                const loading = document.querySelector('.loading');
+                loading.classList.toggle('show', show);
+            }
+            
+            // 成功メッセージ表示
+            showSuccess(message) {
+                const success = document.querySelector('.success-message');
+                document.getElementById('successText').textContent = message;
+                success.classList.add('show');
+                
+                setTimeout(() => success.classList.remove('show'), 5000);
+            }
+            
+            // 通知権限要求
+            requestNotificationPermission() {
+                if ('Notification' in window && Notification.permission === 'default') {
+                    Notification.requestPermission();
+                }
+            }
+            
+            // 通知表示
+            showNotification(title, body) {
+                if ('Notification' in window && Notification.permission === 'granted') {
+                    new Notification(title, { body, icon: 'assets/images/profile.jpg' });
+                }
+            }
+        }
+        
+        // グローバル関数
+        function switchTab(index) {
+            window.manager.switchTab(index);
+        }
+        
+        function autoConvert() {
+            window.manager.autoConvert();
+        }
+        
+        function previewEpisode() {
+            window.manager.previewEpisode();
+        }
+        
+        function processBatch() {
+            window.manager.log('🔄 バッチ処理機能は開発中です...');
+        }
+        
+        function exportSettings() {
+            window.manager.log('📋 設定エクスポート機能は開発中です...');
+        }
+        
+        function resetAll() {
+            if (confirm('本当に全データをリセットしますか？')) {
+                window.manager.log('🗑️ データリセット機能は開発中です...');
+            }
+        }
+        
+        // 初期化
+        document.addEventListener('DOMContentLoaded', () => {
+            window.manager = new EpisodeManagerPro();
+        });
+    </script>
+</body>
+</html>

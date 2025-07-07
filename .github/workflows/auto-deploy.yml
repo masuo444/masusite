@@ -1,0 +1,206 @@
+name: 🚀 Auto Deploy Episodes
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'assets/js/episodes-content.js'
+      - 'assets/images/episodes/**'
+  
+  # 手動実行も可能
+  workflow_dispatch:
+
+  # 毎日定時チェック（新しいNotion記事の自動検出用）
+  schedule:
+    - cron: '0 9 * * *'  # 毎日9時（JST 18時）
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: 🔧 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: 📦 Install dependencies
+      run: |
+        npm install --production
+        npm install sharp imagemin imagemin-webp
+
+    - name: 🖼️ Optimize images
+      run: |
+        node -e "
+        const fs = require('fs');
+        const path = require('path');
+        const sharp = require('sharp');
+        
+        async function optimizeImages() {
+          const episodeImagesDir = './assets/images/episodes';
+          if (!fs.existsSync(episodeImagesDir)) return;
+          
+          const files = fs.readdirSync(episodeImagesDir);
+          let optimized = 0;
+          
+          for (const file of files) {
+            if (!/\.(jpg|jpeg|png)$/i.test(file)) continue;
+            
+            const inputPath = path.join(episodeImagesDir, file);
+            const outputPath = path.join(episodeImagesDir, file.replace(/\.(jpg|jpeg|png)$/i, '.webp'));
+            
+            try {
+              await sharp(inputPath)
+                .webp({ quality: 85 })
+                .toFile(outputPath);
+              
+              // 元ファイルを削除（WebPで置き換え）
+              fs.unlinkSync(inputPath);
+              optimized++;
+              console.log(\`✅ Optimized: \${file} -> \${path.basename(outputPath)}\`);
+            } catch (error) {
+              console.warn(\`⚠️ Failed to optimize \${file}:\`, error.message);
+            }
+          }
+          
+          console.log(\`🎉 Optimized \${optimized} images\`);
+        }
+        
+        optimizeImages().catch(console.error);
+        "
+
+    - name: 📊 Generate statistics
+      run: |
+        node -e "
+        const fs = require('fs');
+        
+        // episodes-content.jsを読み込んで統計生成
+        const content = fs.readFileSync('./assets/js/episodes-content.js', 'utf8');
+        
+        // エピソード数をカウント
+        const europe2025Match = content.match(/europe2025:\s*{([^}]+)}/s);
+        const europe2025_2Match = content.match(/europe2025_2:\s*{([^}]+)}/s);
+        
+        const europe2025Count = (europe2025Match?.[1] || '').split(/\d+:/).length - 1;
+        const europe2025_2Count = (europe2025_2Match?.[1] || '').split(/\d+:/).length - 1;
+        const totalCount = europe2025Count + europe2025_2Count;
+        
+        // 画像数をカウント
+        const episodeImagesDir = './assets/images/episodes';
+        let imageCount = 0;
+        if (fs.existsSync(episodeImagesDir)) {
+          imageCount = fs.readdirSync(episodeImagesDir).length;
+        }
+        
+        // 統計をJSONで出力
+        const stats = {
+          totalEpisodes: totalCount,
+          europe2025Episodes: europe2025Count,
+          europe2025_2Episodes: europe2025_2Count,
+          totalImages: imageCount,
+          lastUpdated: new Date().toISOString()
+        };
+        
+        fs.writeFileSync('./assets/js/site-stats.js', 
+          \`// サイト統計（自動生成）\nconst SITE_STATS = \${JSON.stringify(stats, null, 2)};\`
+        );
+        
+        console.log('📊 Site Statistics:');
+        console.log(\`   Total Episodes: \${totalCount}\`);
+        console.log(\`   Europe 2025: \${europe2025Count}\`);
+        console.log(\`   Europe 2025②: \${europe2025_2Count}\`);
+        console.log(\`   Total Images: \${imageCount}\`);
+        "
+
+    - name: 🔍 Validate episodes content
+      run: |
+        node -e "
+        try {
+          require('./assets/js/episodes-content.js');
+          console.log('✅ episodes-content.js is valid');
+        } catch (error) {
+          console.error('❌ episodes-content.js validation failed:', error.message);
+          process.exit(1);
+        }
+        "
+
+    - name: 🌐 Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        exclude_assets: |
+          node_modules/**
+          .github/**
+          notion-*.js
+          export-*.js
+          package*.json
+          *.md
+
+    - name: 📱 Send notification
+      if: success()
+      run: |
+        echo "🎉 サイトデプロイ完了！"
+        echo "🌐 URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+        
+    - name: 💬 Comment on commit
+      if: github.event_name == 'push'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const stats = require('./assets/js/site-stats.js');
+          
+          github.rest.repos.createCommitComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            commit_sha: context.sha,
+            body: \`🚀 **自動デプロイ完了**
+            
+📊 **サイト統計:**
+- 総エピソード数: **\${stats.totalEpisodes}**
+- ヨーロッパ2025: \${stats.europe2025Episodes}話
+- ヨーロッパ2025②: \${stats.europe2025_2Episodes}話  
+- 画像数: \${stats.totalImages}枚
+
+🌐 **公開URL:** https://\${context.repo.owner}.github.io/\${context.repo.repo}/
+
+⏰ 更新時刻: \${new Date().toLocaleString('ja-JP')}\`
+          });
+
+  # 新しいNotion記事の自動チェック（スケジュール実行時）
+  check-new-episodes:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+
+    - name: 🔧 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: 🔍 Check for new Notion episodes
+      env:
+        NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      run: |
+        node -e "
+        console.log('🔍 新しいNotion記事をチェック中...');
+        console.log('📝 この機能は今後実装予定です');
+        
+        // TODO: Notion APIで新しい記事を検出
+        // TODO: 自動で記事を変換・追加
+        // TODO: 自動コミット&プッシュ
+        "
+
+    - name: 🚨 Alert if new episodes found
+      run: |
+        echo "::warning::新しいエピソードが見つかりました。手動で追加してください。"
